@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vendedores - CONFISENA</title>
+
+    <link rel="stylesheet" href="vendedores-gestor.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================= -->
+    <!-- ENCABEZADO -->
+    <!-- ============================= -->
+
+    <header class="encabezado">
+
+        <div class="logo">
+
+            <h1>confisena</h1>
+
+            <p>
+                Transformamos la forma de comprar
+            </p>
+
+        </div>
+
+
+        <div class="usuario-header">
+
+            <span>Gestor</span>
+
+            <button id="volverGestor">
+                Panel del gestor
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ============================= -->
+    <!-- CONTENIDO PRINCIPAL -->
+    <!-- ============================= -->
+
+    <main class="contenedor">
+
+
+        <div class="ruta">
+
+            Panel del Gestor / Vendedores
+
+        </div>
+
+
+
+        <!-- ============================= -->
+        <!-- TÍTULO -->
+        <!-- ============================= -->
+
+        <section class="encabezado-pagina">
+
+            <div>
+
+                <h2>
+                    Vendedores registrados
+                </h2>
+
+                <p>
+                    Consulta y administra los vendedores
+                    registrados en CONFISENA.
+                </p>
+
+            </div>
+
+
+            <button
+                class="boton-principal"
+                id="nuevoVendedor"
+            >
+
+                + Registrar vendedor
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- RESUMEN -->
+        <!-- ============================= -->
+
+        <section class="resumen">
+
+
+            <div class="tarjeta-resumen">
+
+                <span class="titulo-resumen">
+                    Total vendedores
+                </span>
+
+                <strong id="totalVendedores">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="tarjeta-resumen">
+
+                <span class="titulo-resumen">
+                    Vendedores activos
+                </span>
+
+                <strong id="vendedoresActivos">
+                    0
+                </strong>
+
+            </div>
+
+
+
+            <div class="tarjeta-resumen">
+
+                <span class="titulo-resumen">
+                    Vendedores inactivos
+                </span>
+
+                <strong id="vendedoresInactivos">
+                    0
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- BUSCADOR -->
+        <!-- ============================= -->
+
+        <section class="herramientas">
+
+
+            <div class="buscador">
+
+                <label for="buscarVendedor">
+                    Buscar vendedor
+                </label>
+
+                <input
+                    type="text"
+                    id="buscarVendedor"
+                    placeholder="Buscar por nombre, correo, usuario o tienda..."
+                >
+
+            </div>
+
+
+
+            <div class="filtro">
+
+                <label for="filtroEstado">
+                    Estado
+                </label>
+
+                <select id="filtroEstado">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="Activo">
+                        Activos
+                    </option>
+
+                    <option value="Inactivo">
+                        Inactivos
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ============================= -->
+        <!-- TABLA -->
+        <!-- ============================= -->
+
+        <section class="tarjeta-tabla">
+
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Vendedor
+                            </th>
+
+                            <th>
+                                Usuario
+                            </th>
+
+                            <th>
+                                Tienda
+                            </th>
+
+                            <th>
+                                Correo
+                            </th>
+
+                            <th>
+                                Teléfono
+                            </th>
+
+                            <th>
+                                Estado
+                            </th>
+
+                            <th>
+                                Acciones
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tablaVendedores">
+
+                    </tbody>
+
+
+                </table>
+
+            </div>
+
+
+
+            <!-- ============================= -->
+            <!-- SIN RESULTADOS -->
+            <!-- ============================= -->
+
+            <div
+                id="sinResultados"
+                class="sin-resultados"
+            >
+
+                <div class="icono-vacio">
+                    👥
+                </div>
+
+                <h3>
+                    No hay vendedores registrados
+                </h3>
+
+                <p>
+                    Cuando registres un vendedor,
+                    aparecerá aquí.
+                </p>
+
+                <button
+                    class="boton-principal"
+                    id="registrarDesdeVacio"
+                >
+
+                    Registrar vendedor
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ============================= -->
+    <!-- MODAL INFORMACIÓN -->
+    <!-- ============================= -->
+
+    <div
+        id="modalVendedor"
+        class="modal"
+    >
+
+        <div class="modal-contenido">
+
+
+            <div class="modal-cabecera">
+
+                <h3>
+                    Información del vendedor
+                </h3>
+
+                <button id="cerrarModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                id="informacionVendedor"
+                class="informacion-vendedor"
+            >
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ============================= -->
+    <!-- FOOTER -->
+    <!-- ============================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 CONFISENA -
+            Transformamos la forma de comprar
+
+        </p>
+
+    </footer>
+
+
+
+    <script src="vendedores-gestor.js"></script>
+
+
+</body>
+
+</html>

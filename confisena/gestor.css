@@ -1,0 +1,420 @@
+* {
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+}
+
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    background-color: #f1f5f9;
+
+    color: #334155;
+
+}
+
+
+
+/* ============================= */
+/* ENCABEZADO */
+/* ============================= */
+
+.encabezado {
+
+    background-color: #172554;
+
+    color: white;
+
+    padding: 18px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.logo h1 {
+
+    font-size: 28px;
+
+    text-transform: lowercase;
+
+}
+
+
+.logo p {
+
+    font-size: 12px;
+
+    color: #dbeafe;
+
+    margin-top: 3px;
+
+}
+
+
+.usuario-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+}
+
+
+.usuario-header span {
+
+    font-weight: bold;
+
+}
+
+
+.usuario-header button {
+
+    border: 1px solid white;
+
+    background-color: transparent;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+}
+
+
+.usuario-header button:hover {
+
+    background-color: white;
+
+    color: #172554;
+
+}
+
+
+
+/* ============================= */
+/* CONTENEDOR */
+/* ============================= */
+
+.contenedor {
+
+    width: 86%;
+
+    max-width: 1200px;
+
+    margin: 35px auto;
+
+}
+
+
+
+/* ============================= */
+/* BIENVENIDA */
+/* ============================= */
+
+.bienvenida {
+
+    margin-bottom: 30px;
+
+}
+
+
+.bienvenida h2 {
+
+    color: #172554;
+
+    font-size: 30px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.bienvenida p {
+
+    color: #64748b;
+
+}
+
+
+
+/* ============================= */
+/* TARJETAS */
+/* ============================= */
+
+.tarjetas {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.tarjeta {
+
+    background-color: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition: 0.2s;
+
+}
+
+
+.tarjeta:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 23, 42, 0.08);
+
+}
+
+
+.icono {
+
+    width: 60px;
+
+    height: 60px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    background-color: #dbeafe;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+}
+
+
+.tarjeta h3 {
+
+    color: #172554;
+
+    margin-bottom: 10px;
+
+}
+
+
+.tarjeta p {
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    min-height: 63px;
+
+}
+
+
+
+/* ============================= */
+/* BOTONES */
+/* ============================= */
+
+.boton {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background-color: #2563eb;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+.boton:hover {
+
+    background-color: #172554;
+
+}
+
+
+
+/* ============================= */
+/* RESUMEN */
+/* ============================= */
+
+.resumen {
+
+    background-color: white;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-top: 25px;
+
+}
+
+
+.resumen h3 {
+
+    color: #172554;
+
+    margin-bottom: 20px;
+
+}
+
+
+.estadisticas {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+}
+
+
+.estadistica {
+
+    background-color: #f8fafc;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    text-align: center;
+
+}
+
+
+.estadistica strong {
+
+    display: block;
+
+    font-size: 28px;
+
+    color: #2563eb;
+
+    margin-bottom: 6px;
+
+}
+
+
+.estadistica span {
+
+    color: #64748b;
+
+    font-size: 14px;
+
+}
+
+
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+
+    margin-top: 50px;
+
+    background-color: #172554;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    font-size: 13px;
+
+}
+
+
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 900px) {
+
+    .tarjetas {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .encabezado {
+
+        flex-direction: column;
+
+        gap: 15px;
+
+        text-align: center;
+
+    }
+
+
+    .tarjetas {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .estadisticas {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}

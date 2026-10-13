@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestionar Problemas - CONFISENA</title>
+
+    <link rel="stylesheet" href="reportes-gestor.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            CONFISENA
+        </div>
+
+        <div class="titulo-encabezado">
+            <span>Panel del Gestor</span>
+        </div>
+
+        <button id="volverGestor" class="boton-volver">
+            ← Volver al panel
+        </button>
+
+    </header>
+
+
+    <main class="contenedor">
+
+        <!-- TÍTULO -->
+        <section class="titulo-pagina">
+
+            <h1>Gestionar problemas</h1>
+
+            <p>
+                Consulta y gestiona los problemas reportados
+                dentro de la plataforma.
+            </p>
+
+        </section>
+
+
+        <!-- RESUMEN -->
+        <section class="resumen">
+
+            <div class="tarjeta-resumen">
+
+                <div class="icono-resumen">
+                    📋
+                </div>
+
+                <div>
+                    <span>Total de reportes</span>
+                    <strong id="totalReportes">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta-resumen">
+
+                <div class="icono-resumen">
+                    ⏳
+                </div>
+
+                <div>
+                    <span>Pendientes</span>
+                    <strong id="reportesPendientes">0</strong>
+                </div>
+
+            </div>
+
+
+            <div class="tarjeta-resumen">
+
+                <div class="icono-resumen">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Resueltos</span>
+                    <strong id="reportesResueltos">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTROS -->
+        <section class="filtros">
+
+            <div class="campo-busqueda">
+
+                <label for="buscarReporte">
+                    Buscar reporte
+                </label>
+
+                <input
+                    type="text"
+                    id="buscarReporte"
+                    placeholder="Buscar por usuario, asunto o descripción..."
+                >
+
+            </div>
+
+
+            <div class="campo-filtro">
+
+                <label for="filtroEstado">
+                    Estado
+                </label>
+
+                <select id="filtroEstado">
+
+                    <option value="Todos">
+                        Todos
+                    </option>
+
+                    <option value="Pendiente">
+                        Pendiente
+                    </option>
+
+                    <option value="En revisión">
+                        En revisión
+                    </option>
+
+                    <option value="Resuelto">
+                        Resuelto
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABLA -->
+        <section class="contenedor-tabla">
+
+            <div class="encabezado-tabla">
+
+                <h2>Reportes registrados</h2>
+
+            </div>
+
+
+            <div class="tabla-scroll">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Usuario</th>
+
+                            <th>Asunto</th>
+
+                            <th>Descripción</th>
+
+                            <th>Fecha</th>
+
+                            <th>Estado</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tablaReportes">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- MENSAJE SI NO HAY REPORTES -->
+        <div
+            id="sinReportes"
+            class="sin-reportes"
+            style="display: none;"
+        >
+
+            <div class="icono-vacio">
+                📭
+            </div>
+
+            <h3>No hay reportes registrados</h3>
+
+            <p>
+                Cuando un usuario reporte un problema,
+                aparecerá aquí.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- MODAL -->
+    <div
+        id="modalReporte"
+        class="modal"
+        style="display: none;"
+    >
+
+        <div class="modal-contenido">
+
+            <button
+                id="cerrarModal"
+                class="cerrar-modal"
+            >
+                ×
+            </button>
+
+
+            <h2>Detalle del reporte</h2>
+
+
+            <div class="detalle-reporte">
+
+                <div class="detalle">
+
+                    <span>Usuario</span>
+
+                    <strong id="detalleUsuario">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detalle">
+
+                    <span>Correo</span>
+
+                    <strong id="detalleCorreo">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detalle">
+
+                    <span>Asunto</span>
+
+                    <strong id="detalleAsunto">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detalle">
+
+                    <span>Fecha</span>
+
+                    <strong id="detalleFecha">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detalle completo">
+
+                    <span>Descripción</span>
+
+                    <p id="detalleDescripcion">
+                        -
+                    </p>
+
+                </div>
+
+
+                <div class="detalle completo">
+
+                    <span>Estado</span>
+
+                    <select id="detalleEstado">
+
+                        <option value="Pendiente">
+                            Pendiente
+                        </option>
+
+                        <option value="En revisión">
+                            En revisión
+                        </option>
+
+                        <option value="Resuelto">
+                            Resuelto
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="acciones-modal">
+
+                <button
+                    id="guardarEstado"
+                    class="boton-guardar"
+                >
+                    Guardar cambios
+                </button>
+
+                <button
+                    id="cancelarModal"
+                    class="boton-cancelar"
+                >
+                    Cancelar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="reportes-gestor.js"></script>
+
+</body>
+
+</html>

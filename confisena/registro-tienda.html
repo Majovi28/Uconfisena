@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Tienda - CONFISENA</title>
+
+    <link rel="stylesheet" href="registro-tienda.css">
+
+</head>
+
+
+<body>
+
+    
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>confisena</h1>
+
+        <p>
+            Transformamos la forma de comprar
+        </p>
+
+    </div>
+
+
+    <div class="usuario-header">
+
+        <span>
+            Gestor
+        </span>
+
+        <button id="volverGestor">
+            Panel del gestor
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="contenedor">
+
+
+    <div class="ruta">
+
+        Panel del Gestor / Registrar tienda
+
+    </div>
+
+
+
+    <section class="encabezado-pagina">
+
+        <h2>
+            Registrar tienda
+        </h2>
+
+        <p>
+            Registra una tienda autorizada para formar
+            parte de la plataforma CONFISENA.
+        </p>
+
+    </section>
+
+
+
+    <section class="tarjeta-formulario">
+
+
+        <form id="formularioTienda">
+
+
+
+            <div class="seccion">
+
+                <h3>
+                    Información de la tienda
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="nombreTienda">
+                        Nombre de la tienda
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreTienda"
+                        placeholder="Ej: CONFISENA Centro"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="fila">
+
+
+                    <div class="grupo">
+
+                        <label for="nit">
+                            NIT
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nit"
+                            placeholder="Ej: 900123456-7"
+                            maxlength="12"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="grupo">
+
+                        <label for="telefono">
+                            Teléfono
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono"
+                            placeholder="3001234567"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="grupo">
+
+                    <label for="direccion">
+                        Dirección
+                    </label>
+
+                    <input
+                        type="text"
+                        id="direccion"
+                        placeholder="Ej: Calle 10 # 15-20"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="fila">
+
+
+                    <div class="grupo">
+
+                        <label for="barrio">
+                            Barrio
+                        </label>
+
+                        <input
+                            type="text"
+                            id="barrio"
+                            placeholder="Ej: Centro"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="grupo">
+
+                        <label for="localidad">
+                            Localidad
+                        </label>
+
+                        <input
+                            type="text"
+                            id="localidad"
+                            placeholder="Ej: La Candelaria"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="grupo">
+
+                    <label for="correo">
+                        Correo electrónico
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        placeholder="tienda@confisena.com"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="seccion">
+
+                <h3>
+                    Información del gerente
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="nombreGerente">
+                        Nombre completo del gerente
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreGerente"
+                        placeholder="Ingresa el nombre del gerente"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="seccion">
+
+                <h3>
+                    Información del vendedor
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="nombreVendedor">
+                        Nombre completo del vendedor
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombreVendedor"
+                        placeholder="Ingresa el nombre del vendedor"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+            <div class="seccion">
+
+                <h3>
+                    Estado de la tienda
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="estado">
+                        Estado
+                    </label>
+
+                    <select
+                        id="estado"
+                        required
+                    >
+
+                        <option value="">
+                            Selecciona un estado
+                        </option>
+
+                        <option value="Activa">
+                            Activa
+                        </option>
+
+                        <option value="Inactiva">
+                            Inactiva
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="acciones">
+
+                <button
+                    type="button"
+                    class="boton cancelar"
+                    id="cancelar"
+                >
+                    Cancelar
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="boton guardar"
+                >
+                    Registrar tienda
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+        © 2026 CONFISENA -
+        Transformamos la forma de comprar
+    </p>
+
+</footer>
+
+
+
+<script src="registro-tienda.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel del Gestor - CONFISENA</title>
+
+    <link rel="stylesheet" href="gestor.css">
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>confisena</h1>
+
+        <p>
+            Transformamos la forma de comprar
+        </p>
+
+    </div>
+
+
+    <div class="usuario-header">
+
+        <span>
+            Gestor
+        </span>
+
+        <button id="cerrarSesion">
+            Cerrar sesión
+        </button>
+
+    </div>
+
+</header>
+
+
+<main class="contenedor">
+
+
+    <section class="bienvenida">
+
+        <h2>
+            Panel del Gestor
+        </h2>
+
+        <p>
+            Administra tiendas, vendedores y reportes
+            de la plataforma CONFISENA.
+        </p>
+
+    </section>
+
+
+
+    <section class="tarjetas">
+
+
+        <!-- REGISTRAR TIENDA -->
+
+        <article class="tarjeta">
+
+            <div class="icono">
+                🏪
+            </div>
+
+            <h3>
+                Registrar tienda
+            </h3>
+
+            <p>
+                Registra una nueva tienda autorizada
+                dentro de la plataforma.
+            </p>
+
+            <button
+                class="boton"
+                id="registrarTienda"
+            >
+                Registrar tienda
+            </button>
+
+        </article>
+
+
+
+        <article class="tarjeta">
+
+            <div class="icono">
+                👤
+            </div>
+
+            <h3>
+                Registrar vendedor
+            </h3>
+
+            <p>
+                Registra los vendedores asociados
+                a las tiendas.
+            </p>
+
+            <button
+                class="boton"
+                id="registrarVendedor"
+            >
+                Registrar vendedor
+            </button>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">
+                📋
+            </div>
+
+            <h3>
+                Consultar tiendas
+            </h3>
+
+            <p>
+                Consulta la información de las tiendas
+                registradas en CONFISENA.
+            </p>
+
+            <button
+                class="boton"
+                id="consultarTiendas"
+            >
+                Ver tiendas
+            </button>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">
+                👥
+            </div>
+
+            <h3>
+                Consultar vendedores
+            </h3>
+
+            <p>
+                Consulta los vendedores registrados
+                y sus tiendas asignadas.
+            </p>
+
+            <button
+                class="boton"
+                id="consultarVendedores"
+            >
+                Ver vendedores
+            </button>
+
+        </article>
+
+
+        <article class="tarjeta">
+
+            <div class="icono">
+                🛠️
+            </div>
+
+            <h3>
+                Gestionar problemas
+            </h3>
+
+            <p>
+                Revisa los reportes enviados por
+                los usuarios y atiende los problemas.
+            </p>
+
+            <button
+                class="boton"
+                id="gestionarProblemas"
+            >
+                Ver reportes
+            </button>
+
+        </article>
+
+
+
+    </section>
+
+
+
+    <section class="resumen">
+
+
+        <h3>
+            Resumen de gestión
+        </h3>
+
+
+        <div class="estadisticas">
+
+
+            <div class="estadistica">
+
+                <strong id="cantidadTiendas">
+                    0
+                </strong>
+
+                <span>
+                    Tiendas registradas
+                </span>
+
+            </div>
+
+
+
+            <div class="estadistica">
+
+                <strong id="cantidadVendedores">
+                    0
+                </strong>
+
+                <span>
+                    Vendedores registrados
+                </span>
+
+            </div>
+
+
+
+            <div class="estadistica">
+
+                <strong id="cantidadReportes">
+                    0
+                </strong>
+
+                <span>
+                    Reportes pendientes
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+
+<footer>
+
+    <p>
+        © 2026 CONFISENA -
+        Transformamos la forma de comprar
+    </p>
+
+</footer>
+
+
+
+<script src="gestor.js"></script>
+
+
+</body>
+
+</html>

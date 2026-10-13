@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tiendas - CONFISENA</title>
+
+    <link rel="stylesheet" href="tiendas-gestor.css">
+</head>
+
+<body>
+
+    <header class="encabezado">
+
+        <div class="logo">
+            <h1>confisena</h1>
+            <p>Transformamos la forma de comprar</p>
+        </div>
+
+        <div class="usuario-header">
+
+            <span>Gestor</span>
+
+            <button id="volverGestor">
+                Panel del gestor
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="contenedor">
+
+        <div class="ruta">
+            Panel del Gestor / Tiendas
+        </div>
+
+
+        <section class="encabezado-pagina">
+
+            <div>
+
+                <h2>Tiendas registradas</h2>
+
+                <p>
+                    Consulta y administra las tiendas registradas
+                    en CONFISENA.
+                </p>
+
+            </div>
+
+            <button
+                class="boton-principal"
+                id="nuevaTienda"
+            >
+                + Registrar tienda
+            </button>
+
+        </section>
+
+
+        <!-- RESUMEN -->
+
+        <section class="resumen">
+
+            <div class="tarjeta-resumen">
+
+                <span>
+                    Total de tiendas
+                </span>
+
+                <strong id="totalTiendas">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="tarjeta-resumen">
+
+                <span>
+                    Tiendas activas
+                </span>
+
+                <strong id="tiendasActivas">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="tarjeta-resumen">
+
+                <span>
+                    Tiendas inactivas
+                </span>
+
+                <strong id="tiendasInactivas">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- BÚSQUEDA -->
+
+        <section class="herramientas">
+
+            <div>
+
+                <label for="buscarTienda">
+                    Buscar tienda
+                </label>
+
+                <input
+                    type="text"
+                    id="buscarTienda"
+                    placeholder="Buscar por nombre, NIT, barrio o localidad..."
+                >
+
+            </div>
+
+
+            <div>
+
+                <label for="filtroEstado">
+                    Estado
+                </label>
+
+                <select id="filtroEstado">
+
+                    <option value="todos">
+                        Todos
+                    </option>
+
+                    <option value="Activa">
+                        Activas
+                    </option>
+
+                    <option value="Inactiva">
+                        Inactivas
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        <!-- TABLA -->
+
+        <section class="tarjeta-tabla">
+
+            <div class="tabla-contenedor">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Tienda</th>
+
+                            <th>NIT</th>
+
+                            <th>Teléfono</th>
+
+                            <th>Dirección</th>
+
+                            <th>Barrio</th>
+
+                            <th>Localidad</th>
+
+                            <th>Gerente</th>
+
+                            <th>Vendedor</th>
+
+                            <th>Estado</th>
+
+                            <th>Acciones</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tablaTiendas"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <div
+                id="sinResultados"
+                class="sin-resultados"
+            >
+
+                <div class="icono-vacio">
+                    🏪
+                </div>
+
+                <h3>
+                    No hay tiendas registradas
+                </h3>
+
+                <p>
+                    Cuando registres una tienda,
+                    aparecerá aquí.
+                </p>
+
+                <button
+                    class="boton-principal"
+                    id="registrarDesdeVacio"
+                >
+                    Registrar tienda
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL -->
+
+    <div
+        id="modalTienda"
+        class="modal"
+    >
+
+        <div class="modal-contenido">
+
+            <div class="modal-cabecera">
+
+                <h3>
+                    Información de la tienda
+                </h3>
+
+                <button id="cerrarModal">
+                    ×
+                </button>
+
+            </div>
+
+            <div
+                id="informacionTienda"
+                class="informacion-tienda"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <footer>
+
+        <p>
+            © 2026 CONFISENA -
+            Transformamos la forma de comprar
+        </p>
+
+    </footer>
+
+
+    <script src="tiendas-gestor.js"></script>
+
+</body>
+
+</html>

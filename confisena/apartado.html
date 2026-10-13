@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Apartado - CONFISENA</title>
+
+    <link rel="stylesheet" href="apartado.css">
+    <script src="jproducto.js" defer></script>
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>confisena</h1>
+
+        <p>
+            Transformamos la forma de comprar
+        </p>
+
+    </div>
+
+
+    <nav>
+
+        <a href="index.html">
+            Inicio
+        </a>
+
+        <a href="catalogo.html">
+            Catálogo
+        </a>
+
+        <a href="catalogo.html">
+            Categorías
+        </a>
+
+        <a href="#">
+            Tiendas
+        </a>
+
+    </nav>
+
+</header>
+
+
+
+<main class="contenedor">
+
+
+    <div class="ruta">
+
+        Inicio / Catálogo / Apartado
+
+    </div>
+
+
+
+    <h2>
+        Apartar producto
+    </h2>
+
+
+    <p class="descripcion">
+
+        Reserva tu producto realizando un abono del 50%
+        del valor total.
+
+    </p>
+
+
+
+    <div class="contenido">
+
+
+
+        <!-- ========================= -->
+        <!-- RESUMEN DEL PRODUCTO -->
+        <!-- ========================= -->
+
+        <section class="resumen">
+
+
+            <h3>
+                Producto seleccionado
+            </h3>
+
+
+
+            <div class="producto">
+
+
+                <div class="imagen-producto">
+
+                    👕
+
+                </div>
+
+
+
+                <div class="informacion-producto">
+
+
+                    <h4 id="nombreProducto">
+
+                        Camisa de uniforme SENA
+
+                    </h4>
+
+
+
+                    <p>
+
+                        Talla:
+
+                        <strong id="tallaProducto">
+                            M
+                        </strong>
+
+                    </p>
+
+
+
+                    <p>
+
+                        Cantidad:
+
+                        <strong id="cantidadProducto">
+                            1
+                        </strong>
+
+                    </p>
+
+
+
+                    <p>
+
+                        Precio unitario:
+
+                        <strong id="precioProducto">
+                            $60.000
+                        </strong>
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="linea"></div>
+
+
+
+            <!-- TOTAL -->
+
+            <div class="fila-precio">
+
+                <span>
+                    Total de la compra
+                </span>
+
+                <strong id="totalApartado">
+                    $60.000
+                </strong>
+
+            </div>
+
+
+
+            <!-- ABONO -->
+
+            <div class="fila-precio abono">
+
+                <span>
+                    Abono requerido (50%)
+                </span>
+
+                <strong id="abonoApartado">
+                    $30.000
+                </strong>
+
+            </div>
+
+
+
+            <!-- SALDO -->
+
+            <div class="fila-precio saldo">
+
+                <span>
+                    Saldo pendiente
+                </span>
+
+                <strong id="saldoApartado">
+                    $30.000
+                </strong>
+
+            </div>
+
+
+
+            <div class="informacion-apartado">
+
+                <strong>
+                    ¿Cómo funciona el apartado?
+                </strong>
+
+                <p>
+
+                    Para reservar el producto debes realizar
+                    un abono correspondiente al 50% del valor
+                    total. El saldo restante se pagará al
+                    momento de recoger el producto.
+
+                </p>
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- ========================= -->
+        <!-- FORMULARIO -->
+        <!-- ========================= -->
+
+        <section class="formulario">
+
+
+            <h3>
+                Información del apartado
+            </h3>
+
+
+
+            <form id="formularioApartado">
+
+
+
+                <!-- NOMBRE -->
+
+                <label for="nombre">
+
+                    Nombre completo
+
+                </label>
+
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Ingresa tu nombre completo"
+                    required
+                >
+
+
+
+                <!-- CORREO -->
+
+                <label for="correo">
+
+                    Correo electrónico
+
+                </label>
+
+
+                <input
+                    type="email"
+                    id="correo"
+                    placeholder="ejemplo@correo.com"
+                    required
+                >
+
+
+
+                <!-- TELÉFONO -->
+
+                <label for="telefono">
+
+                    Número de teléfono
+
+                </label>
+
+
+                <input
+                    type="tel"
+                    id="telefono"
+                    placeholder="3001234567"
+                    maxlength="10"
+                    pattern="[0-9]{10}"
+                    inputmode="numeric"
+                    required
+                >
+
+
+
+                <!-- TIENDA -->
+
+                <label for="tienda">
+
+                    Tienda donde recogerás el producto
+
+                </label>
+
+
+                <select
+                    id="tienda"
+                    required
+                >
+
+                    <option value="">
+
+                        Selecciona una tienda
+
+                    </option>
+
+
+                    <option value="Tienda CONFISENA Centro">
+
+                        CONFISENA - Centro
+
+                    </option>
+
+
+                    <option value="Tienda CONFISENA Chapinero">
+
+                        CONFISENA - Chapinero
+
+                    </option>
+
+
+                    <option value="Tienda CONFISENA Kennedy">
+
+                        CONFISENA - Kennedy
+
+                    </option>
+
+                </select>
+
+
+
+                <!-- FECHA -->
+
+                <label for="fechaEntrega">
+
+                    Fecha de entrega
+
+                </label>
+
+
+                <input
+                    type="date"
+                    id="fechaEntrega"
+                    required
+                >
+
+
+
+                <!-- MÉTODO DE PAGO -->
+
+                <label for="metodoAbono">
+
+                    Método de pago del abono
+
+                </label>
+
+
+                <select
+                    id="metodoAbono"
+                    required
+                >
+
+                    <option value="">
+
+                        Selecciona un método
+
+                    </option>
+
+
+                    <option value="tarjeta">
+
+                        Tarjeta débito / crédito
+
+                    </option>
+
+
+                    <option value="pse">
+
+                        PSE
+
+                    </option>
+
+
+                    <option value="nequi">
+
+                        Nequi
+
+                    </option>
+
+                </select>
+
+
+
+                <!-- DATOS TARJETA -->
+
+                <div
+                    id="datosTarjeta"
+                    class="datos-pago"
+                >
+
+
+                    <label for="numeroTarjeta">
+
+                        Número de tarjeta
+
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="numeroTarjeta"
+                        placeholder="0000 0000 0000 0000"
+                        maxlength="19"
+                        inputmode="numeric"
+                    >
+
+
+
+                    <div class="fila">
+
+
+                        <div>
+
+                            <label for="vencimiento">
+
+                                Vencimiento
+
+                            </label>
+
+
+                            <input
+                                type="text"
+                                id="vencimiento"
+                                placeholder="MM/AA"
+                                maxlength="5"
+                                inputmode="numeric"
+                            >
+
+                        </div>
+
+
+
+                        <div>
+
+                            <label for="cvv">
+
+                                CVV
+
+                            </label>
+
+
+                            <input
+                                type="password"
+                                id="cvv"
+                                placeholder="123"
+                                maxlength="3"
+                                inputmode="numeric"
+                            >
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- INFORMACIÓN -->
+
+                <div class="seguridad">
+
+                    🔒
+
+                    El abono requerido para este apartado es del
+                    <strong>50%</strong> del valor total.
+
+                </div>
+
+
+
+                <!-- CONDICIONES -->
+
+                <label class="check">
+
+                    <input
+                        type="checkbox"
+                        id="terminos"
+                        required
+                    >
+
+                    Acepto las condiciones del apartado.
+
+                </label>
+
+
+
+                <!-- BOTÓN -->
+
+                <button
+                    type="submit"
+                    class="boton-apartar"
+                >
+
+                    Confirmar apartado
+
+                </button>
+
+
+            </form>
+
+
+        </section>
+
+
+    </div>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+
+        © 2026 CONFISENA -
+        Transformamos la forma de comprar
+
+    </p>
+
+</footer>
+
+
+
+<script src="apartado.js"></script>
+
+
+</body>
+
+</html>

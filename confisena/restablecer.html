@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña - Biblioteca</title>
+    <link rel="stylesheet" href="recuperar_diseño.css">
+</head>
+
+<body>
+    <main>
+        <div class="contenedor__todo">
+            <!-- CAJA TRASERA (Mantiene la estética del fondo borroso) -->
+            <div class="caja__trasera">
+                <div class="caja__trasera-info">
+                    <h3>¿Recordaste tu clave?</h3>
+                    <p>Regresa para acceder a tu cuenta e iniciar sesión.</p>
+                    <a href="login.html" class="btn_disfrazado">Volver al Login</a>
+                </div>
+            </div>
+
+            <!-- CONTENEDOR FLOTANTE BLANCO (Formulario único) -->
+            <div class="contenedor__recuperar">
+                <form class="formulario__recuperar" onsubmit="event.preventDefault();">
+                    <h2>Recuperar Clave</h2>
+                    <p class="instrucciones">Introduce tu correo electrónico registrado y te enviaremos las
+                        instrucciones para restablecer tu contraseña.</p>
+
+                    <input type="email" placeholder="Correo Electrónico" required>
+
+                    <button type="submit">Enviar Correo</button>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,285 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url(fonfo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.contenedor__todo {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    /* Permite centrar verticalmente el cuadro blanco de forma exacta */
+    display: flex;
+    align-items: center;
+}
+
+.caja__trasera {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #507170;
+    /* Transición suave para cuando cambie de tamaño */
+    transition: height 500ms ease, min-height 500ms ease;
+    height: 400px;
+    /* Altura base para el login */
+}
+
+.caja__trasera div {
+    margin: 100px 40px;
+    color: white;
+    transition: all 500ms;
+}
+
+.caja__trasera div p,
+.caja__trasera .btn_disfrazado {
+    margin-top: 30px;
+}
+
+.caja__trasera div h3 {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.caja__trasera div p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.caja__trasera .btn_disfrazado {
+        padding: 10px 40px;
+        border: 2px solid #fff;
+        font-size: 14px;
+        background: transparent;
+        font-weight: 600;
+        cursor: pointer;
+        color: white;
+        display: inline-block;
+        transition: all 300ms;
+}
+
+.caja__trasera .btn_disfrazado:hover {
+    background: #fff;
+    color: #AB8967;
+    transform: translateY(-5px);
+}
+
+/* Quita el subrayado, el color azul y el resaltado morado de los enlaces dentro de botones */
+button a {
+    color: inherit;          /* Hereda el color blanco del botón */
+    text-decoration: none;   /* Quita la línea de abajo */
+    display: inline-block;   /* Hace que todo el botón sea clickable */
+    width: 100%;
+    height: 100%;
+}
+
+
+/* CONTENEDOR FLOTANTE BLANCO CORREGIDO */
+.contenedor__login-register {
+    width: 100%;
+    max-width: 380px;
+    position: absolute;
+    left: 10px;
+    transition: left 500ms cubic-bezier(0.170, 0.885, 0.320, 1.275);
+    z-index: 2;
+}
+
+.contenedor__login-register form {
+    width: 100%;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor__login-register form h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #AB8967;
+}
+
+.contenedor__login-register form input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
+
+.contenedor__login-register form button {
+    padding: 10px 40px;
+    margin-top: 40px;
+    border: none;
+    font-size: 14px;
+    background: #AB8967;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+}
+
+/* ==========================================
+   INTERRUPTORES LÓGICOS DE FORMULARIO
+   ========================================== */
+
+/* --- CUANDO SE SELECCIONA REGISTRO --- */
+#show-register:checked~.contenedor__login-register {
+    left: 410px;
+}
+
+#show-register:checked~.contenedor__login-register .formulario__login {
+    display: none;
+}
+
+#show-register:checked~.contenedor__login-register .formulario__register {
+    display: block;
+}
+
+/* Modificación: Estira la caja del fondo para que cubra todo el formulario de registro */
+#show-register:checked~.caja__trasera {
+    height: 610px;
+}
+
+#show-register:checked~.caja__trasera .caja__trasera-register {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#show-register:checked~.caja__trasera .caja__trasera-login {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* --- CUANDO SE SELECCIONA INICIAR SESIÓN --- */
+#show-login:checked~.contenedor__login-register {
+    left: 10px;
+}
+
+#show-login:checked~.contenedor__login-register .formulario__login {
+    display: block;
+}
+
+#show-login:checked~.contenedor__login-register .formulario__register {
+    display: none;
+}
+
+/* Modificación: Regresa la caja del fondo a su tamaño normal */
+#show-login:checked~.caja__trasera {
+    height: 400px;
+}
+
+#show-login:checked~.caja__trasera .caja__trasera-register {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#show-login:checked~.caja__trasera .caja__trasera-login {
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+/* ==========================================
+   DISEÑO RESPONSIVO (MÓVILES)
+   ========================================== */
+@media screen and (max-width: 850px) {
+    main {
+        margin-top: 50px;
+    }
+
+    .contenedor__todo {
+        flex-direction: column;
+    }
+
+    .caja__trasera {
+        max-width: 350px;
+        height: auto;
+        min-height: 300px;
+        flex-direction: column;
+        margin: auto;
+        padding-bottom: 40px;
+    }
+
+    .caja__trasera div {
+        margin: 0px;
+        position: absolute;
+    }
+
+    .contenedor__login-register {
+        position: relative;
+        top: -10px;
+        left: -5px;
+        margin: auto;
+    }
+
+    #show-register:checked~.contenedor__login-register,
+    #show-login:checked~.contenedor__login-register {
+        left: -5px;
+    }
+
+    #show-register:checked~.caja__trasera,
+    #show-login:checked~.caja__trasera {
+        height: auto;
+        min-height: 300px;
+    }
+}
+
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: inherit !important;
+    /* Mantiene el color blanco o el que tú definiste */
+    text-decoration: none !important;
+    /* Adiós definitivo al subrayado */
+    outline: none !important;
+    /* Quita el recuadro de selección del navegador */
+}
+
+/* 2. Quita el molesto destello de color que aparece en celulares al presionar el botón */
+a,
+button,
+label,
+.btn_disfrazado {
+    -webkit-tap-highlight-color: transparent !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;
+}
+
+/* 3. Evita que el botón cambie a un fondo gris o azul transparente en estados activos */
+a:focus,
+button:focus,
+label:focus,
+a:active,
+button:active,
+label:active {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: transparent;
+    /* O si es el botón café, ponle: background: #AB8967; */
+}

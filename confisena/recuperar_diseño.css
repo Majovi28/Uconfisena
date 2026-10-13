@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-image: url(fonfo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+main {
+    width: 100%;
+    padding: 20px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.contenedor__todo {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.caja__trasera {
+    width: 100%;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    /* Alinea el texto a la izquierda para dejar espacio al formulario */
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #507170;
+    height: 400px;
+}
+
+.caja__trasera-info {
+    margin: 100px 40px;
+    color: white;
+    max-width: 320px;
+    /* Evita que el texto invada el lado derecho */
+}
+
+.caja__trasera-info p,
+.caja__trasera .btn_disfrazado {
+    margin-top: 30px;
+}
+
+.caja__trasera-info h3 {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.caja__trasera-info p {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.caja__trasera .btn_disfrazado {
+    padding: 10px 40px;
+    border: 2px solid #fff;
+    font-size: 14px;
+    background: transparent;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    display: inline-block;
+    transition: all 300ms;
+    text-align: center;
+}
+
+.caja__trasera .btn_disfrazado:hover {
+    background: #fff;
+    color: #AB8967;
+}
+
+/* CONTENEDOR BLANCO FIJO EN EL LADO DERECHO */
+.contenedor__recuperar {
+    width: 100%;
+    max-width: 380px;
+    position: absolute;
+    right: 10px;
+    /* Ubicado exactamente al lado opuesto del texto de fondo */
+    z-index: 2;
+}
+
+.contenedor__recuperar form {
+    width: 100%;
+    padding: 50px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contenedor__recuperar form h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #AB8967;
+}
+
+.contenedor__recuperar .instrucciones {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.contenedor__recuperar form input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #F2F2F2;
+    font-size: 16px;
+    outline: none;
+}
+
+.contenedor__recuperar form button {
+    width: 100%;
+    /* Botón completo para mejor usabilidad */
+    padding: 10px 40px;
+    margin-top: 30px;
+    border: none;
+    font-size: 14px;
+    background: #AB8967;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    outline: none;
+    text-align: center;
+}
+
+/* --- ADAPTACIÓN PARA CELULARES --- */
+@media screen and (max-width: 850px) {
+    main {
+        margin-top: 50px;
+    }
+
+    .contenedor__todo {
+        flex-direction: column;
+    }
+
+    .caja__trasera {
+        max-width: 350px;
+        height: auto;
+        min-height: 220px;
+        flex-direction: column;
+        margin: auto;
+        padding-bottom: 30px;
+        justify-content: center;
+    }
+
+    .caja__trasera-info {
+        margin: 20px;
+        position: relative;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .contenedor__recuperar {
+        position: relative;
+        top: -10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        max-width: 350px;
+    }
+}
+

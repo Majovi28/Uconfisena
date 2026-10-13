@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Registrar Vendedor - CONFISENA</title>
+
+    <link rel="stylesheet" href="registro-vendedor.css">
+
+</head>
+
+
+<body>
+
+
+<header class="encabezado">
+
+    <div class="logo">
+
+        <h1>confisena</h1>
+
+        <p>
+            Transformamos la forma de comprar
+        </p>
+
+    </div>
+
+
+    <div class="usuario-header">
+
+        <span>
+            Gestor
+        </span>
+
+        <button id="volverGestor">
+            Panel del gestor
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<main class="contenedor">
+
+
+    <div class="ruta">
+
+        Panel del Gestor / Registrar vendedor
+
+    </div>
+
+
+
+    <section class="encabezado-pagina">
+
+        <h2>
+            Registrar vendedor
+        </h2>
+
+        <p>
+            Registra un vendedor y asígnalo a una
+            tienda registrada en CONFISENA.
+        </p>
+
+    </section>
+
+
+
+    <section class="tarjeta-formulario">
+
+
+        <form id="formularioVendedor">
+
+
+
+            <div class="seccion">
+
+                <h3>
+                    Información personal
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="nombre">
+
+                        Nombre completo
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nombre"
+                        placeholder="Ingresa el nombre completo"
+                        required
+                    >
+
+                </div>
+
+
+
+                <div class="fila">
+
+
+                    <div class="grupo">
+
+                        <label for="documento">
+
+                            Documento de identidad
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="documento"
+                            placeholder="Ej: 1020304050"
+                            inputmode="numeric"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="grupo">
+
+                        <label for="telefono">
+
+                            Teléfono
+
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="telefono"
+                            placeholder="3001234567"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            inputmode="numeric"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="grupo">
+
+                    <label for="correo">
+
+                        Correo electrónico
+
+                    </label>
+
+                    <input
+                        type="email"
+                        id="correo"
+                        placeholder="vendedor@confisena.com"
+                        required
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="seccion">
+
+                <h3>
+                    Asignación de tienda
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="tienda">
+
+                        Tienda
+
+                    </label>
+
+                    <select
+                        id="tienda"
+                        required
+                    >
+
+                        <option value="">
+
+                            Selecciona una tienda
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <p
+                    id="mensajeTiendas"
+                    class="mensaje-tiendas"
+                ></p>
+
+
+            </div>
+
+
+
+            <!-- ========================= -->
+            <!-- DATOS DE ACCESO -->
+            <!-- ========================= -->
+
+            <div class="seccion">
+
+                <h3>
+                    Datos de acceso
+                </h3>
+
+
+
+                <div class="grupo">
+
+                    <label for="usuario">
+
+                        Nombre de usuario
+
+                    </label>
+
+                    <input
+                        type="text"
+                        id="usuario"
+                        placeholder="Ej: juan.perez"
+                        maxlength="30"
+                        required
+                    >
+
+                    <small>
+                        Este será el usuario que utilizará
+                        el vendedor para iniciar sesión.
+                    </small>
+
+                </div>
+
+
+
+                <div class="fila">
+
+
+                    <div class="grupo">
+
+                        <label for="contrasena">
+
+                            Contraseña
+
+                        </label>
+
+                        <input
+                            type="password"
+                            id="contrasena"
+                            placeholder="Mínimo 8 caracteres"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="grupo">
+
+                        <label for="confirmarContrasena">
+
+                            Confirmar contraseña
+
+                        </label>
+
+                        <input
+                            type="password"
+                            id="confirmarContrasena"
+                            placeholder="Repite la contraseña"
+                            minlength="8"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="informacion-acceso">
+
+                    🔐
+
+                    El vendedor utilizará estos datos
+                    para ingresar a la plataforma.
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="seccion">
+
+                <h3>
+                    Rol del usuario
+                </h3>
+
+
+
+                <div class="rol">
+
+                    <span>
+                        Vendedor
+                    </span>
+
+                    <small>
+                        Este rol se asignará automáticamente.
+                    </small>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="acciones">
+
+                <button
+                    type="button"
+                    class="boton cancelar"
+                    id="cancelar"
+                >
+
+                    Cancelar
+
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="boton guardar"
+                >
+
+                    Registrar vendedor
+
+                </button>
+
+            </div>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+
+<footer>
+
+    <p>
+
+        © 2026 CONFISENA -
+        Transformamos la forma de comprar
+
+    </p>
+
+</footer>
+
+
+
+<script src="registro-vendedor.js"></script>
+
+
+</body>
+
+</html>
