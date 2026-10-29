@@ -4,388 +4,200 @@
     padding: 0;
 }
 
-
 body {
-
     font-family: Arial, sans-serif;
-
-    background-color: #f1f5f9;
-
+    background-color: #E8D8C8;
     color: #334155;
-
 }
-
-
-
-/* ========================= */
-/* ENCABEZADO */
-/* ========================= */
 
 .encabezado {
-
-    background-color: #172554;
-
+    background-color: #123B63;
     color: white;
-
     padding: 18px 7%;
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
+    box-shadow: 0 4px 14px rgba(18, 59, 99, 0.18);
 }
-
 
 .logo h1 {
-
     font-size: 28px;
-
     text-transform: lowercase;
-
 }
-
 
 .logo p {
-
     font-size: 12px;
-
-    color: #dbeafe;
-
+    color: #E8D8C8;
     margin-top: 3px;
-
 }
-
 
 nav {
-
     display: flex;
-
     gap: 22px;
-
 }
-
 
 nav a {
-
     color: white;
-
     text-decoration: none;
-
     font-size: 14px;
-
+    transition: 0.2s;
 }
-
 
 nav a:hover {
-
-    color: #dbeafe;
-
+    color: #C9A227;
 }
-
-
-
-/* ========================= */
-/* CONTENEDOR */
-/* ========================= */
 
 .contenedor {
-
     width: 86%;
-
     max-width: 1150px;
-
     margin: 30px auto;
-
 }
-
 
 .ruta {
-
     color: #64748b;
-
     font-size: 14px;
-
     margin-bottom: 25px;
-
 }
-
 
 h2 {
-
-    color: #172554;
-
+    color: #123B63;
     font-size: 30px;
-
     margin-bottom: 8px;
-
 }
-
 
 .descripcion {
-
     color: #64748b;
-
     margin-bottom: 30px;
-
 }
-
-
-
-/* ========================= */
-/* CONTENIDO */
-/* ========================= */
 
 .contenido {
-
     display: grid;
-
     grid-template-columns: 1fr 1.2fr;
-
     gap: 25px;
-
 }
-
-
-
-/* ========================= */
-/* TARJETAS */
-/* ========================= */
 
 .resumen,
 .formulario {
-
     background-color: white;
-
-    border: 1px solid #e2e8f0;
-
-    border-radius: 12px;
-
+    border: 1px solid #D6BFAE;
+    border-radius: 14px;
     padding: 25px;
-
+    box-shadow: 0 8px 22px rgba(18, 59, 99, 0.08);
 }
-
 
 h3 {
-
-    color: #172554;
-
+    color: #123B63;
     margin-bottom: 22px;
-
 }
-
-
-
-/* ========================= */
-/* PRODUCTO */
-/* ========================= */
 
 .producto {
-
     display: flex;
-
     align-items: center;
-
     gap: 18px;
-
 }
-
 
 .imagen-producto {
-
     width: 90px;
-
     height: 90px;
-
-    background-color: #dbeafe;
-
+    background-color: #F1E6DC;
+    border: 1px solid #D6BFAE;
     border-radius: 10px;
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     font-size: 42px;
-
 }
-
 
 .informacion-producto h4 {
-
-    color: #172554;
-
+    color: #123B63;
     margin-bottom: 10px;
-
 }
-
 
 .informacion-producto p {
-
     font-size: 14px;
-
     margin-bottom: 6px;
-
 }
-
 
 .informacion-producto strong {
-
-    color: #2563eb;
-
+    color: #C9A227;
 }
-
-
-
-/* ========================= */
-/* PRECIOS */
-/* ========================= */
 
 .linea {
-
-    border-top: 1px solid #e2e8f0;
-
+    border-top: 1px solid #D6BFAE;
     margin: 25px 0;
-
 }
-
 
 .fila-precio {
-
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     margin-bottom: 14px;
-
 }
-
 
 .fila-precio span {
-
     font-size: 15px;
-
 }
-
 
 .fila-precio strong {
-
-    color: #2563eb;
-
+    color: #C9A227;
     font-size: 18px;
-
 }
-
 
 .abono {
-
     padding: 12px;
-
-    background-color: #dbeafe;
-
+    background-color: #F1E6DC;
+    border-left: 4px solid #C9A227;
     border-radius: 8px;
-
 }
-
 
 .abono span {
-
     font-weight: bold;
-
-    color: #172554;
-
+    color: #123B63;
 }
-
 
 .abono strong {
-
     font-size: 21px;
-
+    color: #C9A227;
 }
-
 
 .saldo {
-
     margin-top: 5px;
-
 }
-
 
 .saldo strong {
-
     color: #334155;
-
 }
-
-
-
-/* ========================= */
-/* INFORMACIÓN APARTADO */
-/* ========================= */
 
 .informacion-apartado {
-
     margin-top: 25px;
-
     padding: 15px;
-
-    background-color: #f1f5f9;
-
+    background-color: #E8D8C8;
+    border: 1px solid #D6BFAE;
     border-radius: 8px;
-
 }
-
 
 .informacion-apartado strong {
-
-    color: #172554;
-
+    color: #123B63;
 }
-
 
 .informacion-apartado p {
-
     font-size: 13px;
-
     line-height: 1.5;
-
     margin-top: 7px;
-
     color: #64748b;
-
 }
-
-
-
-/* ========================= */
-/* FORMULARIO */
-/* ========================= */
 
 .formulario label {
-
     display: block;
-
     font-weight: bold;
-
     color: #334155;
-
     margin-top: 15px;
-
     margin-bottom: 7px;
-
 }
-
 
 .formulario label:first-of-type {
-
     margin-top: 0;
-
 }
-
 
 .formulario input[type="text"],
 .formulario input[type="email"],
@@ -393,196 +205,98 @@ h3 {
 .formulario input[type="date"],
 .formulario input[type="password"],
 .formulario select {
-
     width: 100%;
-
     padding: 12px;
-
-    border: 1px solid #cbd5e1;
-
-    border-radius: 7px;
-
+    border: 1px solid #D6BFAE;
+    border-radius: 8px;
     font-size: 14px;
-
     outline: none;
-
+    background-color: #fff;
+    transition: 0.2s;
 }
-
 
 .formulario input:focus,
 .formulario select:focus {
-
-    border-color: #2563eb;
-
+    border-color: #1976D2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
 }
-
-
-
-/* ========================= */
-/* DATOS DE TARJETA */
-/* ========================= */
 
 .datos-pago {
-
     display: none;
-
 }
-
 
 .fila {
-
     display: grid;
-
     grid-template-columns: 1fr 1fr;
-
     gap: 15px;
-
 }
-
-
-
-/* ========================= */
-/* SEGURIDAD */
-/* ========================= */
 
 .seguridad {
-
     margin-top: 20px;
-
     padding: 13px;
-
-    background-color: #dbeafe;
-
+    background-color: #F1E6DC;
+    border-left: 4px solid #C9A227;
     border-radius: 7px;
-
     font-size: 13px;
-
     color: #334155;
-
 }
-
-
-
-/* ========================= */
-/* CHECKBOX */
-/* ========================= */
 
 .check {
-
     display: flex !important;
-
     align-items: center;
-
     gap: 8px;
-
     font-size: 13px;
-
     font-weight: normal !important;
-
     margin-top: 18px !important;
-
 }
-
 
 .check input {
-
     width: 16px;
-
     height: 16px;
-
 }
-
-
-
-/* ========================= */
-/* BOTÓN */
-/* ========================= */
 
 .boton-apartar {
-
     width: 100%;
-
     padding: 14px;
-
     margin-top: 20px;
-
     border: none;
-
-    border-radius: 7px;
-
-    background-color: #2563eb;
-
+    border-radius: 8px;
+    background-color: #1976D2;
     color: white;
-
     font-size: 16px;
-
     font-weight: bold;
-
     cursor: pointer;
-
+    transition: 0.2s;
+    box-shadow: 0 5px 12px rgba(25, 118, 210, 0.22);
 }
-
 
 .boton-apartar:hover {
-
-    background-color: #172554;
-
+    background-color: #123B63;
+    transform: translateY(-1px);
 }
-
-
-
-/* ========================= */
-/* FOOTER */
-/* ========================= */
 
 footer {
-
     margin-top: 50px;
-
-    background-color: #172554;
-
+    background-color: #123B63;
     color: white;
-
     text-align: center;
-
     padding: 20px;
-
     font-size: 13px;
-
 }
 
-
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
-
 @media (max-width: 800px) {
-
     .encabezado {
-
         flex-direction: column;
-
         gap: 18px;
-
         text-align: center;
-
     }
-
 
     nav {
-
         flex-wrap: wrap;
-
         justify-content: center;
-
     }
-
 
     .contenido {
-
         grid-template-columns: 1fr;
-
     }
-
 }
