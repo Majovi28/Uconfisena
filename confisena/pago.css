@@ -6,20 +6,18 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f1f5f9;
+    background-color: #E8D8C8;
     color: #334155;
 }
 
-
-/* ENCABEZADO */
-
 .encabezado {
-    background-color: #172554;
+    background-color: #123B63;
     color: white;
     padding: 18px 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 14px rgba(18, 59, 99, 0.18);
 }
 
 .logo h1 {
@@ -29,7 +27,7 @@ body {
 
 .logo p {
     font-size: 12px;
-    color: #dbeafe;
+    color: #E8D8C8;
     margin-top: 3px;
 }
 
@@ -42,14 +40,12 @@ nav a {
     color: white;
     text-decoration: none;
     font-size: 14px;
+    transition: 0.2s;
 }
 
 nav a:hover {
-    color: #dbeafe;
+    color: #C9A227;
 }
-
-
-/* CONTENEDOR */
 
 .contenedor {
     width: 86%;
@@ -64,7 +60,7 @@ nav a:hover {
 }
 
 h2 {
-    color: #172554;
+    color: #123B63;
     font-size: 30px;
     margin-bottom: 8px;
 }
@@ -74,33 +70,25 @@ h2 {
     margin-bottom: 30px;
 }
 
-
-/* CONTENIDO */
-
 .contenido {
     display: grid;
     grid-template-columns: 1fr 1.2fr;
     gap: 25px;
 }
 
-
-/* TARJETAS */
-
 .resumen,
 .formulario {
     background-color: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 12px;
+    border: 1px solid #D6BFAE;
+    border-radius: 14px;
     padding: 25px;
+    box-shadow: 0 8px 22px rgba(18, 59, 99, 0.08);
 }
 
 h3 {
-    color: #172554;
+    color: #123B63;
     margin-bottom: 22px;
 }
-
-
-/* PRODUCTO */
 
 .producto-resumen {
     display: flex;
@@ -111,7 +99,8 @@ h3 {
 .imagen-producto {
     width: 90px;
     height: 90px;
-    background-color: #dbeafe;
+    background-color: #F1E6DC;
+    border: 1px solid #D6BFAE;
     border-radius: 10px;
     display: flex;
     justify-content: center;
@@ -120,7 +109,7 @@ h3 {
 }
 
 .informacion-producto h4 {
-    color: #172554;
+    color: #123B63;
     font-size: 17px;
     margin-bottom: 10px;
 }
@@ -131,14 +120,11 @@ h3 {
 }
 
 .informacion-producto strong {
-    color: #2563eb;
+    color: #C9A227;
 }
 
-
-/* TOTAL */
-
 .linea {
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #D6BFAE;
     margin: 25px 0;
 }
 
@@ -154,12 +140,9 @@ h3 {
 }
 
 .total strong {
-    color: #2563eb;
+    color: #C9A227;
     font-size: 23px;
 }
-
-
-/* FORMULARIO */
 
 .formulario label {
     display: block;
@@ -177,19 +160,19 @@ h3 {
 .formulario select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 7px;
+    border: 1px solid #D6BFAE;
+    border-radius: 8px;
     font-size: 14px;
     outline: none;
+    background-color: white;
+    transition: 0.2s;
 }
 
 .formulario input:focus,
 .formulario select:focus {
-    border-color: #2563eb;
+    border-color: #1976D2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.12);
 }
-
-
-/* DATOS TARJETA */
 
 .datos-pago {
     display: none;
@@ -201,55 +184,46 @@ h3 {
     gap: 15px;
 }
 
-
-/* SEGURIDAD */
-
 .seguridad {
     margin-top: 20px;
     padding: 12px;
-    background-color: #f1f5f9;
+    background-color: #F1E6DC;
+    border-left: 4px solid #C9A227;
     border-radius: 7px;
     font-size: 13px;
     color: #64748b;
 }
-
-
-/* BOTÓN */
 
 .boton-pagar {
     width: 100%;
     margin-top: 20px;
     padding: 14px;
     border: none;
-    border-radius: 7px;
-    background-color: #2563eb;
+    border-radius: 8px;
+    background-color: #1976D2;
     color: white;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.2s;
+    box-shadow: 0 5px 12px rgba(25, 118, 210, 0.22);
 }
 
 .boton-pagar:hover {
-    background-color: #172554;
+    background-color: #123B63;
+    transform: translateY(-1px);
 }
-
-
-/* FOOTER */
 
 footer {
     margin-top: 50px;
-    background-color: #172554;
+    background-color: #123B63;
     color: white;
     text-align: center;
     padding: 20px;
     font-size: 13px;
 }
 
-
-/* RESPONSIVE */
-
 @media (max-width: 800px) {
-
     .encabezado {
         flex-direction: column;
         gap: 18px;
