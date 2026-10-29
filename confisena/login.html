@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,154 +6,57 @@
     <title>Iniciar Sesión - CONFISENA</title>
     <link rel="stylesheet" href="login_diseño.css">
 </head>
-
 <body>
 <main>
     <div class="contenedor__todo">
-
-        <!-- Selector entre iniciar sesión y registrarse -->
         <input type="radio" name="toggle_form" id="show-login" checked hidden>
         <input type="radio" name="toggle_form" id="show-register" hidden>
 
-        <!-- Panel posterior -->
         <div class="caja__trasera">
-
             <div class="caja__trasera-login">
                 <h3>¿Ya tienes cuenta?</h3>
                 <p>Inicia sesión para entrar a nuestra plataforma.</p>
-
-                <label for="show-login" class="btn_disfrazado">
-                    Iniciar sesión
-                </label>
-
-                <label class="btn_disfrazado">
-                    <a href="registrot.html">¿Eres una tienda?</a>
-                </label>
+                <label for="show-login" class="btn_disfrazado">Iniciar sesión</label>
+                <label class="btn_disfrazado"><a href="registrot.html">¿Eres una tienda?</a></label>
             </div>
-
             <div class="caja__trasera-register">
                 <h3>¿Aún no tienes una cuenta?</h3>
                 <p>Regístrate para entrar a nuestra plataforma.</p>
-
-                <label for="show-register" class="btn_disfrazado">
-                    Registrarse
-                </label>
+                <label for="show-register" class="btn_disfrazado">Registrarse</label>
             </div>
-
         </div>
 
-        <!-- Formularios -->
         <div class="contenedor__login-register">
-
-            <!-- INICIO DE SESIÓN -->
             <form class="formulario__login" id="formLogin">
                 <h2>Iniciar Sesión</h2>
-
-                <input
-                    type="email"
-                    id="correo"
-                    placeholder="Correo Electrónico"
-                    autocomplete="email"
-                    required
-                >
-
-                <input
-                    type="password"
-                    id="contrasena"
-                    placeholder="Contraseña"
-                    autocomplete="current-password"
-                    required
-                >
-
-                <button type="submit" id="botonEntrar">
-                    Entrar
-                </button>
-
-                <div class="enlace_olvido">
-                    <a href="restablecer.html">
-                        ¿Olvidaste tu contraseña?
-                    </a>
-                </div>
-
+                <input type="email" id="correo" placeholder="Correo Electrónico" autocomplete="email" required>
+                <input type="password" id="contrasena" placeholder="Contraseña" autocomplete="current-password" required>
+                <button type="submit" id="botonEntrar">Entrar</button>
+                <div class="enlace_olvido"><a href="restablecer.html">¿Olvidaste tu contraseña?</a></div>
                 <p id="mensajeLogin" role="status" aria-live="polite"></p>
             </form>
 
-            <!-- REGISTRO DE USUARIO -->
             <form class="formulario__register" id="formRegistro">
                 <h2>Registrarse</h2>
-
-                <input
-                    type="text"
-                    id="nombreCompletoRegistro"
-                    placeholder="Nombre y apellidos"
-                    autocomplete="name"
-                    required
-                >
-
-                <input
-                    type="text"
-                    id="documentoRegistro"
-                    placeholder="Número de Documento"
-                    inputmode="numeric"
-                    required
-                >
-
-                <input
-                    type="tel"
-                    id="telefonoRegistro"
-                    placeholder="Número de Teléfono"
-                    maxlength="10"
-                    pattern="[0-9]{10}"
-                    inputmode="numeric"
-                    required
-                >
-
-                <input
-                    type="email"
-                    id="correoRegistro"
-                    placeholder="Correo Electrónico"
-                    autocomplete="email"
-                    required
-                >
-
-                <input
-                    type="password"
-                    id="contrasenaRegistro"
-                    placeholder="Contraseña (mínimo 6 caracteres)"
-                    minlength="6"
-                    autocomplete="new-password"
-                    required
-                >
-
-                <input
-                    type="password"
-                    id="confirmarContrasenaRegistro"
-                    placeholder="Confirmar Contraseña"
-                    minlength="6"
-                    autocomplete="new-password"
-                    required
-                >
-
-                <button type="submit" id="botonRegistro">
-                    Registrarse
-                </button>
-
+                <input type="text" id="nombreCompletoRegistro" placeholder="Nombre y apellidos" autocomplete="name" required>
+                <input type="text" id="documentoRegistro" placeholder="Número de Documento" minlength="6" maxlength="10" pattern="[0-9]{6,10}" inputmode="numeric" required>
+                <input type="tel" id="telefonoRegistro" placeholder="Número de Teléfono" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required>
+                <input type="email" id="correoRegistro" placeholder="Correo Electrónico" autocomplete="email" required>
+                <input type="password" id="contrasenaRegistro" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="new-password" required>
+                <input type="password" id="confirmarContrasenaRegistro" placeholder="Confirmar Contraseña" minlength="6" autocomplete="new-password" required>
+                <button type="submit" id="botonRegistro">Registrarse</button>
                 <p id="mensajeRegistro" role="status" aria-live="polite"></p>
             </form>
-
         </div>
     </div>
 </main>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-
     const formularioLogin = document.getElementById("formLogin");
     const formularioRegistro = document.getElementById("formRegistro");
-
     const botonEntrar = document.getElementById("botonEntrar");
     const botonRegistro = document.getElementById("botonRegistro");
-
     const mensajeLogin = document.getElementById("mensajeLogin");
     const mensajeRegistro = document.getElementById("mensajeRegistro");
 
@@ -164,15 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
         elemento.style.marginTop = "12px";
     }
 
-    // ==========================================
-    // INICIAR SESIÓN CON MYSQL
-    // ==========================================
     formularioLogin.addEventListener("submit", async evento => {
         evento.preventDefault();
-
         const correo = document.getElementById("correo").value.trim();
         const contrasena = document.getElementById("contrasena").value;
-
         botonEntrar.disabled = true;
         botonEntrar.textContent = "Ingresando...";
         mostrarMensaje(mensajeLogin, "Verificando tus datos...");
@@ -180,259 +77,116 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             const respuesta = await fetch("iniciar_sesion.php", {
                 method: "POST",
-                headers: {
-                    "Content-Type":
-                        "application/x-www-form-urlencoded;charset=UTF-8"
-                },
-                body: new URLSearchParams({
-                    correo: correo,
-                    contrasena: contrasena
-                }).toString()
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: new URLSearchParams({ correo, contrasena }).toString()
             });
-
             const texto = await respuesta.text();
             let resultado;
+            try { resultado = JSON.parse(texto); }
+            catch { throw new Error("El servidor no devolvió una respuesta válida. Revisa iniciar_sesion.php."); }
+            if (!respuesta.ok || !resultado.success) throw new Error(resultado.mensaje || "No fue posible iniciar sesión.");
 
-            try {
-                resultado = JSON.parse(texto);
-            } catch {
-                throw new Error(
-                    "El servidor no devolvió una respuesta válida. Revisa iniciar_sesion.php."
-                );
-            }
-
-            if (!respuesta.ok || !resultado.success) {
-                throw new Error(
-                    resultado.mensaje || "No fue posible iniciar sesión."
-                );
-            }
-
-            // Compatibilidad con las páginas HTML existentes.
             localStorage.setItem("sesionActiva", "true");
             localStorage.setItem("rolUsuario", resultado.rol);
             localStorage.setItem("idUsuario", String(resultado.id_usuario));
-            localStorage.setItem(
-                "nombreCliente",
-                resultado.nombre + " " + resultado.apellido
-            );
+            localStorage.setItem("nombreCliente", resultado.nombre + " " + resultado.apellido);
             localStorage.setItem("correoCliente", resultado.correo);
 
-            // Información auxiliar para el panel actual del vendedor.
             if (resultado.rol === "Vendedor") {
-                localStorage.setItem(
-                    "usuarioVendedor",
-                    resultado.nombre + " " + resultado.apellido
-                );
-
-                localStorage.setItem(
-                    "tiendaVendedor",
-                    resultado.tienda || ""
-                );
-
-                localStorage.setItem(
-                    "idVendedor",
-                    String(resultado.id_usuario)
-                );
-
-                localStorage.setItem(
-                    "idTiendaVendedor",
-                    resultado.id_tienda
-                        ? String(resultado.id_tienda)
-                        : ""
-                );
+                localStorage.setItem("usuarioVendedor", resultado.nombre + " " + resultado.apellido);
+                localStorage.setItem("tiendaVendedor", resultado.tienda || "");
+                localStorage.setItem("idVendedor", String(resultado.id_usuario));
+                localStorage.setItem("idTiendaVendedor", resultado.id_tienda ? String(resultado.id_tienda) : "");
             }
 
             mostrarMensaje(mensajeLogin, "Inicio de sesión exitoso.");
 
-            // Redirigir según el rol guardado en MySQL.
             switch (resultado.rol) {
-                case "Gerente General":
-                    window.location.href = "gerente.php";
-                    break;
-
-                case "Gestor":
-                    window.location.href = "gestor.php";
-                    break;
-
-                case "Vendedor":
-                    window.location.href = "tienda.html";
-                    break;
-
-                case "Usuario":
-                    window.location.href = "catalogo.php";
-                    break;
-
-                default:
-                    throw new Error(
-                        "Tu cuenta tiene un rol sin una página asignada."
-                    );
+                case "Gerente General": window.location.href = "gerente.php"; break;
+                case "Gestor": window.location.href = "gestor.php"; break;
+                case "Vendedor": window.location.href = "tienda.html"; break;
+                case "Usuario": window.location.href = "catalogo.php"; break;
+                default: throw new Error("Tu cuenta tiene un rol sin una página asignada.");
             }
-
         } catch (error) {
-            mostrarMensaje(
-                mensajeLogin,
-                error.message || "No se pudo iniciar sesión.",
-                true
-            );
-
+            mostrarMensaje(mensajeLogin, error.message || "No se pudo iniciar sesión.", true);
             botonEntrar.disabled = false;
             botonEntrar.textContent = "Entrar";
         }
     });
 
-    // ==========================================
-    // REGISTRAR USUARIO EN MYSQL
-    // ==========================================
     formularioRegistro.addEventListener("submit", async evento => {
         evento.preventDefault();
 
-        const nombreCompleto =
-            document.getElementById("nombreCompletoRegistro")
-                .value.trim();
-
-        const documento =
-            document.getElementById("documentoRegistro")
-                .value.trim();
-
-        const telefono =
-            document.getElementById("telefonoRegistro")
-                .value.trim();
-
-        const correo =
-            document.getElementById("correoRegistro")
-                .value.trim();
-
-        const contrasena =
-            document.getElementById("contrasenaRegistro").value;
-
-        const confirmar =
-            document.getElementById("confirmarContrasenaRegistro").value;
-
+        const nombreCompleto = document.getElementById("nombreCompletoRegistro").value.trim();
+        const documento = document.getElementById("documentoRegistro").value.trim();
+        const telefono = document.getElementById("telefonoRegistro").value.trim();
+        const correo = document.getElementById("correoRegistro").value.trim();
+        const contrasena = document.getElementById("contrasenaRegistro").value;
+        const confirmar = document.getElementById("confirmarContrasenaRegistro").value;
         const partesNombre = nombreCompleto.split(/\s+/).filter(Boolean);
 
         if (partesNombre.length < 2) {
-            mostrarMensaje(
-                mensajeRegistro,
-                "Escribe tu nombre y al menos un apellido.",
-                true
-            );
+            mostrarMensaje(mensajeRegistro, "Escribe tu nombre y al menos un apellido.", true);
             return;
         }
-
-        if (!/^[0-9]+$/.test(documento)) {
-            mostrarMensaje(
-                mensajeRegistro,
-                "El documento debe contener solo números.",
-                true
-            );
+        if (!/^[0-9]{6,10}$/.test(documento)) {
+            mostrarMensaje(mensajeRegistro, "El documento debe contener solo números y tener entre 6 y 10 dígitos.", true);
             return;
         }
-
-        if (!/^[0-9]{10}$/.test(telefono)) {
-            mostrarMensaje(
-                mensajeRegistro,
-                "El teléfono debe tener exactamente 10 dígitos.",
-                true
-            );
+        if (!/^3[0-9]{9}$/.test(telefono)) {
+            mostrarMensaje(mensajeRegistro, "El teléfono debe tener exactamente 10 dígitos y comenzar con 3.", true);
             return;
         }
-
         if (contrasena.length < 6) {
-            mostrarMensaje(
-                mensajeRegistro,
-                "La contraseña debe tener al menos 6 caracteres.",
-                true
-            );
+            mostrarMensaje(mensajeRegistro, "La contraseña debe tener al menos 6 caracteres.", true);
             return;
         }
-
         if (contrasena !== confirmar) {
-            mostrarMensaje(
-                mensajeRegistro,
-                "Las contraseñas no coinciden.",
-                true
-            );
+            mostrarMensaje(mensajeRegistro, "Las contraseñas no coinciden.", true);
             return;
         }
 
         const nombre = partesNombre.shift();
         const apellido = partesNombre.join(" ");
-
         botonRegistro.disabled = true;
         botonRegistro.textContent = "Registrando...";
 
         try {
             const respuesta = await fetch("registrar_usuario.php", {
                 method: "POST",
-                headers: {
-                    "Content-Type":
-                        "application/x-www-form-urlencoded;charset=UTF-8"
-                },
-                body: new URLSearchParams({
-                    nombre: nombre,
-                    apellido: apellido,
-                    documento: documento,
-                    telefono: telefono,
-                    correo: correo,
-                    contrasena: contrasena
-                }).toString()
+                headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
+                body: new URLSearchParams({ nombre, apellido, documento, telefono, correo, contrasena }).toString()
             });
-
             const texto = await respuesta.text();
             let resultado;
+            try { resultado = JSON.parse(texto); }
+            catch { throw new Error("El servidor no devolvió una respuesta válida. Revisa registrar_usuario.php."); }
+            if (!respuesta.ok || !resultado.success) throw new Error(resultado.mensaje || "No fue posible completar el registro.");
 
-            try {
-                resultado = JSON.parse(texto);
-            } catch {
-                throw new Error(
-                    "El servidor no devolvió una respuesta válida. Revisa registrar_usuario.php."
-                );
-            }
-
-            if (!respuesta.ok || !resultado.success) {
-                throw new Error(
-                    resultado.mensaje || "No fue posible completar el registro."
-                );
-            }
-
-            alert(
-                "¡Registro exitoso!\n\n" +
-                resultado.mensaje +
-                "\nAhora puedes iniciar sesión."
-            );
-
+            alert("¡Registro exitoso!\n\n" + resultado.mensaje + "\nAhora puedes iniciar sesión.");
             document.getElementById("correo").value = correo;
             document.getElementById("contrasena").value = "";
-
             formularioRegistro.reset();
             document.getElementById("show-login").checked = true;
-
         } catch (error) {
-            mostrarMensaje(
-                mensajeRegistro,
-                error.message || "No fue posible completar el registro.",
-                true
-            );
-
+            mostrarMensaje(mensajeRegistro, error.message || "No fue posible completar el registro.", true);
         } finally {
             botonRegistro.disabled = false;
             botonRegistro.textContent = "Registrarse";
         }
     });
 
-    // Evitar caracteres no numéricos en documento y teléfono.
-    document.getElementById("documentoRegistro")
-        .addEventListener("input", evento => {
-            evento.target.value = evento.target.value.replace(/\D/g, "");
-        });
+    document.getElementById("documentoRegistro").addEventListener("input", evento => {
+        evento.target.value = evento.target.value.replace(/\D/g, "").slice(0, 10);
+    });
 
-    document.getElementById("telefonoRegistro")
-        .addEventListener("input", evento => {
-            evento.target.value =
-                evento.target.value.replace(/\D/g, "").slice(0, 10);
-        });
+    document.getElementById("telefonoRegistro").addEventListener("input", evento => {
+        let valor = evento.target.value.replace(/\D/g, "").slice(0, 10);
+        if (valor.length > 0 && valor.charAt(0) !== "3") valor = "";
+        evento.target.value = valor;
+    });
 });
 </script>
-
 </body>
 </html>
