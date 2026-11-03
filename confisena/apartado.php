@@ -122,7 +122,28 @@ $correoUsuario = htmlspecialchars(
                     required
                 >
 
-                <label for="tienda">Tienda donde recogerás el producto</label>
+                
+                <h4>Datos de entrega</h4>
+                <label for="barrio">Barrio</label>
+                <input type="text" id="barrio" maxlength="80" placeholder="Ej. Chapinero" required>
+
+                <label for="localidad">Localidad</label>
+                <input type="text" id="localidad" maxlength="80" placeholder="Ej. Teusaquillo" required>
+
+                <label for="direccion">Dirección de entrega</label>
+                <input type="text" id="direccion" maxlength="180" placeholder="Ej. Calle 45 # 12-30, apartamento 301" required>
+
+                <label for="horarioEntrega">Horario de entrega</label>
+                <select id="horarioEntrega" required>
+                    <option value="">Selecciona un horario</option>
+                    <option value="Manana">Mañana (8:00 a. m. - 12:00 p. m.)</option>
+                    <option value="Tarde">Tarde (2:00 p. m. - 6:00 p. m.)</option>
+                </select>
+
+                <label for="indicacionesEntrega">Indicaciones adicionales (opcional)</label>
+                <textarea id="indicacionesEntrega" maxlength="250" rows="3" placeholder="Punto de referencia, indicaciones para llegar, etc."></textarea>
+
+                <label for="tienda">Tienda encargada de preparar el pedido</label>
                 <select id="tienda" required>
                     <option value="">Selecciona una tienda</option>
                     <option value="Tienda CONFISENA Centro">CONFISENA - Centro</option>
