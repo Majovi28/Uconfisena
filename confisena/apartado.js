@@ -124,6 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
             cantidad: String(cantidad),
             talla: talla,
             fecha_entrega: fechaEntrega.value,
+            barrio: obtener("barrio").value.trim(),
+            localidad: obtener("localidad").value.trim(),
+            direccion: obtener("direccion").value.trim(),
+            horario_entrega: obtener("horarioEntrega").value,
+            indicaciones_entrega: obtener("indicacionesEntrega").value.trim(),
             tienda: obtener("tienda").value,
             metodo: metodoSeleccionado
         });
