@@ -1,0 +1,12 @@
+main{width:min(88%,760px);max-width:760px;margin:42px auto 65px;padding:clamp(22px,4vw,42px);background:#fffefa;border:1px solid #d9d8d0;box-shadow:0 12px 32px #343a3510}
+main h2{font:600 clamp(28px,4vw,38px) 'Playfair Display',serif;color:#303a3d;margin:0 0 22px}
+main form{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+main label{display:block;align-self:end;margin:14px 0 7px;color:#59645e;font:700 11px 'DM Sans',sans-serif;letter-spacing:.4px}
+main input,main select{width:100%;min-height:44px;padding:12px 13px;border:1px solid #d4d5cd;border-radius:0;background:#faf9f5;color:#303a3d;font:13px 'DM Sans',sans-serif}
+main input:focus,main select:focus{outline:none;border-color:#778278;box-shadow:inset 3px 0 #778278}
+main button,main .enlace{display:inline-block;margin-top:22px;padding:12px 19px;border:1px solid #59665e;border-radius:0;background:#59665e;color:#fff;text-decoration:none;font:700 11px 'DM Sans',sans-serif;cursor:pointer}
+main .enlace{background:transparent;color:#59645e;border-color:#c7c8bf;margin-left:8px}
+.mensaje{grid-column:1/-1;padding:12px 15px;background:#eeede7;border-left:3px solid #778278;color:#59645e;font-size:13px}
+.mensaje.error{border-left-color:#a87870;color:#8c4d45}
+main>p{margin:12px 0;color:#68736e;font-size:13px}
+@media(max-width:650px){main{width:92%;padding:22px 17px}main form{grid-template-columns:1fr}main .enlace{margin-left:0}main button,main .enlace{width:100%;text-align:center}}
