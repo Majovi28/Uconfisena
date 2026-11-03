@@ -1,283 +1,90 @@
-// ==========================================
-// FORMULARIO DE REGISTRO DE TIENDA
-// ==========================================
-
-const formulario =
-    document.getElementById("formularioTienda");
-
-
-
-// ==========================================
-// TELÉFONO - MÁXIMO 10 DÍGITOS
-// ==========================================
-
-const telefono =
-    document.getElementById("telefono");
-
+const formulario = document.getElementById("formularioTienda");
+const telefono = document.getElementById("telefono");
+const nit = document.getElementById("nit");
 
 telefono.addEventListener("input", function () {
-
-    this.value = this.value
-        .replace(/\D/g, "")
-        .substring(0, 10);
-
+    let valor = this.value.replace(/\D/g, "").slice(0, 10);
+    if (valor && valor[0] !== "3") valor = "";
+    this.value = valor;
 });
-
-
-
-// ==========================================
-// NIT
-// ==========================================
-
-const nit =
-    document.getElementById("nit");
-
 
 nit.addEventListener("input", function () {
-
-    this.value = this.value
-        .replace(/[^0-9-]/g, "")
-        .substring(0, 12);
-
+    this.value = this.value.replace(/[^0-9-]/g, "").slice(0, 12);
 });
 
-
-
-// ==========================================
-// REGISTRAR TIENDA
-// ==========================================
+function leerTiendas() {
+    try {
+        const datos = JSON.parse(localStorage.getItem("tiendas") || "[]");
+        return Array.isArray(datos) ? datos : [];
+    } catch (error) {
+        console.error("No se pudieron leer las tiendas", error);
+        return [];
+    }
+}
 
 formulario.addEventListener("submit", function (evento) {
-
     evento.preventDefault();
+    if (!formulario.reportValidity()) return;
 
+    const valor = id => document.getElementById(id).value.trim();
+    const nombreTienda = valor("nombreTienda");
+    const nitValor = valor("nit");
+    const telefonoValor = valor("telefono");
+    const direccion = valor("direccion");
+    const barrio = valor("barrio");
+    const localidad = valor("localidad");
+    const correo = valor("correo").toLowerCase();
+    const nombreGerente = valor("nombreGerente");
+    const nombreVendedor = valor("nombreVendedor");
+    const estado = valor("estado");
 
-
-    // ======================================
-    // OBTENER INFORMACIÓN
-    // ======================================
-
-    const nombreTienda =
-        document.getElementById("nombreTienda")
-        .value.trim();
-
-
-    const nitValor =
-        document.getElementById("nit")
-        .value.trim();
-
-
-    const telefonoValor =
-        document.getElementById("telefono")
-        .value.trim();
-
-
-    const direccion =
-        document.getElementById("direccion")
-        .value.trim();
-
-
-    const barrio =
-        document.getElementById("barrio")
-        .value.trim();
-
-
-    const localidad =
-        document.getElementById("localidad")
-        .value.trim();
-
-
-    const correo =
-        document.getElementById("correo")
-        .value.trim();
-
-
-    const nombreGerente =
-        document.getElementById("nombreGerente")
-        .value.trim();
-
-
-    const nombreVendedor =
-        document.getElementById("nombreVendedor")
-        .value.trim();
-
-
-    const estado =
-        document.getElementById("estado")
-        .value;
-
-
-
-    // ======================================
-    // VALIDAR TELÉFONO
-    // ======================================
-
-    if (telefonoValor.length !== 10) {
-
-        alert(
-            "El teléfono debe tener exactamente 10 dígitos."
-        );
-
+    if (!/^[0-9]{9,10}(-[0-9])?$/.test(nitValor)) {
+        alert("Escribe un NIT válido: 9 o 10 números, con dígito de verificación opcional separado por guion.");
+        nit.focus();
         return;
-
+    }
+    if (!/^3[0-9]{9}$/.test(telefonoValor)) {
+        alert("El celular debe tener 10 dígitos y comenzar por 3.");
+        telefono.focus();
+        return;
+    }
+    if (nombreTienda.length < 3 || direccion.length < 6 || barrio.length < 2 || localidad.length < 2) {
+        alert("Revisa el nombre de la tienda y los datos de ubicación. Deben contener información completa.");
+        return;
+    }
+    if (nombreGerente.length < 5 || nombreVendedor.length < 5) {
+        alert("Escribe el nombre y apellido del gerente y del vendedor responsable.");
+        return;
     }
 
-
-
-    // ======================================
-    // BUSCAR TIENDAS EXISTENTES
-    // ======================================
-
-    const tiendas =
-        JSON.parse(
-            localStorage.getItem("tiendas")
-        ) || [];
-
-
-
-    // ======================================
-    // VALIDAR NIT REPETIDO
-    // ======================================
-
-    const nitExiste =
-        tiendas.some(function (tienda) {
-
-            return tienda.nit === nitValor;
-
-        });
-
-
-    if (nitExiste) {
-
-        alert(
-            "Ya existe una tienda registrada con este NIT."
-        );
-
+    const tiendas = leerTiendas();
+    const nitNormalizado = nitValor.replace(/-/g, "");
+    if (tiendas.some(t => String(t.nit || "").replace(/-/g, "") === nitNormalizado)) {
+        alert("Ya existe una tienda registrada con este NIT.");
+        nit.focus();
         return;
-
     }
-
-
-
-    // ======================================
-    // CREAR TIENDA
-    // ======================================
 
     const nuevaTienda = {
-
         id: Date.now(),
-
-        nombreTienda:
-            nombreTienda,
-
-        nit:
-            nitValor,
-
-        telefono:
-            telefonoValor,
-
-        direccion:
-            direccion,
-
-        barrio:
-            barrio,
-
-        localidad:
-            localidad,
-
-        correo:
-            correo,
-
-        nombreGerente:
-            nombreGerente,
-
-        nombreVendedor:
-            nombreVendedor,
-
-        estado:
-            estado
-
+        nombreTienda, nit: nitValor, telefonoValor,
+        telefono: telefonoValor, direccion, barrio, localidad,
+        correo, nombreGerente, nombreVendedor, estado
     };
 
-
-
-    // ======================================
-    // GUARDAR TIENDA
-    // ======================================
-
     tiendas.push(nuevaTienda);
+    try {
+        localStorage.setItem("tiendas", JSON.stringify(tiendas));
+    } catch (error) {
+        alert("No fue posible guardar la tienda en este navegador. Revisa el espacio disponible.");
+        return;
+    }
 
-
-    localStorage.setItem(
-        "tiendas",
-        JSON.stringify(tiendas)
-    );
-
-
-
-    // ======================================
-    // CONFIRMACIÓN
-    // ======================================
-
-    alert(
-
-        "¡Tienda registrada correctamente!\n\n" +
-
-        "Tienda: " +
-        nombreTienda + "\n" +
-
-        "NIT: " +
-        nitValor + "\n" +
-
-        "Vendedor: " +
-        nombreVendedor + "\n" +
-
-        "Estado: " +
-        estado
-
-    );
-
-
-
-    // ======================================
-    // REGRESAR AL PANEL
-    // ======================================
-
-    window.location.href =
-        "gestor.html";
-
+    alert("Tienda registrada correctamente.\n\nTienda: " + nombreTienda +
+        "\nNIT: " + nitValor + "\nResponsable: " + nombreVendedor +
+        "\nEstado: " + estado);
+    window.location.href = "gestor.html";
 });
 
-
-
-// ==========================================
-// CANCELAR
-// ==========================================
-
-const cancelar =
-    document.getElementById("cancelar");
-
-
-cancelar.addEventListener("click", function () {
-
-    window.location.href =
-        "gestor.html";
-
-});
-
-
-
-// ==========================================
-// VOLVER AL PANEL
-// ==========================================
-
-const volverGestor =
-    document.getElementById("volverGestor");
-
-
-volverGestor.addEventListener("click", function () {
-
-    window.location.href =
-        "gestor.html";
-
-});
+document.getElementById("cancelar").addEventListener("click", () => window.location.href = "gestor.html");
+document.getElementById("volverGestor").addEventListener("click", () => window.location.href = "gestor.html");
