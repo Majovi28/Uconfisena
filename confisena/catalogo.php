@@ -300,7 +300,7 @@ function precioCOP($precio) {
                                     <?php else: ?>
 
                                         <a
-                                            href="pago.html?id_producto=<?= $idProducto ?>"
+                                            href="pago.php?id_producto=<?= $idProducto ?>"
                                             class="btn comprar"
                                             onclick="guardarProducto(<?= $idProducto ?>, '<?= escapar(addslashes($producto['nombre_producto'])) ?>', <?= (float)$producto['precio'] ?>)"
                                         >
@@ -308,7 +308,7 @@ function precioCOP($precio) {
                                         </a>
 
                                         <a
-                                            href="apartado.html?id_producto=<?= $idProducto ?>"
+                                            href="apartado.php?id_producto=<?= $idProducto ?>"
                                             class="btn apartar"
                                             onclick="guardarProducto(<?= $idProducto ?>, '<?= escapar(addslashes($producto['nombre_producto'])) ?>', <?= (float)$producto['precio'] ?>)"
                                         >
