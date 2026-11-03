@@ -1,24 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root{--azul:#142f43;--azul-hover:#214d65;--texto:#253744;--suave:#71808a;--borde:#d8dfdc;--fondo:#edf0eb;--blanco:#fff;--acento:#d49a45;--verde:#477565}
 *{box-sizing:border-box;margin:0;padding:0}
-:root{--azul:#183b5b;--azul-hover:#102d48;--texto:#303b46;--suave:#6b747d;--borde:#d7dce1;--fondo:#f4f3ef;--blanco:#fff}
-body{font-family:Arial,Helvetica,sans-serif;background:var(--fondo);color:var(--texto);line-height:1.5}
-.encabezado{background:var(--azul);color:#fff;padding:17px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo h1{font-size:27px;font-weight:700;text-transform:lowercase;letter-spacing:-.5px}.logo p{font-size:12px;color:#d9e1e8;margin-top:2px}
-.usuario-header{display:flex;align-items:center;gap:15px}.usuario-header span{font-weight:bold}
-.usuario-header button{border:1px solid #c7d3dc;background:transparent;color:#fff;padding:9px 14px;border-radius:4px;cursor:pointer}
-.usuario-header button:hover{background:#fff;color:var(--azul)}
-.contenedor{width:86%;max-width:980px;margin:32px auto}.ruta{color:var(--suave);font-size:13px;margin-bottom:22px}
-.encabezado-pagina{margin-bottom:22px}.encabezado-pagina h2{color:var(--azul);font-size:27px;margin-bottom:5px}.encabezado-pagina p{color:var(--suave);font-size:14px}
-.tarjeta-formulario{background:#fff;border:1px solid var(--borde);border-radius:5px;padding:30px;box-shadow:0 2px 8px #2638490a}
-.seccion{border-bottom:1px solid #e5e7e9;padding-bottom:22px;margin-bottom:22px}.seccion:last-of-type{border:0;margin-bottom:0;padding-bottom:0}
-.seccion h3{color:var(--azul);font-size:17px;margin-bottom:17px;font-weight:700}
-.grupo{margin-bottom:16px}.grupo:last-child{margin-bottom:0}.grupo label{display:block;color:#3b4650;font-weight:600;font-size:13px;margin-bottom:6px}
-.grupo input,.grupo select{width:100%;padding:11px 12px;border:1px solid #c9d0d6;border-radius:4px;font:14px Arial,sans-serif;color:var(--texto);background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
-.grupo input:focus,.grupo select:focus{border-color:#426b8a;box-shadow:0 0 0 2px #426b8a1a}
-.fila{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.acciones{display:flex;justify-content:flex-end;gap:10px;margin-top:10px}
-.boton{padding:11px 20px;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer}
-.cancelar{background:#fff;border:1px solid #c9d0d6;color:#3b4650}.cancelar:hover{background:#f1f2f2}
-.guardar{background:var(--azul);border:1px solid var(--azul);color:#fff}.guardar:hover{background:var(--azul-hover)}
-button:focus-visible{outline:3px solid #8ba9c0;outline-offset:2px}
-footer{margin-top:42px;background:#17344e;color:#e6ebef;text-align:center;padding:17px;font-size:12px}
-@media(max-width:700px){.encabezado{flex-direction:column;gap:13px;text-align:center}.contenedor{width:92%;margin:24px auto}.tarjeta-formulario{padding:20px}.fila{grid-template-columns:1fr;gap:0}.acciones{flex-direction:column}.boton{width:100%}.usuario-header{flex-wrap:wrap;justify-content:center}}
+body{font-family:'DM Sans',Arial,sans-serif;background:var(--fondo);color:var(--texto);line-height:1.6}
+.encabezado{background:var(--azul);color:#fff;padding:19px max(7%,calc((100% - 1120px)/2));display:flex;justify-content:space-between;align-items:center;border-bottom:5px solid var(--acento)}
+.logo h1{font:800 30px Manrope,sans-serif;text-transform:lowercase;letter-spacing:-1.5px}.logo p{font-size:11px;color:#c5d2d7;letter-spacing:.4px;margin-top:1px}
+.usuario-header{display:flex;align-items:center;gap:16px}.usuario-header span{font-size:13px;font-weight:700;color:#f1d6a9}
+.usuario-header button{border:1px solid #718795;background:transparent;color:#fff;padding:10px 15px;border-radius:3px;font:600 12px 'DM Sans',sans-serif;cursor:pointer;transition:.2s}.usuario-header button:hover{background:var(--acento);border-color:var(--acento);color:#172f40}
+.contenedor{width:min(88%,940px);margin:38px auto 60px}.ruta{font-size:12px;color:#7b898d;margin-bottom:28px;letter-spacing:.2px}
+.encabezado-pagina{margin-bottom:25px;padding-left:19px;border-left:4px solid var(--acento)}
+.encabezado-pagina h2{font:800 clamp(27px,4vw,36px) Manrope,sans-serif;color:var(--azul);letter-spacing:-1px;margin-bottom:5px}.encabezado-pagina p{color:var(--suave);font-size:14px}
+.tarjeta-formulario{background:#fff;border:1px solid #dce2dd;border-radius:3px;padding:clamp(22px,4vw,40px);box-shadow:0 14px 35px #1b35400d}
+.seccion{border-bottom:1px solid #e8ece8;padding-bottom:25px;margin-bottom:25px}.seccion:last-of-type{border:0;margin-bottom:0;padding-bottom:0}
+.seccion h3{font:700 16px Manrope,sans-serif;color:var(--azul);margin-bottom:19px;display:flex;align-items:center;gap:10px}.seccion h3:before{content:'';width:8px;height:8px;background:var(--acento);display:inline-block;transform:rotate(45deg)}
+.grupo{margin-bottom:17px}.grupo:last-child{margin-bottom:0}.grupo label{display:block;color:#344954;font-weight:700;font-size:12px;margin-bottom:7px;letter-spacing:.15px}
+.grupo input,.grupo select{width:100%;padding:12px 13px;border:1px solid #cbd5d3;border-radius:2px;font:14px 'DM Sans',sans-serif;color:var(--texto);background:#fbfcfa;outline:none;transition:.18s}
+.grupo input:focus,.grupo select:focus{background:#fff;border-color:#477565;box-shadow:0 0 0 3px #47756518}
+.fila{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.acciones{display:flex;justify-content:flex-end;gap:12px;margin-top:28px}.boton{padding:12px 22px;border-radius:2px;font:700 13px 'DM Sans',sans-serif;cursor:pointer;transition:.2s}
+.cancelar{background:#fff;border:1px solid #cbd5d3;color:#43545c}.cancelar:hover{background:#edf1ed}
+.guardar{background:var(--azul);border:1px solid var(--azul);color:#fff}.guardar:hover{background:var(--verde);border-color:var(--verde);transform:translateY(-1px)}
+button:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+footer{background:#102838;color:#d4dedf;text-align:center;padding:20px;font-size:11px;letter-spacing:.3px}
+@media(max-width:700px){.encabezado{padding:17px 5%;flex-direction:column;gap:13px;text-align:center}.contenedor{width:92%;margin:25px auto 40px}.tarjeta-formulario{padding:22px 18px}.fila{grid-template-columns:1fr;gap:0}.acciones{flex-direction:column}.boton{width:100%}.usuario-header{flex-wrap:wrap;justify-content:center}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
