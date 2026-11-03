@@ -7,6 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const tarjeta = obtener("numeroTarjeta");
     const cvv = obtener("cvv");
     const vencimiento = obtener("vencimiento");
+    const fechaEntrega = obtener("fechaEntrega");
+    const hoy = new Date();
+    fechaEntrega.min = hoy.getFullYear() + "-" + String(hoy.getMonth() + 1).padStart(2, "0") + "-" + String(hoy.getDate()).padStart(2, "0");
 
     if (!formulario || !metodo || !datosTarjeta) {
         alert("No se encontró el formulario de pago. Revisa pago.php.");
@@ -127,6 +130,12 @@ document.addEventListener("DOMContentLoaded", () => {
             nombre: nombre,
             correo: correo,
             telefono: telefonoValor,
+            barrio: obtener("barrio").value.trim(),
+            localidad: obtener("localidad").value.trim(),
+            direccion: obtener("direccion").value.trim(),
+            fecha_entrega: fechaEntrega.value,
+            horario_entrega: obtener("horarioEntrega").value,
+            indicaciones_entrega: obtener("indicacionesEntrega").value.trim(),
             metodo: metodoPago
         });
 
