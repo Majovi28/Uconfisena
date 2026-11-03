@@ -19,6 +19,11 @@ $talla = trim($_POST["talla"] ?? "");
 $fechaEntrega = trim($_POST["fecha_entrega"] ?? "");
 $tienda = trim($_POST["tienda"] ?? "");
 $metodo = trim($_POST["metodo"] ?? "");
+$barrio = trim($_POST["barrio"] ?? "");
+$localidad = trim($_POST["localidad"] ?? "");
+$direccion = trim($_POST["direccion"] ?? "");
+$horarioEntrega = trim($_POST["horario_entrega"] ?? "");
+$indicacionesEntrega = trim($_POST["indicaciones_entrega"] ?? "");
 
 $tiendasPermitidas = ["Tienda CONFISENA Centro", "Tienda CONFISENA Chapinero", "Tienda CONFISENA Kennedy"];
 
@@ -26,6 +31,9 @@ if (!$idProducto || $idProducto < 1 || !$cantidad || $cantidad < 1 || $cantidad 
 if ($talla === "") responder(false, "Selecciona una talla.", 400);
 if (!in_array($tienda, $tiendasPermitidas, true)) responder(false, "Selecciona una tienda válida.", 400);
 if (!in_array($metodo, ["tarjeta", "pse", "nequi"], true)) responder(false, "Selecciona un método de pago válido.", 400);
+if ($barrio === "" || $localidad === "" || $direccion === "") responder(false, "Completa barrio, localidad y dirección de entrega.", 400);
+if (mb_strlen($barrio) > 80 || mb_strlen($localidad) > 80 || mb_strlen($direccion) > 180 || mb_strlen($indicacionesEntrega) > 250) responder(false, "Los datos de entrega superan la longitud permitida.", 400);
+if (!in_array($horarioEntrega, ["Manana", "Tarde"], true)) responder(false, "Selecciona un horario de entrega válido.", 400);
 
 $fecha = DateTime::createFromFormat("!Y-m-d", $fechaEntrega);
 if (!$fecha || $fecha->format("Y-m-d") !== $fechaEntrega || $fechaEntrega < date("Y-m-d")) responder(false, "Selecciona una fecha de entrega válida.", 400);
@@ -53,7 +61,7 @@ try {
     $abono = round($total * 0.50, 2);
     $saldo = round($total - $abono, 2);
 
-    $insertar = $conexion->prepare("INSERT INTO apartado (id_usuario, id_producto, fecha_apartado, fecha_entrega, fecha_salida, abono, saldo, estado, cantidad, talla, tienda_recogida, metodo_pago) VALUES (:usuario, :producto, NOW(), :entrega, NULL, :abono, :saldo, 'Pendiente', :cantidad, :talla, :tienda, :metodo)");
+    $insertar = $conexion->prepare("INSERT INTO apartado (id_usuario, id_producto, fecha_apartado, fecha_entrega, fecha_salida, abono, saldo, estado, cantidad, talla, tienda_recogida, metodo_pago, barrio, localidad, direccion, horario_entrega, indicaciones_entrega) VALUES (:usuario, :producto, NOW(), :entrega, NULL, :abono, :saldo, 'Pendiente', :cantidad, :talla, :tienda, :metodo, :barrio, :localidad, :direccion, :horario, :indicaciones)");
     $insertar->execute([
         "usuario" => $idUsuario,
         "producto" => $idProducto,
@@ -63,7 +71,12 @@ try {
         "cantidad" => $cantidad,
         "talla" => $talla,
         "tienda" => $tienda,
-        "metodo" => $metodo
+        "metodo" => $metodo,
+        "barrio" => $barrio,
+        "localidad" => $localidad,
+        "direccion" => $direccion,
+        "horario" => $horarioEntrega,
+        "indicaciones" => $indicacionesEntrega
     ]);
 
     $idApartado = (int) $conexion->lastInsertId();
