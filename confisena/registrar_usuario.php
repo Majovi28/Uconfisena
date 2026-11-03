@@ -38,6 +38,12 @@ if ($aceptaTerminos !== "1") {
     exit;
 }
 
+$tiposDocumentoPermitidos = ["CC", "TI", "CE", "PPT", "Pasaporte"];
+if (!in_array($tipoDocumento, $tiposDocumentoPermitidos, true)) {
+    echo json_encode(["success" => false, "mensaje" => "Selecciona un tipo de documento válido."]);
+    exit;
+}
+
 if (!preg_match('/^[0-9]{6,10}$/', $documento)) {
     echo json_encode(["success" => false, "mensaje" => "El documento debe contener solo números y tener entre 6 y 10 dígitos."]);
     exit;
