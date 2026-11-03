@@ -20,6 +20,12 @@ $nombre = trim($_POST["nombre"] ?? "");
 $correo = strtolower(trim($_POST["correo"] ?? ""));
 $telefono = preg_replace('/\D/', '', $_POST["telefono"] ?? "");
 $metodo = trim($_POST["metodo"] ?? "");
+$barrio = trim($_POST["barrio"] ?? "");
+$localidad = trim($_POST["localidad"] ?? "");
+$direccion = trim($_POST["direccion"] ?? "");
+$fechaEntrega = trim($_POST["fecha_entrega"] ?? "");
+$horarioEntrega = trim($_POST["horario_entrega"] ?? "");
+$indicacionesEntrega = trim($_POST["indicaciones_entrega"] ?? "");
 
 if (!$idProducto || $idProducto < 1) responder(false, "El producto seleccionado no es válido.", 400);
 if (!$cantidad || $cantidad < 1 || $cantidad > 99) responder(false, "La cantidad debe estar entre 1 y 99.", 400);
@@ -27,6 +33,11 @@ if ($talla === "" || $nombre === "") responder(false, "Completa el nombre y la t
 if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) responder(false, "El correo electrónico no es válido.", 400);
 if (!preg_match('/^3[0-9]{9}$/', $telefono)) responder(false, "El teléfono debe tener exactamente 10 dígitos y comenzar con 3.", 400);
 if (!in_array($metodo, ["tarjeta", "pse", "nequi"], true)) responder(false, "Selecciona un método de pago válido.", 400);
+if ($barrio === "" || $localidad === "" || $direccion === "") responder(false, "Completa barrio, localidad y dirección de entrega.", 400);
+if (mb_strlen($barrio) > 80 || mb_strlen($localidad) > 80 || mb_strlen($direccion) > 180 || mb_strlen($indicacionesEntrega) > 250) responder(false, "Los datos de entrega superan la longitud permitida.", 400);
+if (!in_array($horarioEntrega, ["Manana", "Tarde"], true)) responder(false, "Selecciona un horario de entrega válido.", 400);
+$fechaValidada = DateTime::createFromFormat("!Y-m-d", $fechaEntrega);
+if (!$fechaValidada || $fechaValidada->format("Y-m-d") !== $fechaEntrega || $fechaEntrega < date("Y-m-d")) responder(false, "Selecciona una fecha de entrega válida.", 400);
 
 try {
     $conexion->beginTransaction();
@@ -54,11 +65,19 @@ try {
 
     $precioUnitario = (float)$producto["precio"];
     $total = round($precioUnitario * $cantidad, 2);
-    $fechaEntrega = date("Y-m-d", strtotime("+7 days"));
-
-    $sqlPedido = "INSERT INTO pedido (id_usuario, fecha_pedido, fecha_entrega, estado_pedido, direccion, remitente, total) VALUES (:usuario, NOW(), :entrega, 'Pendiente', 'Por confirmar', :remitente, :total)";
+    $sqlPedido = "INSERT INTO pedido (id_usuario, fecha_pedido, fecha_entrega, estado_pedido, direccion, barrio, localidad, horario_entrega, indicaciones_entrega, remitente, total) VALUES (:usuario, NOW(), :entrega, 'Pendiente', :direccion, :barrio, :localidad, :horario, :indicaciones, :remitente, :total)";
     $insertarPedido = $conexion->prepare($sqlPedido);
-    $insertarPedido->execute(["usuario" => $idUsuario, "entrega" => $fechaEntrega, "remitente" => $nombre, "total" => $total]);
+    $insertarPedido->execute([
+        "usuario" => $idUsuario,
+        "entrega" => $fechaEntrega,
+        "direccion" => $direccion,
+        "barrio" => $barrio,
+        "localidad" => $localidad,
+        "horario" => $horarioEntrega,
+        "indicaciones" => $indicacionesEntrega,
+        "remitente" => $nombre,
+        "total" => $total
+    ]);
     $idPedido = (int)$conexion->lastInsertId();
 
     $nombreConTalla = $producto["nombre_producto"] . " (Talla " . $talla . ")";
