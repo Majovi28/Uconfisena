@@ -64,6 +64,11 @@ try {
     $tieneCantidad = in_array("cantidad", $columnas, true);
     $tieneTalla = in_array("talla", $columnas, true);
     $tieneMetodo = in_array("metodo_pago", $columnas, true);
+    $tieneBarrio = in_array("barrio", $columnas, true);
+    $tieneLocalidad = in_array("localidad", $columnas, true);
+    $tieneDireccion = in_array("direccion", $columnas, true);
+    $tieneHorario = in_array("horario_entrega", $columnas, true);
+    $tieneIndicaciones = in_array("indicaciones_entrega", $columnas, true);
 
     $puedeFiltrarPorTienda = $tieneIdTienda || $tieneNombreTienda;
 
@@ -170,6 +175,11 @@ try {
     $exprMetodo = $tieneMetodo
         ? "a.metodo_pago"
         : "NULL AS metodo_pago";
+    $exprBarrio = $tieneBarrio ? "a.barrio" : "NULL AS barrio";
+    $exprLocalidad = $tieneLocalidad ? "a.localidad" : "NULL AS localidad";
+    $exprDireccion = $tieneDireccion ? "a.direccion" : "NULL AS direccion";
+    $exprHorario = $tieneHorario ? "a.horario_entrega" : "NULL AS horario_entrega";
+    $exprIndicaciones = $tieneIndicaciones ? "a.indicaciones_entrega" : "NULL AS indicaciones_entrega";
 
     $sql = "SELECT
                 a.id_apartado,
@@ -183,6 +193,11 @@ try {
                 $exprTalla,
                 $exprTienda,
                 $exprMetodo,
+                $exprBarrio,
+                $exprLocalidad,
+                $exprDireccion,
+                $exprHorario,
+                $exprIndicaciones,
                 p.nombre_producto,
                 u.nombre,
                 u.apellido,
@@ -316,7 +331,10 @@ $nombreTienda = escaparApartado($tienda["nombre_tienda"] ?? "");
                             <th>Talla</th>
                             <th>Cantidad</th>
                             <th>Fecha del apartado</th>
-                            <th>Entrega</th>
+                            <th>Fecha de entrega</th>
+                            <th>Dirección de entrega</th>
+                            <th>Horario</th>
+                            <th>Indicaciones</th>
                             <th>Abono</th>
                             <th>Saldo</th>
                             <th>Estado</th>
