@@ -43,3 +43,30 @@
 /* Ajustes visuales generales */
 :root{--conf-ink:#24434a;--conf-primary:#287c78;--conf-accent:#e58d72;--conf-paper:#f6f4ed;--conf-line:#dce4dc;--conf-white:#fffefa}
 html{scroll-behavior:smooth}body{line-height:1.55;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto}button,input,select,textarea{font:inherit}button,a,input,select,textarea{transition:background-color .2s ease,border-color .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #e8bd59;outline-offset:2px}input,select,textarea{max-width:100%}table{max-width:100%}@media(max-width:768px){.contenedor{width:92%;max-width:100%}.encabezado{gap:14px;flex-wrap:wrap}.encabezado-pagina{gap:14px;flex-wrap:wrap}.contenido{grid-template-columns:1fr}.fila{grid-template-columns:1fr}.resumen{grid-template-columns:1fr}.tarjetas{grid-template-columns:1fr}.tabla-contenedor{max-width:100%;overflow-x:auto}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+
+/* Identidad visual del inicio CONFISENA */
+:root{--conf-ink:#24434a;--conf-primary:#287c78;--conf-accent:#e58d72;--conf-gold:#e8bd59;--conf-bg:#f6f4ed;--conf-soft:#dcefe8;--conf-white:#fffefa}
+body{background:var(--conf-bg);color:var(--conf-ink);font-family:"Nunito",Arial,sans-serif}
+.header{background:var(--conf-ink);box-shadow:0 5px 20px #173b3b18}
+.logo-principal{color:#fff}.logo-principal span{color:var(--conf-gold)}
+.logo small{color:#d6e8df}
+.menu a{color:#f8f6ee}.menu a:hover,.menu a.activo{color:var(--conf-gold)}
+.menu .boton-registro,.boton-principal{background:var(--conf-primary);color:#fff;border:0;border-radius:28px;box-shadow:0 5px 0 #1e625e}
+.menu .boton-registro:hover,.boton-principal:hover{background:#216763;transform:translateY(-2px)}
+.hero{background:linear-gradient(125deg,#24434a 0%,#287c78 72%,#3b9184 100%);color:#fff}
+.hero h1,.hero h1 span{color:#fff}.hero h1 span{color:var(--conf-gold)}
+.etiqueta,.titulo-seccion>span,.sobre-texto>span{color:#d47b60}
+.hero p{color:#e2eee8}.boton-secundario{border:2px solid #fff;color:#fff;border-radius:28px}
+.tarjeta-uniforme,.categoria-card,.producto-card,.tienda-card{background:var(--conf-white);border:1px solid #dce4dc;border-radius:18px;box-shadow:0 8px 24px #24434a10}
+.icono-uniforme,.categoria-icono,.producto-imagen,.sobre-icono,.tienda-icono{background:var(--conf-soft);color:var(--conf-primary);border-radius:15px}
+.datos-uniforme strong,.producto-abajo strong{color:var(--conf-primary)}
+.seccion{padding-top:76px;padding-bottom:76px}
+.titulo-seccion h2,.sobre-texto h2{color:var(--conf-ink)}
+.categorias-grid,.productos-grid,.tiendas-grid{gap:22px}
+.categoria-card:hover,.producto-card:hover,.tienda-card:hover{transform:translateY(-5px);border-color:#e58d72;box-shadow:0 14px 30px #24434a18}
+.producto-categoria{color:#287c78}.sobre{background:#e7f1e9}.cta{background:linear-gradient(120deg,#287c78,#24434a)}
+.boton-blanco{background:#fff;color:var(--conf-ink);border-radius:28px}
+.footer{background:#203b40;color:#dce9e2}.footer-col h3,.footer-col h4{color:#fff}.footer a:hover{color:var(--conf-gold)}.footer-bottom{border-color:#49645f}
+@media(max-width:700px){.hero{padding-top:55px;padding-bottom:55px}.hero-botones{flex-wrap:wrap}.seccion{padding-top:52px;padding-bottom:52px}}
+
