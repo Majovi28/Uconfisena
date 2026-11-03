@@ -58,7 +58,24 @@ button a { color: inherit; text-decoration: none; display: inline-block; width: 
     width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #D6BFAE;
     border-radius: 8px; background: #F8F2EC; font-size: 16px; outline: none;
 }
-.contenedor__login-register form input:focus { border-color: #C9A227; box-shadow: 0 0 0 3px rgba(201,162,39,.12); }
+.contenedor__login-register form input:focus,
+.contenedor__login-register form select:focus { border-color: #C9A227; box-shadow: 0 0 0 3px rgba(201,162,39,.12); }
+
+.contenedor__login-register form select {
+    width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #D6BFAE;
+    border-radius: 8px; background: #F8F2EC; color: #123B63; font-size: 16px;
+    outline: none; cursor: pointer;
+}
+
+.aceptar-terminos {
+    display: flex; align-items: flex-start; gap: 9px; margin-top: 18px;
+    color: #123B63; font-size: 13px; line-height: 1.5; cursor: pointer;
+}
+.contenedor__login-register form .aceptar-terminos input {
+    width: 17px; height: 17px; margin: 2px 0 0; flex: 0 0 17px;
+    accent-color: #1976D2; cursor: pointer;
+}
+.aceptar-terminos a { color: #1976D2 !important; text-decoration: underline !important; font-weight: 600; }
 
 .contenedor__login-register form button {
     padding: 11px 40px; margin-top: 40px; border: none; border-radius: 8px;
