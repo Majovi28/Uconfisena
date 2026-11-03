@@ -129,21 +129,12 @@ $volver = $rol === "Gestor" ? "gestor.php" : "gerente.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar vendedor - CONFISENA</title>
-    <style>
-        body { font-family:Arial,sans-serif; background:#f3f5f8; margin:0; color:#263449; }
-        header { background:#123563; color:white; padding:20px 6%; }
-        header h1 { margin:0; color:white; }
-        main { max-width:760px; margin:30px auto; padding:25px; background:white; border-radius:12px; }
-        h2 { color:#123563; }
-        label { display:block; margin-top:14px; font-weight:bold; }
-        input,select { width:100%; box-sizing:border-box; padding:11px; margin-top:6px; border:1px solid #ccd5e1; border-radius:6px; }
-        button,.enlace { display:inline-block; background:#123563; color:white; padding:11px 16px; margin-top:20px; border:0; border-radius:6px; text-decoration:none; cursor:pointer; }
-        .mensaje { padding:12px; background:#edf2f8; border-radius:6px; }
-        .error { color:#a61b1b; }
-    </style>
+    <link rel="stylesheet" href="registro-vendedor.css">
+    <link rel="stylesheet" href="registro-db.css">
+    
 </head>
 <body>
-<header><h1>CONFISENA</h1><p>Registrar vendedor</p></header>
+<header class="encabezado"><h1>CONFISENA</h1><p>Registrar vendedor</p></header>
 
 <main>
     <h2>Datos del vendedor</h2>
