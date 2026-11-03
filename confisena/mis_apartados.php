@@ -33,6 +33,11 @@ try {
             a.talla,
             a.tienda_recogida,
             a.metodo_pago,
+            a.barrio,
+            a.localidad,
+            a.direccion,
+            a.horario_entrega,
+            a.indicaciones_entrega,
             p.nombre_producto
          FROM apartado a
          INNER JOIN producto p
@@ -201,8 +206,18 @@ try {
                 <p>Talla: <?= escapar($apartado["talla"] ?: "No registrada") ?></p>
                 <p>Cantidad: <?= (int)$apartado["cantidad"] ?></p>
 
-                <p>Tienda de recogida:
+                <p>Tienda encargada de preparar el pedido:
                     <?= escapar($apartado["tienda_recogida"] ?: "Por confirmar") ?>
+                </p>
+                <h3>Datos de entrega</h3>
+                <p>Dirección:
+                    <?= escapar(trim(($apartado["direccion"] ?? "") . ", " . ($apartado["barrio"] ?? "") . ", " . ($apartado["localidad"] ?? ""), ", ")) ?>
+                </p>
+                <p>Horario:
+                    <?= ($apartado["horario_entrega"] ?? "") === "Manana" ? "Mañana (8:00 a. m. - 12:00 p. m.)" : (($apartado["horario_entrega"] ?? "") === "Tarde" ? "Tarde (2:00 p. m. - 6:00 p. m.)" : "No registrado") ?>
+                </p>
+                <p>Indicaciones:
+                    <?= escapar($apartado["indicaciones_entrega"] ?? "Sin indicaciones") ?>
                 </p>
 
                 <p>Fecha de entrega:
