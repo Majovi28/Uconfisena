@@ -23,6 +23,7 @@ $error = "";
 try {
     $consulta = $conexion->prepare(
         "SELECT id_pedido, fecha_pedido, fecha_entrega,
+                direccion, barrio, localidad, horario_entrega, indicaciones_entrega,
                 estado_pedido, total
          FROM pedido
          WHERE id_usuario = :usuario
@@ -211,6 +212,16 @@ try {
                     <?= escapar($pedido["fecha_entrega"] ?: "Por confirmar") ?>
                 </p>
 
+                <h3>Datos de entrega</h3>
+                <p>Dirección:
+                    <?= escapar(trim(($pedido["direccion"] ?? "") . ", " . ($pedido["barrio"] ?? "") . ", " . ($pedido["localidad"] ?? ""), ", ")) ?>
+                </p>
+                <p>Horario:
+                    <?= ($pedido["horario_entrega"] ?? "") === "Manana" ? "Mañana (8:00 a. m. - 12:00 p. m.)" : (($pedido["horario_entrega"] ?? "") === "Tarde" ? "Tarde (2:00 p. m. - 6:00 p. m.)" : "No registrado") ?>
+                </p>
+                <p>Indicaciones:
+                    <?= escapar($pedido["indicaciones_entrega"] ?? "Sin indicaciones") ?>
+                </p>
                 <p>Método de pago:
                     <?= escapar($pago["metodo_pago"] ?? "No registrado") ?>
                 </p>
