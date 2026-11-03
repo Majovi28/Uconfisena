@@ -46,6 +46,14 @@
                     <option value="Cédula de extranjería">Cédula de extranjería</option>
                     <option value="Pasaporte">Pasaporte</option>
                 </select>
+                <select id="tipoDocumentoRegistro" required aria-label="Tipo de documento">
+                    <option value="">Selecciona tu tipo de documento</option>
+                    <option value="CC">Cédula de ciudadanía (CC)</option>
+                    <option value="TI">Tarjeta de identidad (TI)</option>
+                    <option value="CE">Cédula de extranjería (CE)</option>
+                    <option value="PPT">Permiso por Protección Temporal (PPT)</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
                 <input type="text" id="documentoRegistro" placeholder="Número de Documento" minlength="6" maxlength="10" pattern="[0-9]{6,10}" inputmode="numeric" required>
                 <input type="tel" id="telefonoRegistro" placeholder="Número de Teléfono" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required>
                 <input type="email" id="correoRegistro" placeholder="Correo Electrónico" autocomplete="email" required>
@@ -131,7 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const nombreCompleto = document.getElementById("nombreCompletoRegistro").value.trim();
         const tipoDocumento = document.getElementById("tipoDocumentoRegistro").value;
+        const tipoDocumento = document.getElementById("tipoDocumentoRegistro").value;
         const documento = document.getElementById("documentoRegistro").value.trim();
+        const aceptaTerminos = document.getElementById("aceptarTerminosRegistro").checked;
         const telefono = document.getElementById("telefonoRegistro").value.trim();
         const aceptaTerminos = document.getElementById("aceptarTerminosRegistro").checked;
         const correo = document.getElementById("correoRegistro").value.trim();
@@ -145,6 +155,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         if (!tipoDocumento) {
             mostrarMensaje(mensajeRegistro, "Selecciona el tipo de documento.", true);
+            return;
+        }
+        if (!aceptaTerminos) {
+            mostrarMensaje(mensajeRegistro, "Debes aceptar los términos y condiciones para registrarte.", true);
+            return;
+        }
+        if (!tipoDocumento) {
+            mostrarMensaje(mensajeRegistro, "Selecciona tu tipo de documento.", true);
             return;
         }
         if (!aceptaTerminos) {
