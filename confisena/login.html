@@ -39,15 +39,9 @@
             <form class="formulario__register" id="formRegistro">
                 <h2>Registrarse</h2>
                 <input type="text" id="nombreCompletoRegistro" placeholder="Nombre y apellidos" autocomplete="name" required>
+                <label for="tipoDocumentoRegistro">Tipo de documento</label>
                 <select id="tipoDocumentoRegistro" name="tipo_documento" required>
-                    <option value="" selected disabled>Selecciona el tipo de documento</option>
-                    <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
-                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                    <option value="Cédula de extranjería">Cédula de extranjería</option>
-                    <option value="Pasaporte">Pasaporte</option>
-                </select>
-                <select id="tipoDocumentoRegistro" required aria-label="Tipo de documento">
-                    <option value="">Selecciona tu tipo de documento</option>
+                    <option value="" selected disabled>Selecciona tu tipo de documento</option>
                     <option value="CC">Cédula de ciudadanía (CC)</option>
                     <option value="TI">Tarjeta de identidad (TI)</option>
                     <option value="CE">Cédula de extranjería (CE)</option>
@@ -141,7 +135,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const tipoDocumento = document.getElementById("tipoDocumentoRegistro").value;
         const tipoDocumento = document.getElementById("tipoDocumentoRegistro").value;
         const documento = document.getElementById("documentoRegistro").value.trim();
-        const aceptaTerminos = document.getElementById("aceptarTerminosRegistro").checked;
         const telefono = document.getElementById("telefonoRegistro").value.trim();
         const aceptaTerminos = document.getElementById("aceptarTerminosRegistro").checked;
         const correo = document.getElementById("correoRegistro").value.trim();
@@ -151,14 +144,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (partesNombre.length < 2) {
             mostrarMensaje(mensajeRegistro, "Escribe tu nombre y al menos un apellido.", true);
-            return;
-        }
-        if (!tipoDocumento) {
-            mostrarMensaje(mensajeRegistro, "Selecciona el tipo de documento.", true);
-            return;
-        }
-        if (!aceptaTerminos) {
-            mostrarMensaje(mensajeRegistro, "Debes aceptar los términos y condiciones para registrarte.", true);
             return;
         }
         if (!tipoDocumento) {
