@@ -92,24 +92,12 @@ $volver = $rol === "Gestor" ? "gestor.php" : "gerente.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar tienda - CONFISENA</title>
-    <style>
-        *{box-sizing:border-box}
-        body{font-family:Arial,Helvetica,sans-serif;background:#f4f3ef;margin:0;color:#303b46;line-height:1.5}
-        header{background:#183b5b;color:#fff;padding:18px 7%}
-        header h1{margin:0;color:#fff;font-size:27px}header p{margin:3px 0 0;color:#d9e1e8;font-size:13px}
-        main{width:90%;max-width:760px;margin:30px auto;padding:28px;background:#fff;border:1px solid #d7dce1;border-radius:5px}
-        h2{color:#183b5b;margin-top:0}label{display:block;margin-top:15px;font-size:13px;font-weight:600}
-        input{width:100%;padding:11px 12px;margin-top:6px;border:1px solid #c9d0d6;border-radius:4px;font:14px Arial}
-        input:focus{outline:2px solid #426b8a;outline-offset:1px}
-        button,.enlace{display:inline-block;background:#183b5b;color:#fff;padding:11px 16px;margin-top:20px;border:1px solid #183b5b;border-radius:4px;text-decoration:none;cursor:pointer}
-        .enlace{background:#fff;color:#303b46;border-color:#c9d0d6;margin-left:7px}
-        .mensaje{padding:12px;background:#f1f4f6;border-left:3px solid #64839c;border-radius:3px}
-        .error{color:#9b2929;border-left-color:#b85c55}
-        @media(max-width:600px){main{padding:19px}.enlace{margin-left:0}}
-    </style>
+    <link rel="stylesheet" href="registro-tienda.css">
+    <link rel="stylesheet" href="registro-db.css">
+    
 </head>
 <body>
-<header><h1>CONFISENA</h1><p>Registrar tienda</p></header>
+<header class="encabezado"><h1>CONFISENA</h1><p>Registrar tienda</p></header>
 <main>
     <h2>Datos de la tienda</h2>
     <?php if ($mensaje !== ""): ?>
