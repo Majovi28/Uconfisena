@@ -12,35 +12,24 @@ $nombre = trim($_POST["nombre"] ?? $_POST["nombreRegistro"] ?? "");
 $apellido = trim($_POST["apellido"] ?? $_POST["apellidoRegistro"] ?? "");
 $tipoDocumento = trim($_POST["tipo_documento"] ?? "");
 $documento = trim($_POST["documento"] ?? $_POST["documentoRegistro"] ?? "");
-$aceptaTerminos = ($_POST["acepta_terminos"] ?? "0") === "1";
 $telefono = trim($_POST["telefono"] ?? $_POST["telefonoRegistro"] ?? "");
 $correo = strtolower(trim($_POST["correo"] ?? $_POST["correoRegistro"] ?? ""));
 $contrasena = $_POST["contrasena"] ?? $_POST["contrasenaRegistro"] ?? "";
+$aceptaTerminos = ($_POST["acepta_terminos"] ?? "0") === "1";
 
-if ($nombre === "" || $apellido === "" || $tipoDocumento === "" || $documento === "" || $telefono === "" || $correo === "" || $contrasena === "" || !$aceptaTerminos) {
+if ($nombre === "" || $apellido === "" || $tipoDocumento === "" || $documento === "" || $telefono === "" || $correo === "" || $contrasena === "") {
     echo json_encode(["success" => false, "mensaje" => "Todos los campos son obligatorios."]);
-    exit;
-}
-
-if (!in_array($tipoDocumento, ["CC", "TI", "CE", "PPT", "Pasaporte"], true)) {
-    echo json_encode(["success" => false, "mensaje" => "Selecciona un tipo de documento válido."]);
-    exit;
-}
-
-$tiposDocumentoPermitidos = ["Cédula de ciudadanía", "Tarjeta de identidad", "Cédula de extranjería", "Pasaporte"];
-if (!in_array($tipoDocumento, $tiposDocumentoPermitidos, true)) {
-    echo json_encode(["success" => false, "mensaje" => "Selecciona un tipo de documento válido."]);
-    exit;
-}
-
-if ($aceptaTerminos !== "1") {
-    echo json_encode(["success" => false, "mensaje" => "Debes aceptar los términos y condiciones para registrarte."]);
     exit;
 }
 
 $tiposDocumentoPermitidos = ["CC", "TI", "CE", "PPT", "Pasaporte"];
 if (!in_array($tipoDocumento, $tiposDocumentoPermitidos, true)) {
     echo json_encode(["success" => false, "mensaje" => "Selecciona un tipo de documento válido."]);
+    exit;
+}
+
+if (!$aceptaTerminos) {
+    echo json_encode(["success" => false, "mensaje" => "Debes aceptar los términos y condiciones para registrarte."]);
     exit;
 }
 
