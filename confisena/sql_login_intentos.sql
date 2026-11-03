@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS login_intentos (
+    correo VARCHAR(150) NOT NULL PRIMARY KEY,
+    intentos TINYINT UNSIGNED NOT NULL DEFAULT 0,
+    bloqueado_hasta DATETIME NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
