@@ -40,6 +40,7 @@ $nombre = htmlspecialchars(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Gestor - CONFISENA</title>
     <link rel="stylesheet" href="gestor.css">
+    <link rel="stylesheet" href="gestor-compartido.css">
     <style>
         .enlaces-gestor {
             display: grid;
