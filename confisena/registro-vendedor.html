@@ -3,110 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Vendedor - CONFISENA</title>
+    <title>Registrar vendedor - CONFISENA</title>
     <link rel="stylesheet" href="registro-vendedor.css">
 </head>
 <body>
 <header class="encabezado">
-    <div class="logo">
-        <h1>confisena</h1>
-        <p>Transformamos la forma de comprar</p>
-    </div>
-    <div class="usuario-header">
-        <span>Gestor</span>
-        <button id="volverGestor">Panel del gestor</button>
-    </div>
+    <div class="logo"><h1>confisena</h1><p>Transformamos la forma de comprar</p></div>
+    <div class="usuario-header"><span>Gestor</span><button id="volverGestor" type="button">Panel del gestor</button></div>
 </header>
-
 <main class="contenedor">
     <div class="ruta">Panel del Gestor / Registrar vendedor</div>
-
     <section class="encabezado-pagina">
         <h2>Registrar vendedor</h2>
-        <p>Registra un vendedor y asígnalo a una tienda registrada en CONFISENA.</p>
+        <p>Completa la información del colaborador y asígnalo a una de las tiendas registradas.</p>
     </section>
-
     <section class="tarjeta-formulario">
         <form id="formularioVendedor">
             <div class="seccion">
                 <h3>Información personal</h3>
-
-                <div class="grupo">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" placeholder="Ingresa el nombre completo" required>
-                </div>
-
+                <div class="grupo"><label for="nombre">Nombre y apellidos</label><input type="text" id="nombre" placeholder="Ej: Juan David Pérez" minlength="5" maxlength="100" autocomplete="name" required></div>
                 <div class="fila">
-                    <div class="grupo">
-                        <label for="documento">Documento de identidad</label>
-                        <input type="text" id="documento" placeholder="Ej: 1020304050" inputmode="numeric" minlength="6" maxlength="10" pattern="[0-9]{6,10}" required>
-                    </div>
-
-                    <div class="grupo">
-                        <label for="telefono">Teléfono</label>
-                        <input type="tel" id="telefono" placeholder="3001234567" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required>
-                    </div>
+                    <div class="grupo"><label for="documento">Documento de identidad</label><input type="text" id="documento" placeholder="Número de documento" inputmode="numeric" minlength="6" maxlength="10" pattern="[0-9]{6,10}" required></div>
+                    <div class="grupo"><label for="fechaNacimiento">Fecha de nacimiento</label><input type="date" id="fechaNacimiento" required></div>
                 </div>
-
-                <div class="grupo">
-                    <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" placeholder="vendedor@confisena.com" required>
+                <div class="grupo"><label for="direccion">Dirección de residencia</label><input type="text" id="direccion" placeholder="Ej: Calle 10 # 15-20, barrio" maxlength="150" autocomplete="street-address" required></div>
+                <div class="fila">
+                    <div class="grupo"><label for="telefono">Teléfono celular</label><input type="tel" id="telefono" placeholder="3001234567" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" autocomplete="tel" required></div>
+                    <div class="grupo"><label for="correo">Correo electrónico</label><input type="email" id="correo" placeholder="nombre@correo.com" maxlength="120" autocomplete="email" required></div>
                 </div>
             </div>
-
+            <div class="seccion">
+                <h3>Contacto de emergencia</h3>
+                <div class="fila">
+                    <div class="grupo"><label for="contactoEmergencia">Nombre del contacto</label><input type="text" id="contactoEmergencia" placeholder="Nombre de un familiar o contacto" minlength="5" maxlength="100" required></div>
+                    <div class="grupo"><label for="telefonoEmergencia">Teléfono de emergencia</label><input type="tel" id="telefonoEmergencia" placeholder="3001234567" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required></div>
+                </div>
+            </div>
             <div class="seccion">
                 <h3>Asignación de tienda</h3>
-                <div class="grupo">
-                    <label for="tienda">Tienda</label>
-                    <select id="tienda" required>
-                        <option value="">Selecciona una tienda</option>
-                    </select>
-                </div>
-                <p id="mensajeTiendas" class="mensaje-tiendas"></p>
+                <div class="grupo"><label for="tienda">Tienda donde trabajará</label><select id="tienda" required><option value="">Selecciona una tienda</option></select></div>
+                <p id="mensajeTiendas" class="mensaje-tiendas" aria-live="polite"></p>
+                <div class="grupo"><label for="fechaIngreso">Fecha de ingreso</label><input type="date" id="fechaIngreso" required></div>
             </div>
-
             <div class="seccion">
                 <h3>Datos de acceso</h3>
-                <div class="grupo">
-                    <label for="usuario">Nombre de usuario</label>
-                    <input type="text" id="usuario" placeholder="Ej: juan.perez" maxlength="30" required>
-                    <small>Este será el usuario que utilizará el vendedor para iniciar sesión.</small>
-                </div>
-
+                <div class="grupo"><label for="usuario">Nombre de usuario</label><input type="text" id="usuario" placeholder="Ej: juan.perez" minlength="4" maxlength="30" pattern="[a-zA-Z0-9._-]{4,30}" autocomplete="username" required><small>Usa de 4 a 30 caracteres: letras, números, punto, guion o guion bajo.</small></div>
                 <div class="fila">
-                    <div class="grupo">
-                        <label for="contrasena">Contraseña</label>
-                        <input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" minlength="8" required>
-                    </div>
-                    <div class="grupo">
-                        <label for="confirmarContrasena">Confirmar contraseña</label>
-                        <input type="password" id="confirmarContrasena" placeholder="Repite la contraseña" minlength="8" required>
-                    </div>
+                    <div class="grupo"><label for="contrasena">Contraseña</label><input type="password" id="contrasena" placeholder="Mínimo 8 caracteres" minlength="8" autocomplete="new-password" required></div>
+                    <div class="grupo"><label for="confirmarContrasena">Confirmar contraseña</label><input type="password" id="confirmarContrasena" placeholder="Repite la contraseña" minlength="8" autocomplete="new-password" required></div>
                 </div>
-
-                <div class="informacion-acceso">🔐 El vendedor utilizará estos datos para ingresar a la plataforma.</div>
+                <div class="informacion-acceso">La contraseña se utiliza para ingresar a CONFISENA. No la compartas con otras personas.</div>
             </div>
-
             <div class="seccion">
                 <h3>Rol del usuario</h3>
-                <div class="rol">
-                    <span>Vendedor</span>
-                    <small>Este rol se asignará automáticamente.</small>
-                </div>
+                <div class="rol"><span>Vendedor</span><small>El rol se asigna automáticamente.</small></div>
             </div>
-
-            <div class="acciones">
-                <button type="button" class="boton cancelar" id="cancelar">Cancelar</button>
-                <button type="submit" class="boton guardar">Registrar vendedor</button>
-            </div>
+            <div class="acciones"><button type="button" class="boton cancelar" id="cancelar">Cancelar</button><button type="submit" class="boton guardar">Registrar vendedor</button></div>
         </form>
     </section>
 </main>
-
-<footer>
-    <p>© 2026 CONFISENA - Transformamos la forma de comprar</p>
-</footer>
-
+<footer><p>© 2026 CONFISENA - Transformamos la forma de comprar</p></footer>
 <script src="registro-vendedor.js"></script>
 </body>
 </html>
