@@ -135,6 +135,11 @@ try {
                 p.id_pedido,
                 p.fecha_pedido,
                 p.fecha_entrega,
+                p.direccion,
+                p.barrio,
+                p.localidad,
+                p.horario_entrega,
+                p.indicaciones_entrega,
                 p.estado_pedido,
                 p.total,
                 u.nombre,
@@ -280,7 +285,10 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
                             <th>Productos</th>
                             <th>Cantidad</th>
                             <th>Fecha del pedido</th>
-                            <th>Entrega</th>
+                            <th>Fecha de entrega</th>
+                            <th>Dirección de entrega</th>
+                            <th>Horario</th>
+                            <th>Indicaciones</th>
                             <th>Total del pedido</th>
                             <th>Pago</th>
                             <th>Estado del pedido</th>
