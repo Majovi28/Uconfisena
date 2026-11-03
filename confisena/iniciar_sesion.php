@@ -105,16 +105,18 @@ try {
         $intentos = (int) $registroIntentos["intentos"] + 1;
 
         if ($intentos >= $maxIntentos) {
+            $fechaBloqueo = date("Y-m-d H:i:s", time() + ($minutosBloqueo * 60));
             $bloquear = $conexion->prepare(
                 "UPDATE login_intentos
                  SET intentos = :intentos,
-                     bloqueado_hasta = DATE_ADD(NOW(), INTERVAL :minutos MINUTE)
+                     bloqueado_hasta = :bloqueado_hasta
                  WHERE correo = :correo"
             );
-            $bloquear->bindValue(":intentos", $maxIntentos, PDO::PARAM_INT);
-            $bloquear->bindValue(":minutos", $minutosBloqueo, PDO::PARAM_INT);
-            $bloquear->bindValue(":correo", $correo, PDO::PARAM_STR);
-            $bloquear->execute();
+            $bloquear->execute([
+                "intentos" => $maxIntentos,
+                "bloqueado_hasta" => $fechaBloqueo,
+                "correo" => $correo
+            ]);
 
             $conexion->commit();
             responder(
