@@ -39,11 +39,22 @@
             <form class="formulario__register" id="formRegistro">
                 <h2>Registrarse</h2>
                 <input type="text" id="nombreCompletoRegistro" placeholder="Nombre y apellidos" autocomplete="name" required>
+                <select id="tipoDocumentoRegistro" name="tipo_documento" required>
+                    <option value="" selected disabled>Selecciona el tipo de documento</option>
+                    <option value="Cédula de ciudadanía">Cédula de ciudadanía</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula de extranjería">Cédula de extranjería</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                </select>
                 <input type="text" id="documentoRegistro" placeholder="Número de Documento" minlength="6" maxlength="10" pattern="[0-9]{6,10}" inputmode="numeric" required>
                 <input type="tel" id="telefonoRegistro" placeholder="Número de Teléfono" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required>
                 <input type="email" id="correoRegistro" placeholder="Correo Electrónico" autocomplete="email" required>
                 <input type="password" id="contrasenaRegistro" placeholder="Contraseña (mínimo 6 caracteres)" minlength="6" autocomplete="new-password" required>
                 <input type="password" id="confirmarContrasenaRegistro" placeholder="Confirmar Contraseña" minlength="6" autocomplete="new-password" required>
+                <label class="aceptar-terminos" for="aceptarTerminosRegistro">
+                    <input type="checkbox" id="aceptarTerminosRegistro" required>
+                    <span>Acepto los <a href="terminos.html" target="_blank" rel="noopener">términos y condiciones</a>.</span>
+                </label>
                 <button type="submit" id="botonRegistro">Registrarse</button>
                 <p id="mensajeRegistro" role="status" aria-live="polite"></p>
             </form>
@@ -119,8 +130,10 @@ document.addEventListener("DOMContentLoaded", () => {
         evento.preventDefault();
 
         const nombreCompleto = document.getElementById("nombreCompletoRegistro").value.trim();
+        const tipoDocumento = document.getElementById("tipoDocumentoRegistro").value;
         const documento = document.getElementById("documentoRegistro").value.trim();
         const telefono = document.getElementById("telefonoRegistro").value.trim();
+        const aceptaTerminos = document.getElementById("aceptarTerminosRegistro").checked;
         const correo = document.getElementById("correoRegistro").value.trim();
         const contrasena = document.getElementById("contrasenaRegistro").value;
         const confirmar = document.getElementById("confirmarContrasenaRegistro").value;
@@ -128,6 +141,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (partesNombre.length < 2) {
             mostrarMensaje(mensajeRegistro, "Escribe tu nombre y al menos un apellido.", true);
+            return;
+        }
+        if (!tipoDocumento) {
+            mostrarMensaje(mensajeRegistro, "Selecciona el tipo de documento.", true);
+            return;
+        }
+        if (!aceptaTerminos) {
+            mostrarMensaje(mensajeRegistro, "Debes aceptar los términos y condiciones para registrarte.", true);
             return;
         }
         if (!/^[0-9]{6,10}$/.test(documento)) {
@@ -156,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const respuesta = await fetch("registrar_usuario.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                body: new URLSearchParams({ nombre, apellido, documento, telefono, correo, contrasena }).toString()
+                body: new URLSearchParams({ nombre, apellido, tipo_documento: tipoDocumento, documento, telefono, correo, contrasena }).toString()
             });
             const texto = await respuesta.text();
             let resultado;
