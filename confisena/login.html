@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const respuesta = await fetch("registrar_usuario.php", {
                 method: "POST",
                 headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-                body: new URLSearchParams({ nombre, apellido, tipo_documento: tipoDocumento, documento, telefono, correo, contrasena }).toString()
+                body: new URLSearchParams({ nombre, apellido, tipo_documento: tipoDocumento, documento, telefono, correo, contrasena, acepta_terminos: aceptaTerminos ? "1" : "0" }).toString()
             });
             const texto = await respuesta.text();
             let resultado;
