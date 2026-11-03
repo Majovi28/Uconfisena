@@ -65,6 +65,30 @@ $correoUsuario = htmlspecialchars($_SESSION["correo_usuario"] ?? "", ENT_QUOTES,
                 <label for="telefono">Número de teléfono</label>
                 <input type="tel" id="telefono" placeholder="3001234567" minlength="10" maxlength="10" pattern="3[0-9]{9}" inputmode="numeric" required>
 
+                
+                <h4>Datos de entrega</h4>
+                <label for="barrio">Barrio</label>
+                <input type="text" id="barrio" maxlength="80" placeholder="Ej. Chapinero" required>
+
+                <label for="localidad">Localidad</label>
+                <input type="text" id="localidad" maxlength="80" placeholder="Ej. Teusaquillo" required>
+
+                <label for="direccion">Dirección de entrega</label>
+                <input type="text" id="direccion" maxlength="180" placeholder="Ej. Calle 45 # 12-30, apartamento 301" required>
+
+                <label for="fechaEntrega">Fecha de entrega</label>
+                <input type="date" id="fechaEntrega" required>
+
+                <label for="horarioEntrega">Horario de entrega</label>
+                <select id="horarioEntrega" required>
+                    <option value="">Selecciona un horario</option>
+                    <option value="Manana">Mañana (8:00 a. m. - 12:00 p. m.)</option>
+                    <option value="Tarde">Tarde (2:00 p. m. - 6:00 p. m.)</option>
+                </select>
+
+                <label for="indicacionesEntrega">Indicaciones adicionales (opcional)</label>
+                <textarea id="indicacionesEntrega" maxlength="250" rows="3" placeholder="Punto de referencia, indicaciones para llegar, etc."></textarea>
+
                 <label for="metodo">Método de pago</label>
                 <select id="metodo" required>
                     <option value="">Selecciona un método</option>
