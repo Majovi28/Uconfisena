@@ -93,6 +93,7 @@ $volver = $rol === "Gestor" ? "gestor.php" : "gerente.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar tienda - CONFISENA</title>
     <link rel="stylesheet" href="registro-tienda.css">
+    <link rel="stylesheet" href="gestor-compartido.css">
     <link rel="stylesheet" href="registro-db.css">
     
 </head>
