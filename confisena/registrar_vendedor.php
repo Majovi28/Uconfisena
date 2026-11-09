@@ -183,12 +183,22 @@ $volver = $rol === "Gestor" ? "gestor.php" : "gerente.php";
             </select>
 
             <label for="contrasena">Contraseña inicial</label>
-            <input id="contrasena" name="contrasena" type="password" minlength="6" autocomplete="new-password" required>
+            <div class="campo-contrasena" style="display:flex;gap:8px;align-items:center;"><input id="contrasena" name="contrasena" type="password" minlength="6" autocomplete="new-password" required style="flex:1;"><button type="button" id="alternarContrasena" aria-label="Mostrar contraseña" aria-pressed="false">Mostrar</button></div>
 
             <button type="submit">Registrar vendedor</button>
             <a class="enlace" href="<?= h($volver) ?>">Volver al panel</a>
         </form>
     <?php endif; ?>
 </main>
+<script>
+document.getElementById("alternarContrasena")?.addEventListener("click", function () {
+    const campo = document.getElementById("contrasena");
+    const mostrar = campo.type === "password";
+    campo.type = mostrar ? "text" : "password";
+    this.textContent = mostrar ? "Ocultar" : "Mostrar";
+    this.setAttribute("aria-label", mostrar ? "Ocultar contraseña" : "Mostrar contraseña");
+    this.setAttribute("aria-pressed", String(mostrar));
+});
+</script>
 </body>
 </html>
