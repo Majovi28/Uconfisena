@@ -943,3 +943,114 @@ select {
         gap: 8px;
     }
 }
+
+/* =====================================================
+   TEMA CONFISENA - USUARIOS Y VENDEDORES
+   Paleta: salvia, beige crema, café claro y grises cálidos
+   ===================================================== */
+:root {
+    --confisena-salvia: #B8D5B0;
+    --confisena-beige: #E8DCCB;
+    --confisena-cafe: #C6A88F;
+    --confisena-blanco: #FFFFFF;
+    --confisena-gris-calido: #EAEAE5;
+    --confisena-gris-oscuro: #4D5148;
+    --confisena-salvia-oscuro: #829D79;
+    --confisena-borde: #D9DED4;
+    --confisena-sombra: 0 10px 28px rgba(77, 81, 72, .09);
+}
+body {
+    background-color: var(--confisena-gris-calido);
+    color: var(--confisena-gris-oscuro);
+}
+header, .header, .encabezado {
+    background: var(--confisena-blanco);
+    color: var(--confisena-gris-oscuro);
+    border-bottom: 1px solid var(--confisena-borde);
+    box-shadow: 0 4px 18px rgba(77, 81, 72, .07);
+}
+header a, .header a, .encabezado nav a, nav a {
+    color: var(--confisena-gris-oscuro);
+}
+header a:hover, .header a:hover, .encabezado nav a:hover, nav a:hover {
+    color: var(--confisena-salvia-oscuro);
+}
+h1, h2, h3, .titulo h2, .titulo-seccion h2, .bienvenida h1 {
+    color: var(--confisena-gris-oscuro);
+}
+p, label, small, .descripcion, .ruta, .texto-pequeno {
+    color: var(--confisena-gris-oscuro);
+}
+button, .boton, .btn, .btn-primary, .enlace-accion, input[type="submit"] {
+    background: var(--confisena-salvia);
+    color: var(--confisena-gris-oscuro);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+button:hover, .boton:hover, .btn:hover, .btn-primary:hover,
+.enlace-accion:hover, input[type="submit"]:hover {
+    background: var(--confisena-salvia-oscuro);
+    color: var(--confisena-blanco);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(130, 157, 121, .2);
+}
+.btn-secondary, .boton-secundario, .boton-secundario a {
+    background: var(--confisena-beige);
+    color: var(--confisena-gris-oscuro);
+}
+.card, .tarjeta, .resumen, .formulario, .pedido, .apartado,
+.accion-vendedor, .mensaje-panel, .informacion-tienda, .dato,
+.producto-card, .producto, .contenedor-producto {
+    background: var(--confisena-blanco);
+    border: 1px solid var(--confisena-borde);
+    border-radius: 16px;
+    box-shadow: var(--confisena-sombra);
+}
+input:not([type="checkbox"]):not([type="radio"]),
+select, textarea {
+    border: 1px solid #D5D8D0;
+    border-radius: 9px;
+    background: var(--confisena-blanco);
+    color: var(--confisena-gris-oscuro);
+    padding: 11px 13px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+input:focus, select:focus, textarea:focus {
+    border-color: var(--confisena-salvia-oscuro);
+    box-shadow: 0 0 0 3px rgba(184, 213, 176, .35);
+}
+table th, thead th {
+    background: var(--confisena-beige);
+    color: var(--confisena-gris-oscuro);
+}
+table td, table th {
+    border-color: var(--confisena-gris-calido);
+}
+.estado, .estado-pendiente, .disponible {
+    background: #E5EFE1;
+    color: var(--confisena-gris-oscuro);
+    border-radius: 20px;
+}
+hr, .separador {
+    border-color: var(--confisena-borde);
+}
+footer {
+    background: transparent;
+    color: var(--confisena-gris-oscuro);
+}
+@media (max-width: 768px) {
+    header, .header, .encabezado {
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .contenedor, main {
+        width: min(94%, 1100px);
+    }
+}
