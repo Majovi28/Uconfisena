@@ -64,6 +64,16 @@
     </div>
 </main>
 
+<div class="notificacion-confisena" id="modalRegistroExitoso" role="dialog" aria-modal="true" aria-labelledby="tituloRegistroExitoso" aria-hidden="true">
+    <div class="notificacion-confisena__contenido">
+        <div class="notificacion-confisena__icono" aria-hidden="true">✓</div>
+        <p class="notificacion-confisena__marca">CONFISENA</p>
+        <h2 id="tituloRegistroExitoso">¡Registro exitoso!</h2>
+        <p>Tu cuenta ha sido creada correctamente. Ahora puedes iniciar sesión con tu correo y contraseña.</p>
+        <button type="button" id="cerrarModalRegistro">Iniciar sesión</button>
+    </div>
+</div>
+
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const formularioLogin = document.getElementById("formLogin");
@@ -128,6 +138,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    document.getElementById("cerrarModalRegistro").addEventListener("click", () => {
+        document.getElementById("modalRegistroExitoso").classList.remove("activo");
+        document.getElementById("modalRegistroExitoso").setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-abierto");
+        document.getElementById("show-login").checked = true;
+        document.getElementById("correo").focus();
+    });
+
     formularioRegistro.addEventListener("submit", async evento => {
         evento.preventDefault();
 
@@ -187,11 +205,13 @@ document.addEventListener("DOMContentLoaded", () => {
             catch { throw new Error("El servidor no devolvió una respuesta válida. Revisa registrar_usuario.php."); }
             if (!respuesta.ok || !resultado.success) throw new Error(resultado.mensaje || "No fue posible completar el registro.");
 
-            alert("¡Registro exitoso!\n\n" + resultado.mensaje + "\nAhora puedes iniciar sesión.");
             document.getElementById("correo").value = correo;
             document.getElementById("contrasena").value = "";
             formularioRegistro.reset();
-            document.getElementById("show-login").checked = true;
+            document.getElementById("modalRegistroExitoso").classList.add("activo");
+            document.getElementById("modalRegistroExitoso").setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-abierto");
+            document.getElementById("cerrarModalRegistro").focus();
         } catch (error) {
             mostrarMensaje(mensajeRegistro, error.message || "No fue posible completar el registro.", true);
         } finally {
