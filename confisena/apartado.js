@@ -75,11 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     obtener("abonoApartado").textContent = "$" + abono.toLocaleString("es-CO");
     obtener("saldoApartado").textContent = "$" + saldo.toLocaleString("es-CO");
 
-    const hoy = new Date();
-    const fechaMinima = hoy.getFullYear() + "-" +
-        String(hoy.getMonth() + 1).padStart(2, "0") + "-" +
-        String(hoy.getDate()).padStart(2, "0");
-    fechaEntrega.min = fechaMinima;
+    fechaEntrega.min = fechaHoraColombia().fecha;
 
     function actualizarMetodo() {
         datosTarjeta.style.display = metodo.value === "tarjeta" ? "block" : "none";
