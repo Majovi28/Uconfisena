@@ -50,6 +50,7 @@ th,td{text-align:left;padding:12px;border-bottom:1px solid #e1e6ed}
 th{background:#eaf0f8;color:#123563}
 a.boton{display:inline-block;padding:10px 15px;background:#123563;color:white;text-decoration:none;border-radius:6px;margin-bottom:15px}
 </style>
+    <link rel="stylesheet" href="gestor-compartido.css">
 </head>
 <body>
 <header><h1>CONFISENA</h1><p>Tiendas registradas</p></header>
