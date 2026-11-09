@@ -141,7 +141,7 @@ try {
                 p.horario_entrega,
                 p.indicaciones_entrega,
                 p.estado_pedido,
-                p.total,
+                COALESCE(d.total_tienda, 0) AS total,
                 u.nombre,
                 u.apellido,
                 u.correo,
@@ -160,8 +160,10 @@ try {
                         ORDER BY nombre_producto
                         SEPARATOR ', '
                     ) AS productos,
-                    SUM(cantidad) AS cantidad_total
+                    SUM(cantidad) AS cantidad_total,
+                    SUM(total) AS total_tienda
                 FROM detalle_pedido
+                WHERE id_tienda = :tienda_detalle
                 GROUP BY id_pedido
             ) d ON d.id_pedido = p.id_pedido
             LEFT JOIN (
@@ -179,10 +181,8 @@ try {
             WHERE EXISTS (
                 SELECT 1
                 FROM detalle_pedido dp
-                INNER JOIN inventario i
-                    ON i.id_producto = dp.id_producto
                 WHERE dp.id_pedido = p.id_pedido
-                  AND i.id_tienda = :tienda
+                  AND dp.id_tienda = :tienda
             )
             ORDER BY p.id_pedido DESC";
 
