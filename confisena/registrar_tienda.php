@@ -107,6 +107,8 @@ $volver = $rol === "Gestor" ? "gestor.php" : "gerente.php";
         .mensaje { padding:12px; background:#edf2f8; border-radius:6px; }
         .error { color:#a61b1b; }
     </style>
+
+    <link rel="stylesheet" href="gestor-compartido.css">
 </head>
 <body>
 <header><h1>CONFISENA</h1><p>Registrar tienda</p></header>
