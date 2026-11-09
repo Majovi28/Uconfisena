@@ -1,6 +1,12 @@
 <?php
 session_start();
 if (empty($_SESSION["id_usuario"])) { header("Location: login.html"); exit; }
+
+// Los vendedores administran únicamente los productos de su tienda; no usan el catálogo de clientes.
+if (($_SESSION["rol_usuario"] ?? "") === "Vendedor") {
+    header("Location: pedidos_tienda.php");
+    exit;
+}
 require_once __DIR__ . "/php/conexion.php";
 function e($v) { return htmlspecialchars((string)($v ?? ""), ENT_QUOTES, "UTF-8"); }
 function cop($v) { return "$" . number_format((float)$v, 0, ",", "."); }
