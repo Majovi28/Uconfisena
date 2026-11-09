@@ -97,8 +97,8 @@ try {
     $insertarPago = $conexion->prepare($sqlPago);
     $insertarPago->execute(["pedido" => $idPedido, "metodo" => $metodo, "monto" => $total]);
 
-    $actualizarInventario = $conexion->prepare("UPDATE inventario SET cantidad_disponible = cantidad_disponible - :cantidad, fecha_actualizacion = NOW() WHERE id_inventario = :id AND cantidad_disponible >= :cantidad");
-    $actualizarInventario->execute(["cantidad" => $cantidad, "id" => $idInventario]);
+    $actualizarInventario = $conexion->prepare("UPDATE inventario SET cantidad_disponible = cantidad_disponible - :cantidad_resta, fecha_actualizacion = NOW() WHERE id_inventario = :id AND cantidad_disponible >= :cantidad_minima");
+    $actualizarInventario->execute(["cantidad_resta" => $cantidad, "cantidad_minima" => $cantidad, "id" => $idInventario]);
     if ($actualizarInventario->rowCount() !== 1) throw new DomainException("El inventario cambió. Actualiza el catálogo e inténtalo de nuevo.");
     $conexion->commit();
 
