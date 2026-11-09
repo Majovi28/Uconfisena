@@ -76,11 +76,6 @@ try {
     if ($tieneIdTienda) {
         $condicionTienda = "a.id_tienda = :tienda";
         $parametrosTienda = ["tienda" => $idTienda];
-    } elseif ($tieneNombreTienda) {
-        $condicionTienda = "a.tienda_recogida = :nombre_tienda";
-        $parametrosTienda = [
-            "nombre_tienda" => $tienda["nombre_tienda"]
-        ];
     } else {
         $condicionTienda = "1 = 0";
         $parametrosTienda = [];
@@ -168,9 +163,7 @@ try {
         ? "a.talla"
         : "NULL AS talla";
 
-    $exprTienda = $tieneNombreTienda
-        ? "a.tienda_recogida"
-        : "t.nombre_tienda AS tienda_recogida";
+    $exprTienda = "t.nombre_tienda AS tienda_recogida";
 
     $exprMetodo = $tieneMetodo
         ? "a.metodo_pago"
@@ -208,15 +201,13 @@ try {
             LEFT JOIN usuario u
                 ON u.id_usuario = a.id_usuario
             LEFT JOIN tienda t
-                ON t.id_tienda = :id_tienda_consulta
+                ON t.id_tienda = a.id_tienda
             WHERE $condicionTienda
             ORDER BY a.id_apartado DESC";
 
     $consulta = $conexion->prepare($sql);
 
-    $parametrosConsulta = [
-        "id_tienda_consulta" => $idTienda
-    ];
+    $parametrosConsulta = [];
 
     $parametrosConsulta = array_merge(
         $parametrosConsulta,
