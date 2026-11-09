@@ -40,6 +40,7 @@ $nombre = htmlspecialchars(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Gestor - CONFISENA</title>
     <link rel="stylesheet" href="gestor.css">
+    <link rel="stylesheet" href="gestor-compartido.css">
     <style>
         .enlaces-gestor {
             display: grid;
@@ -92,7 +93,7 @@ $nombre = htmlspecialchars(
         }
     </style>
 </head>
-<body>
+<body class="panel-gestor">
 
 <header class="encabezado">
     <div class="logo">
@@ -105,13 +106,14 @@ $nombre = htmlspecialchars(
     </div>
 </header>
 
+<nav class="nav-panel" aria-label="Navegación del panel"><a href="gestor.php" class="activo">Inicio</a><a href="#acciones">Gestión</a><a href="#resumen">Resumen</a><a href="consultar_tiendas.php">Tiendas</a><a href="consultar_vendedores.php">Vendedores</a></nav>
 <main class="contenedor">
     <section class="bienvenida">
         <h2>Panel del Gestor</h2>
         <p>Administra el registro de tiendas y vendedores de CONFISENA.</p>
     </section>
 
-    <section class="estadisticas-gestor">
+    <section class="estadisticas-gestor" id="resumen">
         <div>
             <strong><?= $tiendas ?></strong>
             Tiendas registradas
@@ -122,7 +124,7 @@ $nombre = htmlspecialchars(
         </div>
     </section>
 
-    <section class="enlaces-gestor">
+    <section class="enlaces-gestor" id="acciones">
         <article class="tarjeta">
             <h3>Registrar tienda</h3>
             <p>Ingresa los datos de una nueva tienda autorizada.</p>
