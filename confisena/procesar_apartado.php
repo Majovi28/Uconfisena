@@ -46,13 +46,14 @@ try {
     $tallasDisponibles = preg_split("/[\s,;]+/", trim((string) $producto["tallas"]), -1, PREG_SPLIT_NO_EMPTY);
     if (!in_array($talla, $tallasDisponibles, true)) throw new DomainException("La talla seleccionada no está disponible.");
 
-    $consultaInventario = $conexion->prepare("SELECT i.id_inventario, i.id_tienda, i.cantidad_disponible FROM inventario i INNER JOIN tienda t ON t.id_tienda = i.id_tienda WHERE i.id_inventario = :inventario AND i.id_producto = :producto AND t.estado = 1 FOR UPDATE");
+    $consultaInventario = $conexion->prepare("SELECT i.id_inventario, i.id_tienda, i.cantidad_disponible, i.precio FROM inventario i INNER JOIN tienda t ON t.id_tienda = i.id_tienda WHERE i.id_inventario = :inventario AND i.id_producto = :producto AND t.estado = 1 FOR UPDATE");
     $consultaInventario->execute(["inventario" => $idInventario, "producto" => $idProducto]);
     $filaInventario = $consultaInventario->fetch(PDO::FETCH_ASSOC);
     if (!$filaInventario) throw new DomainException("La tienda seleccionada no corresponde a este producto.");
     if ((int)$filaInventario["cantidad_disponible"] < $cantidad) throw new DomainException("La tienda seleccionada no tiene existencias suficientes.");
 
-    $total = round((float) $producto["precio"] * $cantidad, 2);
+    $precioUnitario = (float)($filaInventario["precio"] ?? $producto["precio"]);
+    $total = round($precioUnitario * $cantidad, 2);
     $abono = round($total * 0.50, 2);
     $saldo = round($total - $abono, 2);
 
