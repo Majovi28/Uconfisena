@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const productoId = ficha.dataset.productId;
     const inventarioId = ficha.dataset.inventoryId;
+    const tiendaId = ficha.dataset.storeId;
     const productoNombre = ficha.dataset.productName;
     const precioUnitario = Number(ficha.dataset.productPrice);
     const cantidadMaxima = Math.max(1, Number(ficha.dataset.maxStock) || 10);
@@ -109,13 +110,14 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        if (!productoId || !inventarioId || !productoNombre || !Number.isFinite(precioUnitario)) {
+        if (!productoId || !inventarioId || !tiendaId || !productoNombre || !Number.isFinite(precioUnitario)) {
             alert("No fue posible identificar el producto. Regresa al catálogo.");
             return;
         }
 
         localStorage.setItem("id_producto", String(productoId));
         localStorage.setItem("id_inventario", String(inventarioId));
+        localStorage.setItem("id_tienda", String(tiendaId));
         localStorage.setItem("producto", productoNombre);
         localStorage.setItem("talla", tallaSeleccionada);
         localStorage.setItem("cantidad", String(cantidad));
