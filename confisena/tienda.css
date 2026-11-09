@@ -1,16 +1,16 @@
 :root {
-    --azul-oscuro: #172554;
-    --azul: #2563eb;
-    --azul-claro: #dbeafe;
+    --azul-oscuro: #4D5148;
+    --azul: #B8D5B0;
+    --azul-claro: #E8DCCB;
 
     --blanco: #ffffff;
 
-    --gris-claro: #f1f5f9;
-    --gris: #64748b;
-    --gris-oscuro: #334155;
+    --gris-claro: #EAEAE5;
+    --gris: #4D5148;
+    --gris-oscuro: #4D5148;
 
-    --borde: #e2e8f0;
-    --rojo: #dc2626;
+    --borde: #EAEAE5;
+    --rojo: #4D5148;
 }
 
 * {
@@ -99,7 +99,7 @@ body {
 
 .boton-cerrar:hover {
 
-    background: #e2e8f0;
+    background: #EAEAE5;
 
     color: var(--rojo);
 }
@@ -575,4 +575,18 @@ footer {
     .contenedor, main {
         width: min(94%, 1100px);
     }
+}
+
+/* Alias de variables originales al nuevo tema CONFISENA */
+:root {
+ --azul-oscuro: #4D5148;
+ --azul: #B8D5B0;
+ --azul-claro: #E8DCCB;
+ --blanco: #FFFFFF;
+ --gris-claro: #EAEAE5;
+ --gris: #4D5148;
+ --gris-oscuro: #4D5148;
+ --borde: #EAEAE5;
+ --verde: #829D79;
+ --verde-disponible: #829D79;
 }
