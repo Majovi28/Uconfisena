@@ -330,7 +330,7 @@ $nombreSeguro = escapar($nombre);
     </section>
 
     <!-- APARTADOS -->
-    <section class="seccion">
+    <section class="seccion" id="apartados">
         <h2>Últimos apartados</h2>
         <p class="subtitulo">
             Seguimiento de las reservas y sus saldos pendientes.
@@ -396,7 +396,7 @@ $nombreSeguro = escapar($nombre);
     </section>
 
     <!-- TIENDAS -->
-    <section class="seccion">
+    <section class="seccion" id="tiendas">
         <h2>Tiendas registradas</h2>
         <p class="subtitulo">
             Consulta las tiendas y la cantidad de vendedores asociados.
@@ -444,7 +444,7 @@ $nombreSeguro = escapar($nombre);
     </section>
 
     <!-- INVENTARIO -->
-    <section class="seccion">
+    <section class="seccion" id="inventario">
         <h2>Alertas de inventario</h2>
         <p class="subtitulo">
             Productos con cinco unidades disponibles o menos.
