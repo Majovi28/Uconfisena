@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const idProducto = Number(localStorage.getItem("id_producto")) || 0;
+    const idInventario = Number(localStorage.getItem("id_inventario")) || 0;
     const producto = localStorage.getItem("producto") || "";
     const talla = localStorage.getItem("talla") || "";
     const cantidad = Number(localStorage.getItem("cantidad")) || 1;
@@ -126,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!formulario.reportValidity()) return;
         if (!fechaYFranjaValidas()) return;
 
-        if (!idProducto || !talla || cantidad < 1) {
+        if (!idProducto || !idInventario || !talla || cantidad < 1) {
             mostrarMensaje("No se encontró el producto seleccionado. Regresa al catálogo y vuelve a seleccionarlo.", true);
             return;
         }
@@ -172,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const datos = new URLSearchParams({
             id_producto: String(idProducto),
+            id_inventario: String(idInventario),
             cantidad: String(cantidad),
             talla: talla,
             nombre: nombre,
