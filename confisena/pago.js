@@ -33,6 +33,10 @@ document.addEventListener("DOMContentLoaded", () => {
         mensaje.style.color = error ? "#b00020" : "#173b67";
     }
 
+    obtener("cerrarModalPedido").addEventListener("click", () => {
+        window.location.href = "mis_pedidos.php";
+    });
+
     const idProducto = Number(localStorage.getItem("id_producto")) || 0;
     const producto = localStorage.getItem("producto") || "";
     const talla = localStorage.getItem("talla") || "";
