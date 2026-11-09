@@ -52,11 +52,11 @@ try {
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f3f5f8;
-            color: #263449;
+            background: #EAEAE5;
+            color: #4D5148;
         }
         header {
-            background: #123563;
+            background: #4D5148;
             color: white;
             padding: 18px 6%;
             display: flex;
@@ -71,26 +71,26 @@ try {
         nav a { color: white; text-decoration: none; }
         nav a:hover { text-decoration: underline; }
         main { width: min(1050px, 92%); margin: 35px auto; }
-        h2 { color: #123563; }
+        h2 { color: #4D5148; }
         .pedido {
             background: white;
             border-radius: 12px;
             padding: 22px;
             margin: 18px 0;
             box-shadow: 0 3px 12px #152b4410;
-            border: 1px solid #e1e6ed;
+            border: 1px solid #EAEAE5;
         }
         .cabecera-pedido {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
-            border-bottom: 1px solid #e2e7ee;
+            border-bottom: 1px solid #EAEAE5;
             padding-bottom: 14px;
         }
         .estado {
-            background: #e8eef7;
-            color: #123563;
+            background: #E8DCCB;
+            color: #4D5148;
             border-radius: 20px;
             padding: 7px 12px;
             font-size: 14px;
@@ -98,9 +98,9 @@ try {
         }
         .detalle {
             padding: 12px 0;
-            border-bottom: 1px solid #edf0f4;
+            border-bottom: 1px solid #EAEAE5;
         }
-        .total { text-align: right; font-size: 20px; color: #123563; }
+        .total { text-align: right; font-size: 20px; color: #4D5148; }
         .mensaje {
             background: white;
             border-radius: 10px;
@@ -109,7 +109,7 @@ try {
         .error { color: #a61b1b; }
         .boton {
             display: inline-block;
-            background: #123563;
+            background: #4D5148;
             color: white;
             padding: 10px 16px;
             border-radius: 6px;
@@ -119,7 +119,7 @@ try {
         footer {
             text-align: center;
             padding: 22px;
-            color: #596579;
+            color: #4D5148;
         }
     
         /* Tema CONFISENA salvia y beige: vista de usuario/vendedor */
