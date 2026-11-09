@@ -170,17 +170,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.setItem("ultimoPedido", String(resultado.id_pedido));
 
-            alert(
-                "Pedido registrado correctamente.\n\n" +
-                "Número de pedido: " + resultado.id_pedido + "\n" +
-                "Producto: " + producto + "\n" +
-                "Talla: " + talla + "\n" +
-                "Cantidad: " + cantidad + "\n" +
-                "Total: $" + Number(resultado.total).toLocaleString("es-CO") +
-                "\n\nEstado del pago: " + resultado.estado
-            );
+            obtener("numeroPedidoExito").textContent = resultado.id_pedido;
+            obtener("productoPedidoExito").textContent = producto;
+            obtener("tallaPedidoExito").textContent = talla;
+            obtener("cantidadPedidoExito").textContent = String(cantidad);
+            obtener("totalPedidoExito").textContent = "$" + Number(resultado.total).toLocaleString("es-CO");
+            obtener("estadoPedidoExito").textContent = resultado.estado;
 
-            window.location.href = "mis_pedidos.php";
+            const modalExito = obtener("modalPedidoExito");
+            modalExito.classList.add("activo");
+            modalExito.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-abierto");
+            obtener("cerrarModalPedido").focus();
         } catch (error) {
             mostrarMensaje(error.message || "Ocurrió un error al registrar el pedido.", true);
             alert(error.message || "Ocurrió un error al registrar el pedido.");
