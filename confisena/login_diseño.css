@@ -24,7 +24,7 @@ main { width: 100%; padding: 20px; margin: auto; margin-top: 100px; }
 .caja__trasera {
     width: 100%; padding: 10px 20px; display: flex; justify-content: center;
     -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
-    background-color: #123B63; transition: height 500ms ease, min-height 500ms ease;
+    background-color: #4D5148; transition: height 500ms ease, min-height 500ms ease;
     height: 400px;
 }
 
@@ -38,7 +38,7 @@ main { width: 100%; padding: 20px; margin: auto; margin-top: 100px; }
     background: transparent; font-weight: 600; cursor: pointer; color: white;
     display: inline-block; transition: all 300ms; border-radius: 7px;
 }
-.caja__trasera .btn_disfrazado:hover { background: #fff; color: #123B63; transform: translateY(-5px); }
+.caja__trasera .btn_disfrazado:hover { background: #fff; color: #4D5148; transform: translateY(-5px); }
 
 button a { color: inherit; text-decoration: none; display: inline-block; width: 100%; height: 100%; }
 
@@ -49,39 +49,39 @@ button a { color: inherit; text-decoration: none; display: inline-block; width: 
 
 .contenedor__login-register form {
     width: 100%; padding: 50px 20px; background: white; border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(18, 59, 99, 0.18); border-top: 4px solid #C9A227;
+    box-shadow: 0 15px 35px rgba(18, 59, 99, 0.18); border-top: 4px solid #C6A88F;
 }
 
-.contenedor__login-register form h2 { font-size: 30px; text-align: center; margin-bottom: 20px; color: #123B63; }
+.contenedor__login-register form h2 { font-size: 30px; text-align: center; margin-bottom: 20px; color: #4D5148; }
 
 .contenedor__login-register form input {
-    width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #D6BFAE;
-    border-radius: 8px; background: #F8F2EC; font-size: 16px; outline: none;
+    width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #C6A88F;
+    border-radius: 8px; background: #E8DCCB; font-size: 16px; outline: none;
 }
 .contenedor__login-register form input:focus,
-.contenedor__login-register form select:focus { border-color: #C9A227; box-shadow: 0 0 0 3px rgba(201,162,39,.12); }
+.contenedor__login-register form select:focus { border-color: #C6A88F; box-shadow: 0 0 0 3px rgba(201,162,39,.12); }
 
 .contenedor__login-register form select {
-    width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #D6BFAE;
-    border-radius: 8px; background: #F8F2EC; color: #123B63; font-size: 16px;
+    width: 100%; margin-top: 20px; padding: 12px; border: 1px solid #C6A88F;
+    border-radius: 8px; background: #E8DCCB; color: #4D5148; font-size: 16px;
     outline: none; cursor: pointer;
 }
 
 .aceptar-terminos {
     display: flex; align-items: flex-start; gap: 9px; margin-top: 18px;
-    color: #123B63; font-size: 13px; line-height: 1.5; cursor: pointer;
+    color: #4D5148; font-size: 13px; line-height: 1.5; cursor: pointer;
 }
 .contenedor__login-register form .aceptar-terminos input {
     width: 17px; height: 17px; margin: 2px 0 0; flex: 0 0 17px;
-    accent-color: #1976D2; cursor: pointer;
+    accent-color: #B8D5B0; cursor: pointer;
 }
 
 .contenedor__login-register form button {
     padding: 11px 40px; margin-top: 40px; border: none; border-radius: 8px;
-    font-size: 14px; background: #1976D2; font-weight: 600; cursor: pointer;
+    font-size: 14px; background: #B8D5B0; font-weight: 600; cursor: pointer;
     color: white; outline: none; transition: .3s;
 }
-.contenedor__login-register form button:hover { background: #123B63; transform: translateY(-2px); }
+.contenedor__login-register form button:hover { background: #4D5148; transform: translateY(-2px); }
 
 #show-register:checked~.contenedor__login-register { left: 410px; }
 #show-register:checked~.contenedor__login-register .formulario__login { display: none; }
@@ -124,7 +124,7 @@ body.modal-abierto { overflow: hidden; }
 .notificacion-confisena.activo { opacity: 1; visibility: visible; }
 .notificacion-confisena__contenido {
     width: 100%; max-width: 430px; padding: 32px;
-    border: 1px solid #D6BFAE; border-top: 5px solid #C9A227;
+    border: 1px solid #C6A88F; border-top: 5px solid #C6A88F;
     border-radius: 18px; background: #fff; text-align: center;
     box-shadow: 0 22px 60px rgba(0,0,0,.28);
     transform: translateY(15px); transition: transform .25s ease;
@@ -133,26 +133,26 @@ body.modal-abierto { overflow: hidden; }
 .notificacion-confisena__icono {
     display: flex; align-items: center; justify-content: center;
     width: 58px; height: 58px; margin: 0 auto 14px;
-    border-radius: 50%; background: #E8D8C8; color: #123B63;
+    border-radius: 50%; background: #E8DCCB; color: #4D5148;
     font-size: 34px; font-weight: bold;
 }
 .notificacion-confisena__marca {
-    margin-bottom: 6px; color: #C9A227; font-size: 12px;
+    margin-bottom: 6px; color: #C6A88F; font-size: 12px;
     font-weight: 800; letter-spacing: 2px;
 }
 .notificacion-confisena__contenido h2 {
-    margin-bottom: 10px; color: #123B63; font-size: 25px;
+    margin-bottom: 10px; color: #4D5148; font-size: 25px;
 }
 .notificacion-confisena__contenido p:not(.notificacion-confisena__marca) {
-    color: #64748b; font-size: 14px; line-height: 1.6;
+    color: #4D5148; font-size: 14px; line-height: 1.6;
 }
 .notificacion-confisena__contenido button {
     width: 100%; margin-top: 22px; padding: 13px 18px;
-    border: 0; border-radius: 9px; background: #1976D2;
+    border: 0; border-radius: 9px; background: #B8D5B0;
     color: #fff; font-size: 15px; font-weight: bold; cursor: pointer;
     transition: background .2s ease;
 }
-.notificacion-confisena__contenido button:hover { background: #123B63; }
+.notificacion-confisena__contenido button:hover { background: #4D5148; }
 @media (max-width: 480px) {
     .notificacion-confisena__contenido { padding: 25px 20px; }
 }
@@ -267,4 +267,18 @@ footer {
     .contenedor, main {
         width: min(94%, 1100px);
     }
+}
+
+/* Alias de variables originales al nuevo tema CONFISENA */
+:root {
+ --azul-oscuro: #4D5148;
+ --azul: #B8D5B0;
+ --azul-claro: #E8DCCB;
+ --blanco: #FFFFFF;
+ --gris-claro: #EAEAE5;
+ --gris: #4D5148;
+ --gris-oscuro: #4D5148;
+ --borde: #EAEAE5;
+ --verde: #829D79;
+ --verde-disponible: #829D79;
 }
