@@ -8,6 +8,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const cvv = obtener("cvv");
     const vencimiento = obtener("vencimiento");
     const fechaEntrega = obtener("fechaEntrega");
+    function fechaHoraColombia() {
+        const partes = new Intl.DateTimeFormat("en-CA", {
+            timeZone: "America/Bogota",
+            year: "numeric", month: "2-digit", day: "2-digit",
+            hour: "2-digit", minute: "2-digit", hourCycle: "h23"
+        }).formatToParts(new Date());
+        const dato = Object.fromEntries(partes.map(p => [p.type, p.value]));
+        return { fecha: `${dato.year}-${dato.month}-${dato.day}`, hora: Number(dato.hour), minuto: Number(dato.minute) };
+    }
+
+    function fechaYFranjaValidas() {
+        const actual = fechaHoraColombia();
+        const horario = obtener("horarioEntrega").value;
+        const fecha = fechaEntrega.value;
+        if (!fecha || fecha < actual.fecha) {
+            mostrarErrorFecha("Selecciona hoy o una fecha posterior.");
+            return false;
+        }
+        if (fecha === actual.fecha) {
+            const inicio = horario === "Manana" ? 8 : horario === "Tarde" ? 14 : null;
+            if (inicio === null || actual.hora * 60 + actual.minuto >= inicio * 60) {
+                mostrarErrorFecha("La franja seleccionada ya comenzó. Elige otra franja o una fecha posterior.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function mostrarErrorFecha(texto) {
+        const campo = obtener("horarioEntrega");
+        campo.setCustomValidity(texto);
+        campo.reportValidity();
+        campo.setCustomValidity("");
+    }
+
+    fechaEntrega.addEventListener("change", () => {
+        if (fechaEntrega.value) fechaYFranjaValidas();
+    });
+    obtener("horarioEntrega").addEventListener("change", () => {
+        if (fechaEntrega.value) fechaYFranjaValidas();
+    });
+
 
     if (!formulario || !metodo || !datosTarjeta) {
         alert("No se encontró el formulario. Revisa apartado.php.");
@@ -77,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
         evento.preventDefault();
 
         if (!formulario.reportValidity()) return;
+        if (!fechaYFranjaValidas()) return;
 
         if (!idProducto || !talla || cantidad < 1) {
             alert("No se encontró el producto seleccionado. Regresa al catálogo y vuelve a seleccionarlo.");
