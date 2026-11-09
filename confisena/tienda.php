@@ -101,18 +101,18 @@ $nombreSeguro = escaparPanel($nombreVendedor);
 
         .accion-vendedor {
             background: #fff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #EAEAE5;
             border-radius: 12px;
             padding: 24px;
         }
 
         .accion-vendedor h3 {
-            color: #172554;
+            color: #4D5148;
             margin-bottom: 10px;
         }
 
         .accion-vendedor p {
-            color: #64748b;
+            color: #4D5148;
             line-height: 1.5;
             min-height: 62px;
             margin-bottom: 15px;
@@ -120,7 +120,7 @@ $nombreSeguro = escaparPanel($nombreVendedor);
 
         .enlace-accion {
             display: inline-block;
-            background: #2563eb;
+            background: #B8D5B0;
             color: #fff;
             text-decoration: none;
             padding: 11px 15px;
@@ -128,12 +128,12 @@ $nombreSeguro = escaparPanel($nombreVendedor);
         }
 
         .enlace-accion:hover {
-            background: #172554;
+            background: #4D5148;
         }
 
         .mensaje-panel {
             background: #fff;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #EAEAE5;
             border-radius: 10px;
             padding: 18px;
             margin: 20px 0;
@@ -306,7 +306,7 @@ $nombreSeguro = escaparPanel($nombreVendedor);
     <?php endif; ?>
 </main>
 
-<footer style="text-align:center;padding:25px;color:#64748b;">
+<footer style="text-align:center;padding:25px;color:#4D5148;">
     © 2026 CONFISENA - Transformamos la forma de comprar
 </footer>
 
