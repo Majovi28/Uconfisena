@@ -77,8 +77,8 @@ try {
 
     $idApartado = (int) $conexion->lastInsertId();
 
-    $actualizar = $conexion->prepare("UPDATE inventario SET cantidad_disponible = cantidad_disponible - :cantidad, fecha_actualizacion = NOW() WHERE id_inventario = :id AND cantidad_disponible >= :cantidad");
-    $actualizar->execute(["cantidad" => $cantidad, "id" => $idInventario]);
+    $actualizar = $conexion->prepare("UPDATE inventario SET cantidad_disponible = cantidad_disponible - :cantidad_resta, fecha_actualizacion = NOW() WHERE id_inventario = :id AND cantidad_disponible >= :cantidad_minima");
+    $actualizar->execute(["cantidad_resta" => $cantidad, "cantidad_minima" => $cantidad, "id" => $idInventario]);
     if ($actualizar->rowCount() !== 1) throw new DomainException("El inventario cambió. Actualiza el catálogo e inténtalo de nuevo.");
 
     $conexion->commit();
