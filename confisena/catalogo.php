@@ -50,7 +50,16 @@ try {
 <title>Catálogo | CONFISENA</title><link rel="stylesheet" href="stylecatalogo.css">
 <style>
 .tienda-producto{margin:10px 0;color:#4D5148}.selector-tienda{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;margin:6px 0 12px}
-.producto-card .producto-contenido{height:100%;display:flex;flex-direction:column}.producto-botones{margin-top:auto}
+.producto-card .producto-contenido{height:100%;display:flex;flex-direction:column;overflow:visible}
+.producto-botones{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:9px!important;width:100%;margin-top:18px!important;position:relative;z-index:2;visibility:visible!important;opacity:1!important}
+.producto-botones .btn{display:flex!important;align-items:center;justify-content:center;width:100%;min-height:44px;height:auto;padding:12px 16px;box-sizing:border-box;visibility:visible!important;opacity:1!important;text-decoration:none!important;font-size:14px;font-weight:700;border-radius:9px;cursor:pointer}
+.producto-botones .btn.detalles{background:#E8DCCB!important;color:#4D5148!important;border:1px solid #C6A88F!important}
+.producto-botones .btn.comprar{background:#B8D5B0!important;color:#344033!important;border:1px solid #91B58A!important}
+.producto-botones .btn.apartar{background:#FFFFFF!important;color:#4D5148!important;border:1px solid #C6A88F!important}
+.producto-botones .btn[aria-disabled="true"]{opacity:.5!important;cursor:not-allowed!important;pointer-events:none!important}
+.producto-card{height:auto!important;min-height:0!important;overflow:visible!important}
+.producto-card .producto-contenido{height:auto!important;min-height:0!important}
+
 .producto-card[hidden]{display:none!important}
 </style></head><body>
 <header class="header"><div class="contenedor header-contenido">
