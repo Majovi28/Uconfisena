@@ -69,7 +69,7 @@ try {
 <?php elseif (!$productos): ?><p>Aún no hay productos registrados en el inventario de las tiendas.</p>
 <?php else: ?><div class="productos-grid" id="productosGrid">
 <?php foreach ($productos as $p): $id=(int)$p["id_producto"]; $nombre=(string)$p["nombre_producto"]; $tiendasJson=json_encode(array_column($p["tiendas"],"nombre_tienda"),JSON_UNESCAPED_UNICODE|JSON_HEX_APOS|JSON_HEX_QUOT); $primera=$p["tiendas"][0]; $stock=(int)$primera["cantidad_disponible"]; $tallas=preg_split("/[\\s,;]+/",trim((string)$p["tallas"]),-1,PREG_SPLIT_NO_EMPTY); ?>
-<article class="producto-card" data-nombre="<?= e($nombre) ?>" data-tiendas="<?= e(implode(" ",array_column($p["tiendas"],"nombre_tienda"))) ?>" data-precio="<?= (float)$primera["precio"] ?>">
+<article class="producto-card" data-product-id="<?= $id ?>" data-nombre="<?= e($nombre) ?>" data-tiendas="<?= e(implode(" ",array_column($p["tiendas"],"nombre_tienda"))) ?>" data-precio="<?= (float)$primera["precio"] ?>">
 <div class="producto-imagen"><span class="etiqueta-producto <?= $stock<=0 ? "agotado" : "" ?>"><?= $stock<=0 ? "Agotado" : "Disponible" ?></span><div class="imagen-placeholder"></div></div>
 <div class="producto-contenido"><span class="categoria-producto"><?= e($p["nombre_categoria"] ?: "Sin categoría") ?></span><h3><?= e($nombre) ?></h3>
 <p class="descripcion"><?= e($p["descripcion"]) ?></p>
@@ -101,7 +101,7 @@ document.querySelectorAll(".producto-card").forEach(card=>{
   [comprar,apartar].forEach(a=>{a.style.pointerEvents=stock>0?"":"none";a.style.opacity=stock>0?"":"0.5";a.setAttribute("aria-disabled",stock>0?"false":"true");});
  }
  selector.addEventListener("change",actualizar);actualizar();
- [comprar,apartar].forEach(a=>a.addEventListener("click",()=>{const op=selector.selectedOptions[0];if(Number(op.dataset.stock)<=0)return;guardarProducto(id,op.value,card.dataset.nombre,Number(op.dataset.precio));}));
+ [comprar,apartar].forEach(a=>a.addEventListener("click",event=>{const op=selector.selectedOptions[0];if(Number(op.dataset.stock)<=0){event.preventDefault();return;}guardarProducto(id,op.value,card.dataset.nombre,Number(op.dataset.precio));}));
 });
 const buscar=document.getElementById("buscar"),ordenar=document.getElementById("ordenar"),grid=document.getElementById("productosGrid"),total=document.getElementById("totalProductos"),sin=document.getElementById("sinResultados");
 function filtrar(){if(!grid)return;const q=buscar.value.trim().toLocaleLowerCase("es"),cards=[...grid.querySelectorAll(".producto-card")];cards.forEach(card=>{card.hidden=!(card.dataset.nombre.toLocaleLowerCase("es").includes(q)||card.dataset.tiendas.toLocaleLowerCase("es").includes(q));});const visibles=cards.filter(x=>!x.hidden);if(ordenar.value==="menor")visibles.sort((a,b)=>+a.dataset.precio- +b.dataset.precio);if(ordenar.value==="mayor")visibles.sort((a,b)=>+b.dataset.precio- +a.dataset.precio);if(ordenar.value==="nombre")visibles.sort((a,b)=>a.dataset.nombre.localeCompare(b.dataset.nombre,"es"));visibles.forEach(x=>grid.appendChild(x));total.textContent=visibles.length+" productos";sin.hidden=visibles.length!==0;}
