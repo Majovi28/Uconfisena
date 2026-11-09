@@ -120,6 +120,25 @@ $correoUsuario = htmlspecialchars($_SESSION["correo_usuario"] ?? "", ENT_QUOTES,
     </div>
 </main>
 
+<div class="modal-exito" id="modalPedidoExito" role="dialog" aria-modal="true" aria-labelledby="tituloPedidoExito" aria-hidden="true">
+    <div class="modal-exito__contenido">
+        <div class="modal-exito__icono" aria-hidden="true">✓</div>
+        <p class="modal-exito__etiqueta">CONFISENA</p>
+        <h2 id="tituloPedidoExito">¡Pedido registrado!</h2>
+        <p class="modal-exito__descripcion">Tu compra se registró correctamente. Aquí tienes el resumen:</p>
+        <div class="modal-exito__resumen">
+            <div><span>Número de pedido</span><strong id="numeroPedidoExito">-</strong></div>
+            <div><span>Producto</span><strong id="productoPedidoExito">-</strong></div>
+            <div><span>Talla</span><strong id="tallaPedidoExito">-</strong></div>
+            <div><span>Cantidad</span><strong id="cantidadPedidoExito">-</strong></div>
+            <div class="modal-exito__total"><span>Total</span><strong id="totalPedidoExito">-</strong></div>
+            <div><span>Estado del pago</span><strong class="estado-pendiente" id="estadoPedidoExito">Pendiente</strong></div>
+        </div>
+        <p class="modal-exito__nota">Puedes consultar el estado de tu compra en Mis pedidos.</p>
+        <button type="button" class="modal-exito__boton" id="cerrarModalPedido">Ver mis pedidos</button>
+    </div>
+</div>
+
 <footer><p>© 2026 CONFISENA - Transformamos la forma de comprar</p></footer>
 <script src="pago.js"></script>
 </body>
