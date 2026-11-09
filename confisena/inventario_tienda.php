@@ -294,7 +294,7 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
 
         .panel-inventario {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #EAEAE5;
             border-radius: 12px;
             padding: 22px;
             margin-bottom: 24px;
@@ -302,12 +302,12 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
 
         .panel-inventario h1,
         .panel-inventario h2 {
-            color: #172554;
+            color: #4D5148;
             margin-bottom: 12px;
         }
 
         .panel-inventario p {
-            color: #64748b;
+            color: #4D5148;
             line-height: 1.5;
         }
 
@@ -325,12 +325,12 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
         th, td {
             text-align: left;
             padding: 12px;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #EAEAE5;
         }
 
         th {
-            background: #dbeafe;
-            color: #172554;
+            background: #E8DCCB;
+            color: #4D5148;
         }
 
         .campo-cantidad {
@@ -350,7 +350,7 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
 
         .boton-inventario {
             border: 0;
-            background: #2563eb;
+            background: #B8D5B0;
             color: white;
             border-radius: 6px;
             padding: 10px 14px;
@@ -361,7 +361,7 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
 
         .mensaje-inventario {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #EAEAE5;
             padding: 14px;
             border-radius: 8px;
             margin-bottom: 20px;
@@ -588,7 +588,7 @@ $nombreTienda = escapar($tienda["nombre_tienda"]);
 
 </main>
 
-<footer style="text-align:center;padding:25px;color:#64748b;">
+<footer style="text-align:center;padding:25px;color:#4D5148;">
     © 2026 CONFISENA - Transformamos la forma de comprar
 </footer>
 
