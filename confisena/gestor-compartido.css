@@ -107,3 +107,33 @@ body.panel-admin{margin:0!important;min-height:100vh;display:flex;background:#F5
 .panel-admin footer.pie-panel{background:#29233D!important;color:#E9E1F2!important}
 .panel-admin .barra-superior .saludo strong{color:#29233D!important}
 .panel-admin .barra-superior .saludo span{color:#716B7C!important}
+
+
+/* Identidad compartida para todas las pantallas de Gestor y Gerencia */
+body:not(.panel-admin){background:var(--admin-bg)!important;color:var(--admin-text)!important;font-family:Arial,Helvetica,sans-serif}
+body:not(.panel-admin)>header,body:not(.panel-admin)>.encabezado{background:var(--admin-dark)!important;color:#fff!important;border:0!important;border-bottom:4px solid var(--admin-purple)!important;box-shadow:0 4px 18px rgba(41,35,61,.12)!important;padding:20px 5%!important}
+body:not(.panel-admin)>header h1,body:not(.panel-admin)>.encabezado h1,body:not(.panel-admin)>header p,body:not(.panel-admin)>.encabezado p{color:#fff!important}
+body:not(.panel-admin)>main,body:not(.panel-admin)>.contenedor{color:var(--admin-text)!important}
+body:not(.panel-admin) h1,body:not(.panel-admin) h2,body:not(.panel-admin) h3{color:var(--admin-dark)!important}
+body:not(.panel-admin) .contenedor,body:not(.panel-admin) main{max-width:1240px!important}
+body:not(.panel-admin) .titulo-pagina,body:not(.panel-admin) .encabezado-pagina,body:not(.panel-admin) .ruta{margin-bottom:22px}
+body:not(.panel-admin) .ruta{color:var(--admin-muted)!important}
+body:not(.panel-admin) .tabla,body:not(.panel-admin) .contenedor-tabla,body:not(.panel-admin) .tabla-contenedor,body:not(.panel-admin) .tarjeta-tabla,body:not(.panel-admin) .resumen,body:not(.panel-admin) .filtros,body:not(.panel-admin) .herramientas,body:not(.panel-admin) main>section,body:not(.panel-admin) main>.panel{background:#fff!important;border:1px solid var(--admin-border)!important;border-radius:15px!important;box-shadow:var(--admin-shadow)!important}
+body:not(.panel-admin) .tabla,body:not(.panel-admin) .contenedor-tabla,body:not(.panel-admin) .tabla-contenedor,body:not(.panel-admin) .tarjeta-tabla{padding:18px!important}
+body:not(.panel-admin) .resumen,body:not(.panel-admin) .filtros,body:not(.panel-admin) .herramientas{padding:18px!important;gap:16px}
+body:not(.panel-admin) .tarjeta-resumen{background:var(--admin-soft)!important;border:1px solid var(--admin-border)!important;border-radius:12px!important;padding:18px!important}
+body:not(.panel-admin) .tarjeta-resumen strong{color:var(--admin-purple)!important}
+body:not(.panel-admin) table{width:100%;border-collapse:collapse}
+body:not(.panel-admin) thead th,body:not(.panel-admin) th{background:var(--admin-soft)!important;color:var(--admin-dark)!important;border-color:var(--admin-border)!important}
+body:not(.panel-admin) td,body:not(.panel-admin) th{padding:12px!important;border-bottom:1px solid var(--admin-border)!important}
+body:not(.panel-admin) tbody tr:hover{background:#FAF8FC!important}
+body:not(.panel-admin) a.boton,body:not(.panel-admin) .boton,body:not(.panel-admin) button,body:not(.panel-admin) .boton-principal,body:not(.panel-admin) .boton-volver,body:not(.panel-admin) .enlace{background:var(--admin-purple)!important;color:#fff!important;border:1px solid var(--admin-purple)!important;border-radius:9px!important;padding:10px 16px!important;text-decoration:none!important;font-weight:700;cursor:pointer}
+body:not(.panel-admin) a.boton:hover,body:not(.panel-admin) .boton:hover,body:not(.panel-admin) button:hover,body:not(.panel-admin) .boton-principal:hover,body:not(.panel-admin) .boton-volver:hover,body:not(.panel-admin) .enlace:hover{background:var(--admin-dark)!important;border-color:var(--admin-dark)!important}
+body:not(.panel-admin) input,body:not(.panel-admin) select,body:not(.panel-admin) textarea{width:auto;max-width:100%;background:#fff!important;color:var(--admin-text)!important;border:1px solid var(--admin-border)!important;border-radius:8px!important;padding:10px 12px!important}
+body:not(.panel-admin) input:focus,body:not(.panel-admin) select:focus,body:not(.panel-admin) textarea:focus{outline:none!important;border-color:var(--admin-purple)!important;box-shadow:0 0 0 3px rgba(121,86,165,.15)!important}
+body:not(.panel-admin) label{color:var(--admin-dark)!important;font-weight:700}
+body:not(.panel-admin) .mensaje,body:not(.panel-admin) .alerta,body:not(.panel-admin) .aviso{border-radius:10px!important}
+body:not(.panel-admin) .error{color:#963F4A!important}
+body:not(.panel-admin) .exito,body:not(.panel-admin) .ok{color:#326345!important}
+body:not(.panel-admin) footer{background:var(--admin-dark)!important;color:#E9E1F2!important}
+@media(max-width:700px){body:not(.panel-admin)>header,body:not(.panel-admin)>.encabezado{padding:16px 4%!important;gap:12px;flex-wrap:wrap}body:not(.panel-admin)>main,body:not(.panel-admin)>.contenedor{width:92%!important;margin:22px auto!important}body:not(.panel-admin) .resumen,body:not(.panel-admin) .herramientas,body:not(.panel-admin) .filtros{grid-template-columns:1fr!important;display:grid!important}body:not(.panel-admin) .tabla,body:not(.panel-admin) .contenedor-tabla,body:not(.panel-admin) .tabla-contenedor{overflow-x:auto!important}}
