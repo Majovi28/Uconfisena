@@ -143,14 +143,6 @@ $correoUsuario = htmlspecialchars(
                 <label for="indicacionesEntrega">Indicaciones adicionales (opcional)</label>
                 <textarea id="indicacionesEntrega" maxlength="250" rows="3" placeholder="Punto de referencia, indicaciones para llegar, etc."></textarea>
 
-                <label for="tienda">Tienda encargada de preparar el pedido</label>
-                <select id="tienda" required>
-                    <option value="">Selecciona una tienda</option>
-                    <option value="Tienda CONFISENA Centro">CONFISENA - Centro</option>
-                    <option value="Tienda CONFISENA Chapinero">CONFISENA - Chapinero</option>
-                    <option value="Tienda CONFISENA Kennedy">CONFISENA - Kennedy</option>
-                </select>
-
                 <label for="fechaEntrega">Fecha de entrega</label>
                 <input type="date" id="fechaEntrega" required>
 
