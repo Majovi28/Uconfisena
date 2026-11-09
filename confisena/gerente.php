@@ -211,7 +211,8 @@ $nombreSeguro = escapar($nombre);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Supervisión general - CONFISENA</title>
+    <title>Panel del Gerente General - CONFISENA</title>
+    <link rel="stylesheet" href="gestor-compartido.css">
 
     <style>
         * {
@@ -386,7 +387,7 @@ $nombreSeguro = escapar($nombre);
     </style>
 </head>
 
-<body>
+<body class="panel-gerente">
 
 <header>
     <div>
@@ -479,6 +480,7 @@ $nombreSeguro = escapar($nombre);
     </section>
 
     <!-- COMPRAS -->
+    <div id="pedidos">
     <section class="seccion">
         <h2>Últimos pedidos</h2>
         <p class="subtitulo">
@@ -543,7 +545,9 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
+    </div>
     <!-- APARTADOS -->
+    <div id="apartados">
     <section class="seccion">
         <h2>Últimos apartados</h2>
         <p class="subtitulo">
@@ -609,7 +613,9 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
+    </div>
     <!-- TIENDAS -->
+    <div id="tiendas">
     <section class="seccion">
         <h2>Tiendas registradas</h2>
         <p class="subtitulo">
@@ -657,7 +663,9 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
+    </div>
     <!-- INVENTARIO -->
+    <div id="inventario">
     <section class="seccion">
         <h2>Alertas de inventario</h2>
         <p class="subtitulo">
@@ -695,6 +703,7 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
+    </div>
     <section class="seccion nota">
         <h3>Funciones del Gerente General</h3>
         <p>
