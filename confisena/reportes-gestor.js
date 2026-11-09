@@ -436,7 +436,7 @@ volverGestor.addEventListener(
     function() {
 
         window.location.href =
-            "gestor.html";
+            "gestor.php";
 
     }
 );
