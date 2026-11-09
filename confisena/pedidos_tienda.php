@@ -308,6 +308,9 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
                             <td><?= (int)($p["cantidad_total"] ?? 0) ?></td>
                             <td><?= escaparPedido($p["fecha_pedido"]) ?></td>
                             <td><?= escaparPedido($p["fecha_entrega"] ?: "Por confirmar") ?></td>
+                            <td><?= escaparPedido(trim(($p["direccion"] ?? "") . ", " . ($p["barrio"] ?? "") . ", " . ($p["localidad"] ?? ""), ", ")) ?></td>
+                            <td><?= escaparPedido($p["horario_entrega"] ?? "Por confirmar") ?></td>
+                            <td><?= escaparPedido($p["indicaciones_entrega"] ?? "—") ?></td>
                             <td><?= formatoPesosPedido($p["total"]) ?></td>
 
                             <td>
