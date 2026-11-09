@@ -79,8 +79,6 @@ try {
                    AND EXISTS (
                        SELECT 1
                        FROM detalle_pedido dp
-                       INNER JOIN inventario i
-                           ON i.id_producto = dp.id_producto
                        WHERE dp.id_pedido = pedido.id_pedido
                          AND dp.id_tienda = :tienda
                    )"
@@ -105,8 +103,6 @@ try {
                    AND EXISTS (
                        SELECT 1
                        FROM detalle_pedido dp
-                       INNER JOIN inventario i
-                           ON i.id_producto = dp.id_producto
                        WHERE dp.id_pedido = p.id_pedido
                          AND dp.id_tienda = :tienda
                    )"
