@@ -43,18 +43,21 @@ document.addEventListener("DOMContentLoaded", () => {
         campo.setCustomValidity("");
     }
 
-    fechaEntrega.addEventListener("change", () => {
-        if (fechaEntrega.value) fechaYFranjaValidas();
-    });
-    obtener("horarioEntrega").addEventListener("change", () => {
-        if (fechaEntrega.value) fechaYFranjaValidas();
-    });
+
 
 
     if (!formulario || !metodo || !datosTarjeta) {
         alert("No se encontró el formulario. Revisa apartado.php.");
         return;
     }
+
+    fechaEntrega.min = fechaHoraColombia().fecha;
+    fechaEntrega.addEventListener("change", () => {
+        if (fechaEntrega.value) fechaYFranjaValidas();
+    });
+    obtener("horarioEntrega").addEventListener("change", () => {
+        if (fechaEntrega.value) fechaYFranjaValidas();
+    });
 
     const idProducto = Number(localStorage.getItem("id_producto")) || 0;
     const producto = localStorage.getItem("producto") || "";
