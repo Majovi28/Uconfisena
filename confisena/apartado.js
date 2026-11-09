@@ -46,10 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-    if (!formulario || !metodo || !datosTarjeta) {
-        alert("No se encontró el formulario. Revisa apartado.php.");
-        return;
+    if (!formulario || !metodo || !datosTarjeta) return;
+
+    const mensaje = document.createElement("p");
+    mensaje.id = "mensajeApartado";
+    mensaje.style.cssText = "display:none;margin:14px 0;padding:12px 14px;border-radius:10px;white-space:pre-wrap;background:#f4f1e9;";
+    mensaje.setAttribute("role", "status");
+    mensaje.setAttribute("aria-live", "polite");
+    const boton = formulario.querySelector('button[type="submit"]');
+    formulario.insertBefore(mensaje, boton);
+
+    function mostrarMensaje(texto, error = false) {
+        mensaje.textContent = texto;
+        mensaje.style.display = "block";
+        mensaje.style.color = error ? "#a12d2d" : "#365b3c";
+        mensaje.style.background = error ? "#fff0ef" : "#eef6eb";
     }
+
+    const modalExito = obtener("modalApartadoExito");
+    obtener("cerrarModalApartado").addEventListener("click", () => {
+        window.location.href = "mis_apartados.php";
+    });
 
     fechaEntrega.min = fechaHoraColombia().fecha;
     fechaEntrega.addEventListener("change", () => {
@@ -113,21 +130,20 @@ document.addEventListener("DOMContentLoaded", () => {
             : digitos;
     });
 
-    const boton = formulario.querySelector('button[type="submit"]');
-
     formulario.addEventListener("submit", async evento => {
         evento.preventDefault();
+        mensaje.style.display = "none";
 
         if (!formulario.reportValidity()) return;
         if (!fechaYFranjaValidas()) return;
 
         if (!idProducto || !idInventario || !talla || cantidad < 1) {
-            alert("No se encontró el producto seleccionado. Regresa al catálogo y vuelve a seleccionarlo.");
+            mostrarMensaje("No se encontró el producto seleccionado. Regresa al catálogo y vuelve a seleccionarlo.", true);
             return;
         }
 
         if (!/^3[0-9]{9}$/.test(telefono.value.trim())) {
-            alert("El teléfono debe tener exactamente 10 dígitos y comenzar con 3.");
+            mostrarMensaje("El teléfono debe tener exactamente 10 dígitos y comenzar con 3.", true);
             return;
         }
 
@@ -139,15 +155,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const fecha = vencimiento.value.trim();
 
             if (numero.length !== 16) {
-                alert("El número de tarjeta debe tener 16 dígitos.");
+                mostrarMensaje("El número de tarjeta debe tener 16 dígitos.", true);
                 return;
             }
             if (codigo.length !== 3) {
-                alert("El CVV debe tener 3 dígitos.");
+                mostrarMensaje("El CVV debe tener 3 dígitos.", true);
                 return;
             }
             if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(fecha)) {
-                alert("La fecha debe tener el formato MM/AA.");
+                mostrarMensaje("La fecha debe tener el formato MM/AA.", true);
                 return;
             }
 
@@ -157,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const finVigencia = new Date(anio, mes, 0, 23, 59, 59);
 
             if (finVigencia < new Date()) {
-                alert("La tarjeta está vencida.");
+                mostrarMensaje("La tarjeta está vencida.", true);
                 return;
             }
         }
@@ -196,8 +212,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             if (respuesta.status === 401) {
-                alert("Tu sesión expiró. Inicia sesión nuevamente.");
-                window.location.href = "login.html";
+                mostrarMensaje("Tu sesión expiró. Inicia sesión nuevamente.", true);
+                boton.disabled = false;
+                boton.textContent = textoOriginal;
                 return;
             }
 
@@ -207,21 +224,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             localStorage.setItem("ultimoApartado", String(resultado.id_apartado));
 
-            alert(
-                "Apartado registrado correctamente.\n\n" +
-                "Número de apartado: " + resultado.id_apartado + "\n" +
-                "Producto: " + producto + "\n" +
-                "Talla: " + talla + "\n" +
-                "Cantidad: " + cantidad + "\n" +
-                "Total: $" + Number(resultado.total).toLocaleString("es-CO") + "\n" +
-                "Abono requerido: $" + Number(resultado.abono).toLocaleString("es-CO") + "\n" +
-                "Saldo pendiente: $" + Number(resultado.saldo).toLocaleString("es-CO") +
-                "\n\nEstado: " + resultado.estado
-            );
+            obtener("numeroApartadoExito").textContent = resultado.id_apartado;
+            obtener("productoApartadoExito").textContent = producto;
+            obtener("tallaApartadoExito").textContent = talla;
+            obtener("cantidadApartadoExito").textContent = String(cantidad);
+            obtener("totalApartadoExito").textContent = "$" + Number(resultado.total).toLocaleString("es-CO");
+            obtener("abonoApartadoExito").textContent = "$" + Number(resultado.abono).toLocaleString("es-CO");
+            obtener("saldoApartadoExito").textContent = "$" + Number(resultado.saldo).toLocaleString("es-CO");
+            obtener("estadoApartadoExito").textContent = resultado.estado;
 
-            window.location.href = "mis_apartados.php";
+            modalExito.classList.add("activo");
+            modalExito.setAttribute("aria-hidden", "false");
+            document.body.classList.add("modal-abierto");
+            obtener("cerrarModalApartado").focus();
         } catch (error) {
-            alert(error.message || "Ocurrió un error al registrar el apartado.");
+            mostrarMensaje(error.message || "Ocurrió un error al registrar el apartado.", true);
             boton.disabled = false;
             boton.textContent = textoOriginal;
         }
