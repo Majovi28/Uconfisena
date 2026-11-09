@@ -16,6 +16,7 @@ if (empty($_SESSION["id_usuario"])) responder(false, "Inicia sesión para realiz
 
 $idUsuario = (int) $_SESSION["id_usuario"];
 $idProducto = filter_var($_POST["id_producto"] ?? null, FILTER_VALIDATE_INT);
+$idInventario = filter_var($_POST["id_inventario"] ?? null, FILTER_VALIDATE_INT);
 $cantidad = filter_var($_POST["cantidad"] ?? null, FILTER_VALIDATE_INT);
 $talla = trim($_POST["talla"] ?? "");
 $nombre = trim($_POST["nombre"] ?? "");
@@ -29,7 +30,7 @@ $fechaEntrega = trim($_POST["fecha_entrega"] ?? "");
 $horarioEntrega = trim($_POST["horario_entrega"] ?? "");
 $indicacionesEntrega = trim($_POST["indicaciones_entrega"] ?? "");
 
-if (!$idProducto || $idProducto < 1) responder(false, "El producto seleccionado no es válido.", 400);
+if (!$idProducto || $idProducto < 1 || !$idInventario || $idInventario < 1) responder(false, "Selecciona un producto y una tienda válidos desde el catálogo.", 400);
 if (!$cantidad || $cantidad < 1 || $cantidad > 99) responder(false, "La cantidad debe estar entre 1 y 99.", 400);
 if ($talla === "" || $nombre === "") responder(false, "Completa el nombre y la talla del producto.", 400);
 if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) responder(false, "El correo electrónico no es válido.", 400);
@@ -55,13 +56,11 @@ try {
     $tallasPermitidas = preg_split("/[\s,;]+/", trim((string)$producto["tallas"]), -1, PREG_SPLIT_NO_EMPTY);
     if (!in_array($talla, $tallasPermitidas, true)) throw new DomainException("La talla seleccionada no está disponible para este producto.");
 
-    $consultaInventario = $conexion->prepare("SELECT id_inventario, cantidad_disponible FROM inventario WHERE id_producto = :id AND cantidad_disponible > 0 ORDER BY id_inventario FOR UPDATE");
-    $consultaInventario->execute(["id" => $idProducto]);
-    $filasInventario = $consultaInventario->fetchAll(PDO::FETCH_ASSOC);
-
-    $disponible = 0;
-    foreach ($filasInventario as $fila) $disponible += (int)$fila["cantidad_disponible"];
-    if ($disponible < $cantidad) throw new DomainException("No hay existencias suficientes. Disponibles: " . $disponible . ".");
+    $consultaInventario = $conexion->prepare("SELECT i.id_inventario, i.id_tienda, i.cantidad_disponible FROM inventario i INNER JOIN tienda t ON t.id_tienda = i.id_tienda WHERE i.id_inventario = :inventario AND i.id_producto = :producto AND t.estado = 1 FOR UPDATE");
+    $consultaInventario->execute(["inventario" => $idInventario, "producto" => $idProducto]);
+    $filaInventario = $consultaInventario->fetch(PDO::FETCH_ASSOC);
+    if (!$filaInventario) throw new DomainException("La tienda seleccionada no corresponde a este producto.");
+    if ((int)$filaInventario["cantidad_disponible"] < $cantidad) throw new DomainException("La tienda seleccionada no tiene existencias suficientes.");
 
     $precioUnitario = (float)$producto["precio"];
     $total = round($precioUnitario * $cantidad, 2);
@@ -81,11 +80,12 @@ try {
     $idPedido = (int)$conexion->lastInsertId();
 
     $nombreConTalla = $producto["nombre_producto"] . " (Talla " . $talla . ")";
-    $sqlDetalle = "INSERT INTO detalle_pedido (id_pedido, id_producto, nombre_producto, remitente, destinatario, cantidad, total) VALUES (:pedido, :producto, :nombre_producto, :remitente, :destinatario, :cantidad, :total)";
+    $sqlDetalle = "INSERT INTO detalle_pedido (id_pedido, id_producto, id_tienda, nombre_producto, remitente, destinatario, cantidad, total) VALUES (:pedido, :producto, :tienda, :nombre_producto, :remitente, :destinatario, :cantidad, :total)";
     $insertarDetalle = $conexion->prepare($sqlDetalle);
     $insertarDetalle->execute([
         "pedido" => $idPedido,
         "producto" => $idProducto,
+        "tienda" => (int)$filaInventario["id_tienda"],
         "nombre_producto" => $nombreConTalla,
         "remitente" => "CONFISENA",
         "destinatario" => $nombre,
@@ -97,17 +97,9 @@ try {
     $insertarPago = $conexion->prepare($sqlPago);
     $insertarPago->execute(["pedido" => $idPedido, "metodo" => $metodo, "monto" => $total]);
 
-    $pendiente = $cantidad;
-    $actualizarInventario = $conexion->prepare("UPDATE inventario SET cantidad_disponible = :cantidad, fecha_actualizacion = NOW() WHERE id_inventario = :id");
-    foreach ($filasInventario as $fila) {
-        if ($pendiente <= 0) break;
-        $existenciaFila = (int)$fila["cantidad_disponible"];
-        $descontar = min($pendiente, $existenciaFila);
-        $actualizarInventario->execute(["cantidad" => $existenciaFila - $descontar, "id" => (int)$fila["id_inventario"]]);
-        $pendiente -= $descontar;
-    }
-
-    if ($pendiente > 0) throw new RuntimeException("No fue posible reservar todas las unidades.");
+    $actualizarInventario = $conexion->prepare("UPDATE inventario SET cantidad_disponible = cantidad_disponible - :cantidad, fecha_actualizacion = NOW() WHERE id_inventario = :id AND cantidad_disponible >= :cantidad");
+    $actualizarInventario->execute(["cantidad" => $cantidad, "id" => $idInventario]);
+    if ($actualizarInventario->rowCount() !== 1) throw new DomainException("El inventario cambió. Actualiza el catálogo e inténtalo de nuevo.");
     $conexion->commit();
 
     responder(true, "El pedido fue registrado. El pago está pendiente de confirmación.", 200, ["id_pedido" => $idPedido, "total" => $total, "metodo" => $metodo, "estado" => "Pendiente"]);
