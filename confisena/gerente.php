@@ -42,7 +42,9 @@
       <article class="indicador"><span class="indicador-icono verde">♧</span><div><span>Vendedores registrados</span><strong><?= $vendedores ?></strong></div></article>
       <article class="indicador"><span class="indicador-icono coral">▦</span><div><span>Productos del catálogo</span><strong><?= $productos ?></strong></div></article>
       <article class="indicador"><span class="indicador-icono violeta">▣</span><div><span>Unidades en inventario</span><strong><?= $unidadesInventario ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono coral">▤</span><div><span>Total de pedidos</span><strong><?= $totalPedidos ?></strong></div></article>
       <article class="indicador"><span class="indicador-icono coral">▤</span><div><span>Pedidos pendientes</span><strong><?= $pedidosPendientes ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono lavanda">▣</span><div><span>Total de apartados</span><strong><?= $totalApartados ?></strong></div></article>
       <article class="indicador"><span class="indicador-icono lavanda">▣</span><div><span>Apartados pendientes</span><strong><?= $apartadosPendientes ?></strong></div></article>
       <article class="indicador"><span class="indicador-icono verde">$</span><div><span>Pagos pendientes</span><strong><?= $pagosPendientes ?></strong></div></article>
     </section>
