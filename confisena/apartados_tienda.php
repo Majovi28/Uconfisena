@@ -70,7 +70,7 @@ try {
     $tieneHorario = in_array("horario_entrega", $columnas, true);
     $tieneIndicaciones = in_array("indicaciones_entrega", $columnas, true);
 
-    $puedeFiltrarPorTienda = $tieneIdTienda || $tieneNombreTienda;
+    $puedeFiltrarPorTienda = $tieneIdTienda;
 
     // Definir la condición de pertenencia a la tienda.
     if ($tieneIdTienda) {
