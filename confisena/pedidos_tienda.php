@@ -82,7 +82,7 @@ try {
                        INNER JOIN inventario i
                            ON i.id_producto = dp.id_producto
                        WHERE dp.id_pedido = pedido.id_pedido
-                         AND i.id_tienda = :tienda
+                         AND dp.id_tienda = :tienda
                    )"
             );
 
@@ -108,7 +108,7 @@ try {
                        INNER JOIN inventario i
                            ON i.id_producto = dp.id_producto
                        WHERE dp.id_pedido = p.id_pedido
-                         AND i.id_tienda = :tienda
+                         AND dp.id_tienda = :tienda
                    )"
             );
 
@@ -187,7 +187,7 @@ try {
             ORDER BY p.id_pedido DESC";
 
     $consulta = $conexion->prepare($sql);
-    $consulta->execute(["tienda" => $idTienda]);
+    $consulta->execute(["tienda" => $idTienda, "tienda_detalle" => $idTienda]);
     $pedidos = $consulta->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (Throwable $e) {
