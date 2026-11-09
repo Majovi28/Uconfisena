@@ -36,123 +36,49 @@ $nombre = htmlspecialchars(
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel del Gestor - CONFISENA</title>
-    <link rel="stylesheet" href="gestor.css">
-    <link rel="stylesheet" href="gestor-compartido.css">
-    <style>
-        .enlaces-gestor {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
-        }
-        .enlaces-gestor .tarjeta {
-            background: white;
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid #dfe5ee;
-        }
-        .enlaces-gestor a {
-            display: inline-block;
-            padding: 10px 15px;
-            background: #123563;
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            margin-top: 10px;
-        }
-        .estadisticas-gestor {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin: 25px 0;
-        }
-        .estadisticas-gestor div {
-            flex: 1;
-            min-width: 160px;
-            background: white;
-            border: 1px solid #dfe5ee;
-            border-radius: 10px;
-            padding: 20px;
-        }
-        .estadisticas-gestor strong {
-            display: block;
-            font-size: 28px;
-            color: #123563;
-        }
-        .boton-salir {
-            display: inline-block;
-            background: #123563;
-            color: white;
-            border: 0;
-            border-radius: 6px;
-            padding: 10px 15px;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel del Gestor - CONFISENA</title>
+<link rel="stylesheet" href="gestor-compartido.css">
 </head>
-<body>
-
-<header class="encabezado">
-    <div class="logo">
-        <h1>confisena</h1>
-        <p>Transformamos la forma de comprar</p>
-    </div>
-    <div>
-        <span><?= $nombre ?> · Gestor</span>
-        <a class="boton-salir" href="cerrar_sesion.php">Cerrar sesión</a>
-    </div>
-</header>
-
-<main class="contenedor">
-    <section class="bienvenida">
-        <h2>Panel del Gestor</h2>
-        <p>Administra el registro de tiendas y vendedores de CONFISENA.</p>
+<body class="panel-admin panel-gestor">
+<aside class="barra-lateral">
+  <a class="marca" href="gestor.php"><span class="marca-simbolo">C</span><span>Confi<strong>sena</strong></span></a>
+  <p class="etiqueta-menu">MENÚ PRINCIPAL</p>
+  <nav class="navegacion">
+    <a class="activo" href="gestor.php"><span>⌂</span> Inicio</a>
+    <a href="consultar_tiendas.php"><span>▤</span> Tiendas</a>
+    <a href="consultar_vendedores.php"><span>♙</span> Vendedores</a>
+    <a href="reportes-gestor.html"><span>▥</span> Reportes</a>
+  </nav>
+  <a class="cerrar-lateral" href="cerrar_sesion.php"><span>↪</span> Cerrar sesión</a>
+</aside>
+<div class="zona-principal">
+  <header class="barra-superior">
+    <div class="saludo"><strong>Bienvenido, <?= $nombre ?></strong><span>Panel del Gestor</span></div>
+    <span class="perfil-rol">Gestor</span>
+  </header>
+  <main class="contenido-panel">
+    <section class="portada-panel">
+      <div><p class="sobre-titulo">PLATAFORMA CONFISENA</p><h1>Gestiona con confianza.</h1><p>Administra tiendas, vendedores y reportes desde un solo lugar.</p></div>
+      <div class="portada-inicial">C</div>
     </section>
-
-    <section class="estadisticas-gestor">
-        <div>
-            <strong><?= $tiendas ?></strong>
-            Tiendas registradas
-        </div>
-        <div>
-            <strong><?= $vendedores ?></strong>
-            Vendedores registrados
-        </div>
+    <section class="indicadores-panel">
+      <article class="indicador"><span class="indicador-icono violeta">▤</span><div><span>Tiendas registradas</span><strong><?= $tiendas ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono lavanda">♙</span><div><span>Vendedores registrados</span><strong><?= $vendedores ?></strong></div></article>
     </section>
-
-    <section class="enlaces-gestor">
-        <article class="tarjeta">
-            <h3>Registrar tienda</h3>
-            <p>Ingresa los datos de una nueva tienda autorizada.</p>
-            <a href="registrar_tienda.php">Registrar tienda</a>
-        </article>
-
-        <article class="tarjeta">
-            <h3>Registrar vendedor</h3>
-            <p>Crea una cuenta para un vendedor y asígnalo a una tienda.</p>
-            <a href="registrar_vendedor.php">Registrar vendedor</a>
-        </article>
-
-        <article class="tarjeta">
-            <h3>Consultar tiendas</h3>
-            <p>Revisa las tiendas registradas en el sistema.</p>
-            <a href="consultar_tiendas.php">Ver tiendas</a>
-        </article>
-
-        <article class="tarjeta">
-            <h3>Consultar vendedores</h3>
-            <p>Consulta las cuentas de vendedores y sus tiendas.</p>
-            <a href="consultar_vendedores.php">Ver vendedores</a>
-        </article>
+    <section class="bloque-panel">
+      <div class="titulo-bloque"><div><h2>Accesos rápidos</h2><p>Continúa con las tareas de gestión.</p></div></div>
+      <div class="accesos-panel">
+        <a class="acceso-panel acceso-violeta" href="registrar_tienda.php"><span class="acceso-icono">＋</span><span><strong>Registrar tienda</strong><small>Agregar una nueva tienda</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-lavanda" href="registrar_vendedor.php"><span class="acceso-icono">♙</span><span><strong>Registrar vendedor</strong><small>Crear y asignar una cuenta</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-lavanda" href="consultar_tiendas.php"><span class="acceso-icono">▤</span><span><strong>Consultar tiendas</strong><small>Revisar tiendas registradas</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-violeta" href="consultar_vendedores.php"><span class="acceso-icono">♧</span><span><strong>Consultar vendedores</strong><small>Ver vendedores y sus tiendas</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-coral" href="reportes-gestor.html"><span class="acceso-icono">▥</span><span><strong>Gestionar problemas</strong><small>Revisar reportes recibidos</small></span><b>›</b></a>
+      </div>
     </section>
-</main>
-
-<footer>
-    <p>© 2026 CONFISENA - Transformamos la forma de comprar</p>
-</footer>
-
+  </main>
+  <footer class="pie-panel">CONFISENA · Plataforma de gestión y control</footer>
+</div>
 </body>
 </html>
