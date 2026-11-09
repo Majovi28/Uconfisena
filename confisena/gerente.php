@@ -405,8 +405,9 @@ $nombreSeguro = escapar($nombre);
         </a>
     </div>
 </header>
+<nav class="nav-panel" aria-label="Navegación del panel"><a href="#inicio" class="activo">Inicio</a><a href="#pedidos">Pedidos</a><a href="#apartados">Apartados</a><a href="#tiendas">Tiendas</a><a href="#inventario">Inventario</a></nav>
 
-<main>
+<main id="inicio">
 
     <section class="bienvenida">
         <h2>Panel de supervisión general</h2>
