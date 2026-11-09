@@ -56,13 +56,13 @@ try {
     $tallasPermitidas = preg_split("/[\s,;]+/", trim((string)$producto["tallas"]), -1, PREG_SPLIT_NO_EMPTY);
     if (!in_array($talla, $tallasPermitidas, true)) throw new DomainException("La talla seleccionada no está disponible para este producto.");
 
-    $consultaInventario = $conexion->prepare("SELECT i.id_inventario, i.id_tienda, i.cantidad_disponible FROM inventario i INNER JOIN tienda t ON t.id_tienda = i.id_tienda WHERE i.id_inventario = :inventario AND i.id_producto = :producto AND t.estado = 1 FOR UPDATE");
+    $consultaInventario = $conexion->prepare("SELECT i.id_inventario, i.id_tienda, i.cantidad_disponible, i.precio FROM inventario i INNER JOIN tienda t ON t.id_tienda = i.id_tienda WHERE i.id_inventario = :inventario AND i.id_producto = :producto AND t.estado = 1 FOR UPDATE");
     $consultaInventario->execute(["inventario" => $idInventario, "producto" => $idProducto]);
     $filaInventario = $consultaInventario->fetch(PDO::FETCH_ASSOC);
     if (!$filaInventario) throw new DomainException("La tienda seleccionada no corresponde a este producto.");
     if ((int)$filaInventario["cantidad_disponible"] < $cantidad) throw new DomainException("La tienda seleccionada no tiene existencias suficientes.");
 
-    $precioUnitario = (float)$producto["precio"];
+    $precioUnitario = (float)($filaInventario["precio"] ?? $producto["precio"]);
     $total = round($precioUnitario * $cantidad, 2);
     $sqlPedido = "INSERT INTO pedido (id_usuario, fecha_pedido, fecha_entrega, estado_pedido, direccion, barrio, localidad, horario_entrega, indicaciones_entrega, remitente, total) VALUES (:usuario, NOW(), :entrega, 'Pendiente', :direccion, :barrio, :localidad, :horario, :indicaciones, :remitente, :total)";
     $insertarPedido = $conexion->prepare($sqlPedido);
