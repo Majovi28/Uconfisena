@@ -244,6 +244,8 @@ try {
             color: #64748b;
         }
     </style>
+
+    <link rel="stylesheet" href="gestor-compartido.css">
 </head>
 
 <body>
