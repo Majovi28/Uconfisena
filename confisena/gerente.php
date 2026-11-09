@@ -208,281 +208,64 @@ $nombreSeguro = escapar($nombre);
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Panel del Gerente General - CONFISENA</title>
-    <link rel="stylesheet" href="gestor-compartido.css">
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f3f5f8;
-            color: #263449;
-        }
-
-        header {
-            background: #123563;
-            color: #fff;
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        header h1 {
-            color: white;
-            margin: 0;
-            font-size: 28px;
-        }
-
-        header p {
-            margin: 5px 0 0;
-        }
-
-        .usuario {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
-
-        .salir {
-            display: inline-block;
-            padding: 10px 14px;
-            color: #123563;
-            background: white;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-
-        main {
-            width: 94%;
-            max-width: 1250px;
-            margin: 30px auto;
-        }
-
-        h2, h3 {
-            color: #123563;
-        }
-
-        .bienvenida {
-            margin-bottom: 25px;
-        }
-
-        .bienvenida h2 {
-            margin-bottom: 8px;
-        }
-
-        .subtitulo {
-            color: #5b6678;
-            line-height: 1.6;
-        }
-
-        .estadisticas {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-            gap: 16px;
-            margin: 22px 0 35px;
-        }
-
-        .tarjeta-estadistica {
-            background: white;
-            padding: 20px;
-            border: 1px solid #e0e6ee;
-            border-radius: 10px;
-        }
-
-        .tarjeta-estadistica span {
-            display: block;
-            color: #596579;
-            font-size: 14px;
-        }
-
-        .tarjeta-estadistica strong {
-            display: block;
-            font-size: 30px;
-            color: #123563;
-            margin: 10px 0;
-        }
-
-        .seccion {
-            margin-top: 30px;
-        }
-
-        .tabla-contenedor {
-            overflow-x: auto;
-            background: white;
-            border: 1px solid #e0e6ee;
-            border-radius: 10px;
-            padding: 12px;
-        }
-
-        table {
-            width: 100%;
-            min-width: 720px;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            text-align: left;
-            padding: 13px 12px;
-            border-bottom: 1px solid #e8edf3;
-            font-size: 14px;
-        }
-
-        th {
-            background: #eaf0f8;
-            color: #123563;
-        }
-
-        tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        .vacio {
-            padding: 18px;
-            color: #596579;
-        }
-
-        .mensaje-error {
-            background: white;
-            color: #a61b1b;
-            border: 1px solid #e0e6ee;
-            border-radius: 8px;
-            padding: 16px;
-        }
-
-        .nota {
-            background: white;
-            border: 1px solid #e0e6ee;
-            border-radius: 10px;
-            padding: 18px;
-            line-height: 1.6;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            padding: 24px;
-            color: #596579;
-        }
-
-        @media (max-width: 600px) {
-            header {
-                align-items: flex-start;
-            }
-
-            .usuario {
-                align-items: flex-start;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel del Gerente General - CONFISENA</title>
+<link rel="stylesheet" href="gestor-compartido.css">
 </head>
-
-<body class="panel-gerente">
-
-<header>
-    <div>
-        <h1>CONFISENA</h1>
-        <p>Transformamos la forma de comprar</p>
-    </div>
-
-    <div class="usuario">
-        <span>
-            <?= $nombreSeguro ?> · Gerente General
-        </span>
-
-        <a class="salir" href="cerrar_sesion.php">
-            Cerrar sesión
-        </a>
-    </div>
-</header>
-<nav class="nav-panel" aria-label="Navegación del panel"><a href="#inicio" class="activo">Inicio</a><a href="#pedidos">Pedidos</a><a href="#apartados">Apartados</a><a href="#tiendas">Tiendas</a><a href="#inventario">Inventario</a></nav>
-
-<main id="inicio">
-
-    <section class="bienvenida">
-        <h2>Panel de supervisión general</h2>
-
-        <p class="subtitulo">
-            Consulta el funcionamiento general de CONFISENA:
-            usuarios, tiendas, vendedores, productos, inventario,
-            compras, apartados y pagos pendientes.
-        </p>
+<body class="panel-admin panel-gerencia">
+<aside class="barra-lateral">
+  <a class="marca" href="gerente.php"><span class="marca-simbolo">C</span><span>Confi<strong>sena</strong></span></a>
+  <p class="etiqueta-menu">SUPERVISIÓN</p>
+  <nav class="navegacion">
+    <a class="activo" href="gerente.php"><span>⌂</span> Inicio</a>
+    <a href="#pedidos"><span>▤</span> Pedidos</a>
+    <a href="#apartados"><span>▣</span> Apartados</a>
+    <a href="#tiendas"><span>▥</span> Tiendas</a>
+    <a href="#inventario"><span>▦</span> Inventario</a>
+  </nav>
+  <a class="cerrar-lateral" href="cerrar_sesion.php"><span>↪</span> Cerrar sesión</a>
+</aside>
+<div class="zona-principal">
+  <header class="barra-superior">
+    <div class="saludo"><strong>Bienvenido, <?= $nombreSeguro ?></strong><span>Panel de Gerencia General</span></div>
+    <span class="perfil-rol">Gerente General</span>
+  </header>
+  <main class="contenido-panel">
+    <section class="portada-panel">
+      <div><p class="sobre-titulo">PLATAFORMA CONFISENA</p><h1>Visión general del sistema.</h1><p>Supervisa la actividad, los movimientos y el estado de la plataforma.</p></div>
+      <div class="portada-inicial">C</div>
     </section>
-
-    <?php if ($error !== ""): ?>
+        <?php if ($error !== ""): ?>
         <div class="mensaje-error">
             <?= escapar($error) ?>
         </div>
     <?php endif; ?>
 
-    <!-- INDICADORES GENERALES -->
-    <section class="estadisticas">
 
-        <article class="tarjeta-estadistica">
-            <span>Usuarios registrados</span>
-            <strong><?= $usuarios ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Tiendas registradas</span>
-            <strong><?= $tiendas ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Vendedores registrados</span>
-            <strong><?= $vendedores ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Productos del catálogo</span>
-            <strong><?= $productos ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Unidades en inventario</span>
-            <strong><?= $unidadesInventario ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Total de pedidos</span>
-            <strong><?= $totalPedidos ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Pedidos pendientes</span>
-            <strong><?= $pedidosPendientes ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Total de apartados</span>
-            <strong><?= $totalApartados ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Apartados pendientes</span>
-            <strong><?= $apartadosPendientes ?></strong>
-        </article>
-
-        <article class="tarjeta-estadistica">
-            <span>Pagos pendientes</span>
-            <strong><?= $pagosPendientes ?></strong>
-        </article>
-
+    <section class="indicadores-panel">
+      <article class="indicador"><span class="indicador-icono violeta">♙</span><div><span>Usuarios registrados</span><strong><?= $usuarios ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono lavanda">▤</span><div><span>Tiendas registradas</span><strong><?= $tiendas ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono verde">♧</span><div><span>Vendedores registrados</span><strong><?= $vendedores ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono coral">▦</span><div><span>Productos del catálogo</span><strong><?= $productos ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono violeta">▣</span><div><span>Unidades en inventario</span><strong><?= $unidadesInventario ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono coral">▤</span><div><span>Total de pedidos</span><strong><?= $totalPedidos ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono coral">▤</span><div><span>Pedidos pendientes</span><strong><?= $pedidosPendientes ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono lavanda">▣</span><div><span>Total de apartados</span><strong><?= $totalApartados ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono lavanda">▣</span><div><span>Apartados pendientes</span><strong><?= $apartadosPendientes ?></strong></div></article>
+      <article class="indicador"><span class="indicador-icono verde">$</span><div><span>Pagos pendientes</span><strong><?= $pagosPendientes ?></strong></div></article>
     </section>
-
-    <!-- COMPRAS -->
-    <div id="pedidos">
-    <section class="seccion">
+    <section class="bloque-panel accesos-gerencia">
+      <div class="titulo-bloque"><div><h2>Accesos rápidos</h2><p>Salta directamente a los registros que supervisas.</p></div></div>
+      <div class="accesos-panel">
+        <a class="acceso-panel acceso-violeta" href="#pedidos"><span class="acceso-icono">▤</span><span><strong>Últimos pedidos</strong><small>Estado de compras y pagos</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-lavanda" href="#apartados"><span class="acceso-icono">▣</span><span><strong>Últimos apartados</strong><small>Reservas y saldos pendientes</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-coral" href="#tiendas"><span class="acceso-icono">▥</span><span><strong>Tiendas registradas</strong><small>Actividad de las tiendas</small></span><b>›</b></a>
+        <a class="acceso-panel acceso-violeta" href="#inventario"><span class="acceso-icono">▦</span><span><strong>Alertas de inventario</strong><small>Productos con pocas unidades</small></span><b>›</b></a>
+      </div>
+    </section>
+        <!-- COMPRAS -->
+    <section class="seccion bloque-panel" id="pedidos">
         <h2>Últimos pedidos</h2>
         <p class="subtitulo">
             Seguimiento de las compras registradas por los usuarios.
@@ -546,9 +329,7 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
-    </div>
     <!-- APARTADOS -->
-    <div id="apartados">
     <section class="seccion">
         <h2>Últimos apartados</h2>
         <p class="subtitulo">
@@ -614,9 +395,7 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
-    </div>
     <!-- TIENDAS -->
-    <div id="tiendas">
     <section class="seccion">
         <h2>Tiendas registradas</h2>
         <p class="subtitulo">
@@ -664,9 +443,7 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
-    </div>
     <!-- INVENTARIO -->
-    <div id="inventario">
     <section class="seccion">
         <h2>Alertas de inventario</h2>
         <p class="subtitulo">
@@ -704,8 +481,7 @@ $nombreSeguro = escapar($nombre);
         </div>
     </section>
 
-    </div>
-    <section class="seccion nota">
+    <section class="seccion nota bloque-panel">
         <h3>Funciones del Gerente General</h3>
         <p>
             Este panel está destinado a supervisar la actividad de la plataforma.
@@ -715,11 +491,9 @@ $nombreSeguro = escapar($nombre);
         </p>
     </section>
 
-</main>
 
-<footer>
-    © 2026 CONFISENA - Transformamos la forma de comprar
-</footer>
-
+  </main>
+  <footer class="pie-panel">CONFISENA · Plataforma de gestión y control</footer>
+</div>
 </body>
 </html>
