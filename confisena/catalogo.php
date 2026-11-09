@@ -86,7 +86,7 @@ try {
 </div></section></main>
 <footer class="footer" id="contacto"><div class="contenedor footer-grid"><div class="footer-col"><h3>CONFISENA</h3><p>Plataforma web de catálogo y venta de uniformes SENA.</p><p class="slogan">Transformamos la forma de comprar.</p></div><div class="footer-col"><h4>Enlaces</h4><a href="index.html">Inicio</a><a href="catalogo.php">Catálogo</a></div><div class="footer-col"><h4>Mi cuenta</h4><a href="cerrar_sesion.php">Cerrar sesión</a></div></div><div class="footer-bottom"><p>© 2026 CONFISENA. Todos los derechos reservados.</p></div></footer>
 <script>
-function guardarProducto(id,idInventario,nombre,precio){localStorage.setItem("id_producto",String(id));localStorage.setItem("id_inventario",String(idInventario));localStorage.setItem("producto",nombre);localStorage.setItem("precio",String(precio));localStorage.setItem("cantidad","1");}
+function guardarProducto(id,idInventario,idTienda,nombre,precio){localStorage.setItem("id_producto",String(id));localStorage.setItem("id_inventario",String(idInventario));localStorage.setItem("id_tienda",String(idTienda));localStorage.setItem("producto",nombre);localStorage.setItem("precio",String(precio));localStorage.setItem("cantidad","1");}
 document.querySelectorAll(".producto-card").forEach(card=>{
  const selector=card.querySelector(".selector-tienda"),precio=card.querySelector(".precio-dinamico"),disp=card.querySelector(".disponibilidad-dinamica span:last-child"),badge=card.querySelector(".etiqueta-producto");
  const detalles=card.querySelector(".detalles"),comprar=card.querySelector(".comprar"),apartar=card.querySelector(".apartar");
@@ -101,7 +101,7 @@ document.querySelectorAll(".producto-card").forEach(card=>{
   [comprar,apartar].forEach(a=>{a.style.pointerEvents=stock>0?"":"none";a.style.opacity=stock>0?"":"0.5";a.setAttribute("aria-disabled",stock>0?"false":"true");});
  }
  selector.addEventListener("change",actualizar);actualizar();
- [comprar,apartar].forEach(a=>a.addEventListener("click",event=>{const op=selector.selectedOptions[0];if(Number(op.dataset.stock)<=0){event.preventDefault();return;}guardarProducto(id,op.value,card.dataset.nombre,Number(op.dataset.precio));}));
+ [comprar,apartar].forEach(a=>a.addEventListener("click",event=>{const op=selector.selectedOptions[0];if(Number(op.dataset.stock)<=0){event.preventDefault();return;}guardarProducto(id,op.value,op.dataset.tiendaId,card.dataset.nombre,Number(op.dataset.precio));}));
 });
 const buscar=document.getElementById("buscar"),ordenar=document.getElementById("ordenar"),grid=document.getElementById("productosGrid"),total=document.getElementById("totalProductos"),sin=document.getElementById("sinResultados");
 function filtrar(){if(!grid)return;const q=buscar.value.trim().toLocaleLowerCase("es"),cards=[...grid.querySelectorAll(".producto-card")];cards.forEach(card=>{card.hidden=!(card.dataset.nombre.toLocaleLowerCase("es").includes(q)||card.dataset.tiendas.toLocaleLowerCase("es").includes(q));});const visibles=cards.filter(x=>!x.hidden);if(ordenar.value==="menor")visibles.sort((a,b)=>+a.dataset.precio- +b.dataset.precio);if(ordenar.value==="mayor")visibles.sort((a,b)=>+b.dataset.precio- +a.dataset.precio);if(ordenar.value==="nombre")visibles.sort((a,b)=>a.dataset.nombre.localeCompare(b.dataset.nombre,"es"));visibles.forEach(x=>grid.appendChild(x));total.textContent=visibles.length+" productos";sin.hidden=visibles.length!==0;}
