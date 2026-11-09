@@ -384,6 +384,7 @@ $nombreSeguro = escapar($nombre);
             }
         }
     </style>
+    <link rel="stylesheet" href="gestor-compartido.css">
 </head>
 
 <body>
