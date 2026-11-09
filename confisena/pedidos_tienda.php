@@ -213,16 +213,16 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
         }
         .panel {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #EAEAE5;
             border-radius: 12px;
             padding: 22px;
             margin-bottom: 22px;
         }
-        h1, h2, h3 { color: #172554; }
-        .subtitulo { color: #64748b; line-height: 1.5; }
+        h1, h2, h3 { color: #4D5148; }
+        .subtitulo { color: #4D5148; line-height: 1.5; }
         .boton {
             display: inline-block;
-            background: #2563eb;
+            background: #B8D5B0;
             color: white;
             padding: 10px 14px;
             border: 0;
@@ -232,14 +232,14 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
         }
         .scroll { overflow-x: auto; margin-top: 15px; }
         table { border-collapse: collapse; width: 100%; min-width: 950px; }
-        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #e2e8f0; }
-        th { color: #172554; background: #dbeafe; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #EAEAE5; }
+        th { color: #4D5148; background: #E8DCCB; }
         select { padding: 9px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 7px; }
         .mensaje { padding: 14px; border-radius: 8px; background: white; margin-bottom: 18px; }
         .ok { color: #166534; }
         .error { color: #991b1b; }
-        .vacio { padding: 18px; color: #64748b; }
-        small { color: #64748b; }
+        .vacio { padding: 18px; color: #4D5148; }
+        small { color: #4D5148; }
     </style>
 </head>
 <body>
@@ -370,7 +370,7 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
     </section>
 </main>
 
-<footer style="text-align:center;padding:25px;color:#64748b;">
+<footer style="text-align:center;padding:25px;color:#4D5148;">
     © 2026 CONFISENA - Transformamos la forma de comprar
 </footer>
 
