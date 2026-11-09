@@ -43,20 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
         campo.setCustomValidity("");
     }
 
+
+
+    if (!formulario || !metodo || !datosTarjeta) {
+        alert("No se encontró el formulario de pago. Revisa pago.php.");
+        return;
+    }
+
+    fechaEntrega.min = fechaHoraColombia().fecha;
     fechaEntrega.addEventListener("change", () => {
         if (fechaEntrega.value) fechaYFranjaValidas();
     });
     obtener("horarioEntrega").addEventListener("change", () => {
         if (fechaEntrega.value) fechaYFranjaValidas();
     });
-
-    const actualColombia = fechaHoraColombia();
-    fechaEntrega.min = actualColombia.fecha;
-
-    if (!formulario || !metodo || !datosTarjeta) {
-        alert("No se encontró el formulario de pago. Revisa pago.php.");
-        return;
-    }
 
     const mensaje = document.createElement("p");
     mensaje.id = "mensajePago";
