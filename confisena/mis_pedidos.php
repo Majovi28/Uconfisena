@@ -121,6 +121,36 @@ try {
             padding: 22px;
             color: #596579;
         }
+    
+        /* Tema CONFISENA salvia y beige: vista de usuario/vendedor */
+        body { background: #EAEAE5 !important; color: #4D5148 !important; }
+        header { background: #FFFFFF !important; color: #4D5148 !important; border-bottom: 1px solid #D9DED4; box-shadow: 0 4px 18px rgba(77,81,72,.07); }
+        header h1, h2, h3, .accion-vendedor h3 { color: #4D5148 !important; }
+        header nav a, header a { color: #4D5148 !important; }
+        header nav a:hover, header a:hover { color: #829D79 !important; }
+        .pedido, .apartado, .mensaje, .accion-vendedor, .mensaje-panel, .dato, .informacion-tienda {
+            background: #FFFFFF !important; border: 1px solid #D9DED4 !important;
+            border-radius: 16px !important; box-shadow: 0 10px 28px rgba(77,81,72,.09) !important;
+        }
+        .cabecera-pedido, .cabecera { border-color: #EAEAE5 !important; }
+        .estado { background: #E5EFE1 !important; color: #4D5148 !important; border-radius: 20px !important; }
+        .total, .abono, .bienvenida h1, .titulo-seccion h2 { color: #4D5148 !important; }
+        .boton, .enlace-accion, .boton-cerrar {
+            background: #B8D5B0 !important; color: #4D5148 !important;
+            border: 1px solid transparent !important; border-radius: 10px !important;
+            font-weight: 700; transition: .2s ease;
+        }
+        .boton:hover, .enlace-accion:hover, .boton-cerrar:hover {
+            background: #829D79 !important; color: #FFFFFF !important; transform: translateY(-1px);
+        }
+        .valores { background: #F5F3EE !important; border-radius: 10px !important; }
+        input, select, textarea { border-color: #D5D8D0 !important; border-radius: 9px !important; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #829D79 !important; box-shadow: 0 0 0 3px rgba(184,213,176,.35) !important; }
+        @media (max-width: 700px) {
+            header { padding: 16px 5% !important; }
+            nav { gap: 10px !important; }
+        }
+
     </style>
 </head>
 <body>
