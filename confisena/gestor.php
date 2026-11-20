@@ -43,7 +43,7 @@ $nombre = htmlspecialchars(
 </head>
 <body class="panel-admin panel-gestor">
 <aside class="barra-lateral">
-  <a class="marca" href="gestor.php"><span class="marca-simbolo">C</span><span>Confi<strong>sena</strong></span></a>
+  <a class="marca" href="gestor.php"><img class="marca-logo" src="confisena_logos/logo_confisena_gestor.png" alt="CONFISENA - Administración"></a>
   <p class="etiqueta-menu">MENÚ PRINCIPAL</p>
   <nav class="navegacion">
     <a class="activo" href="gestor.php"><span>⌂</span> Inicio</a>
