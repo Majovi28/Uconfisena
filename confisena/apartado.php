@@ -44,7 +44,7 @@ $correoUsuario = htmlspecialchars(
 <body>
 
 <header class="encabezado">
-    <div class="logo"><img src="confisena_logos/logo_confisena_usuario.png" alt="CONFISENA" style="display:block;width:190px;max-width:42vw;max-height:64px;object-fit:contain;"></div>
+    <div class="logo" style="display:flex;align-items:center;gap:12px;"><img src="confisena_logos/logo_confisena_usuario.png" alt="Logo CONFISENA" style="display:block;width:62px;height:58px;object-fit:contain;"><span style="font-size:26px;font-weight:800;letter-spacing:1px;color:#4D5148;">CONFI<span style="color:#829D79;">SENA</span></span></div>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="catalogo.php">Catálogo</a>
