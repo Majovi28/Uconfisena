@@ -44,10 +44,7 @@ $correoUsuario = htmlspecialchars(
 <body>
 
 <header class="encabezado">
-    <div class="logo">
-        <h1>confisena</h1>
-        <p>Transformamos la forma de comprar</p>
-    </div>
+    <div class="logo"><img src="confisena_logos/logo_confisena_usuario.png" alt="CONFISENA" style="display:block;width:190px;max-width:42vw;max-height:64px;object-fit:contain;"></div>
     <nav>
         <a href="index.html">Inicio</a>
         <a href="catalogo.php">Catálogo</a>
