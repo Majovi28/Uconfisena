@@ -241,7 +241,7 @@ $nombreTienda = escaparPedido($tienda["nombre_tienda"] ?? "");
 <body>
 
 <header class="encabezado">
-    <div class="logo">CONFISENA</div>
+    <div class="logo"><img src="confisena_logos/logo_confisena_usuario.png" alt="CONFISENA" style="display:block;width:180px;max-width:42vw;max-height:64px;object-fit:contain;"></div>
     <div class="informacion-vendedor">
         <span>Pedidos de mi tienda</span>
         <strong><?= $nombreTienda ?></strong>
