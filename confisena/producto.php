@@ -14,7 +14,7 @@ $idProducto = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
 $idInventario = filter_input(INPUT_GET, "id_inventario", FILTER_VALIDATE_INT);
 if (!$idProducto || $idProducto < 1 || !$idInventario || $idInventario < 1) { header("Location: catalogo.php"); exit; }
 try {
-    $sql = "SELECT p.id_producto, p.nombre_producto, p.tallas, p.descripcion,
+    $sql = "SELECT p.id_producto, p.nombre_producto, p.tallas, p.descripcion, p.imagen,
                    c.nombre_categoria, i.id_inventario, i.id_tienda,
                    t.nombre_tienda, COALESCE(i.precio,p.precio) AS precio,
                    i.cantidad_disponible
@@ -39,17 +39,18 @@ $nombreProducto=(string)$producto["nombre_producto"];
 $precioProducto=(float)$producto["precio"];
 $categoriaProducto=$producto["nombre_categoria"] ?: "Sin categoría";
 $nombreTienda=(string)$producto["nombre_tienda"];
+$imagenProducto=(string)($producto["imagen"] ?? "");
 $codigoProducto="CF-PRD-".str_pad((string)$producto["id_producto"],4,"0",STR_PAD_LEFT);
 ?>
 <!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?= escapar($nombreProducto) ?> | CONFISENA</title><link rel="stylesheet" href="sproducto.css"><script src="jproducto.js" defer></script>
-<style>.tienda-producto{color:#4D5148;margin:10px 0;font-size:1rem}.producto-info .tienda-producto strong{font-weight:700}</style></head>
+<style>.tienda-producto{color:#4D5148;margin:10px 0;font-size:1rem}.producto-info .tienda-producto strong{font-weight:700}.producto-imagen .foto-producto{width:100%;height:100%;max-height:550px;object-fit:contain;display:block;padding:20px;box-sizing:border-box}.producto-imagen .imagen-placeholder.sin-imagen{width:300px;height:300px}</style></head>
 <body>
 <header class="header"><div class="contenedor header-contenido"><a href="index.html" class="logo"><span class="logo-principal">CONFI<span>SENA</span></span><small>Transformamos la forma de comprar</small></a><nav class="menu"><a href="index.html">Inicio</a><a href="catalogo.php">Catálogo</a><a href="cerrar_sesion.php">Cerrar sesión</a></nav></div></header>
 <main><div class="contenedor"><div class="migas"><a href="index.html">Inicio</a><span>/</span><a href="catalogo.php">Catálogo</a><span>/</span><span><?= escapar($nombreProducto) ?></span></div></div>
 <section class="producto-seccion"><div class="contenedor producto" data-product-id="<?= (int)$producto["id_producto"] ?>" data-inventory-id="<?= (int)$producto["id_inventario"] ?>" data-store-id="<?= (int)$producto["id_tienda"] ?>" data-product-name="<?= escapar($nombreProducto) ?>" data-product-price="<?= escapar($precioProducto) ?>" data-max-stock="<?= max(0,$stock) ?>" data-has-stock="1">
-<div class="producto-imagen"><span class="estado"><?= $agotado ? "Agotado" : "Disponible" ?></span><div class="imagen-placeholder"></div></div>
+<div class="producto-imagen"><span class="estado"><?= $agotado ? "Agotado" : "Disponible" ?></span><?php if ($imagenProducto !== ""): ?><img class="foto-producto" src="<?= escapar($imagenProducto) ?>" alt="<?= escapar($nombreProducto) ?>"><?php else: ?><div class="imagen-placeholder sin-imagen" role="img" aria-label="Imagen no disponible"></div><?php endif; ?></div>
 <div class="producto-info"><span class="categoria"><?= escapar(strtoupper($categoriaProducto)) ?></span><h1><?= escapar($nombreProducto) ?></h1>
 <p class="codigo">Código del producto: <?= escapar($codigoProducto) ?></p><p class="tienda-producto"><strong>Tienda:</strong> <?= escapar($nombreTienda) ?></p>
 <div class="precio"><?= precioCOP($precioProducto) ?></div><p class="iva">Precio en pesos colombianos</p>
