@@ -11,7 +11,7 @@ require_once __DIR__ . "/php/conexion.php";
 function e($v) { return htmlspecialchars((string)($v ?? ""), ENT_QUOTES, "UTF-8"); }
 function cop($v) { return "$" . number_format((float)$v, 0, ",", "."); }
 try {
-    $sql = "SELECT p.id_producto, p.nombre_producto, p.tallas, p.descripcion,
+    $sql = "SELECT p.id_producto, p.nombre_producto, p.tallas, p.descripcion, p.imagen,
                    c.nombre_categoria, i.id_inventario, i.id_tienda,
                    t.nombre_tienda, COALESCE(i.precio, p.precio) AS precio,
                    i.cantidad_disponible
@@ -31,6 +31,7 @@ try {
                 "nombre_producto" => $fila["nombre_producto"],
                 "tallas" => $fila["tallas"],
                 "descripcion" => $fila["descripcion"],
+                "imagen" => $fila["imagen"],
                 "nombre_categoria" => $fila["nombre_categoria"],
                 "tiendas" => []
             ];
@@ -55,6 +56,7 @@ try {
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo | CONFISENA</title><link rel="stylesheet" href="stylecatalogo.css">
 <style>
+.producto-imagen .foto-producto{width:100%;height:100%;object-fit:contain;display:block;padding:14px;box-sizing:border-box}.producto-imagen .imagen-placeholder.sin-imagen{width:100%;height:100%;min-height:180px}
 .tienda-producto{margin:10px 0;color:#4D5148}.selector-tienda{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;margin:6px 0 12px}
 .producto-card .producto-contenido{height:100%;display:flex;flex-direction:column;overflow:visible}
 .producto-botones{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;gap:9px!important;width:100%;margin-top:18px!important;position:relative;z-index:2;visibility:visible!important;opacity:1!important}
@@ -85,7 +87,7 @@ try {
 <?php else: ?><div class="productos-grid" id="productosGrid">
 <?php foreach ($productos as $p): $id=(int)$p["id_producto"]; $nombre=(string)$p["nombre_producto"]; $tiendasJson=json_encode(array_column($p["tiendas"],"nombre_tienda"),JSON_UNESCAPED_UNICODE|JSON_HEX_APOS|JSON_HEX_QUOT); $primera=$p["tiendas"][0]; $stock=(int)$primera["cantidad_disponible"]; $tallas=preg_split("/[\\s,;]+/",trim((string)$p["tallas"]),-1,PREG_SPLIT_NO_EMPTY); ?>
 <article class="producto-card" data-product-id="<?= $id ?>" data-nombre="<?= e($nombre) ?>" data-tiendas="<?= e(implode(" ",array_column($p["tiendas"],"nombre_tienda"))) ?>" data-precio="<?= (float)$primera["precio"] ?>">
-<div class="producto-imagen"><span class="etiqueta-producto <?= $stock<=0 ? "agotado" : "" ?>"><?= $stock<=0 ? "Agotado" : "Disponible" ?></span><div class="imagen-placeholder"></div></div>
+<div class="producto-imagen"><span class="etiqueta-producto <?= $stock<=0 ? "agotado" : "" ?>"><?= $stock<=0 ? "Agotado" : "Disponible" ?></span><?php if (!empty($p["imagen"])): ?><img class="foto-producto" src="<?= e($p["imagen"]) ?>" alt="<?= e($nombre) ?>" loading="lazy"><?php else: ?><div class="imagen-placeholder sin-imagen" role="img" aria-label="Imagen no disponible"></div><?php endif; ?></div>
 <div class="producto-contenido"><span class="categoria-producto"><?= e($p["nombre_categoria"] ?: "Sin categoría") ?></span><h3><?= e($nombre) ?></h3>
 <p class="descripcion"><?= e($p["descripcion"]) ?></p>
 <div class="producto-dato"><strong>Tallas:</strong><div class="tallas"><?php foreach($tallas as $t): ?><span><?= e($t) ?></span><?php endforeach; ?></div></div>
