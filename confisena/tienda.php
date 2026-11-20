@@ -173,7 +173,7 @@ $nombreSeguro = escaparPanel($nombreVendedor);
 <body>
 
 <header class="encabezado">
-    <div class="logo">CONFISENA</div>
+    <div class="logo"><img src="confisena_logos/logo_confisena_usuario.png" alt="CONFISENA" style="display:block;width:180px;max-width:42vw;max-height:64px;object-fit:contain;"></div>
 
     <div class="informacion-vendedor">
         <span>Panel del Vendedor</span>
