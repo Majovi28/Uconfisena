@@ -30,10 +30,7 @@ $productosInicio=$conexion->query("SELECT p.id_producto,p.nombre_producto,p.desc
         <div class="contenedor header-contenido">
 
 
-            <a href="index.html" class="logo">
-                <span class="logo-principal">CONFI<span>SENA</span></span>
-                <small>Transformamos la forma de comprar</small>
-            </a>
+            <a href="index.php" class="logo logo-inicio"><img src="confisena_logos/logo_confisena_usuario.png" alt="Logo CONFISENA"><span class="logo-texto"><span class="logo-principal">CONFI<span>SENA</span></span><small>Transformamos la forma de comprar</small></span></a>
 
             <nav class="menu">
 
@@ -374,13 +371,9 @@ $productosInicio=$conexion->query("SELECT p.id_producto,p.nombre_producto,p.desc
                     Iniciar sesión
                 </a>
 
-                <a href="#">
-                    Mis pedidos
-                </a>
+                
 
-                <a href="#">
-                    Mis apartados
-                </a>
+                
 
             </div>
 
