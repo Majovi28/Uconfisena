@@ -215,7 +215,7 @@ $nombreSeguro = escapar($nombre);
 </head>
 <body class="panel-admin panel-gerencia">
 <aside class="barra-lateral">
-  <a class="marca" href="gerente.php"><span class="marca-simbolo">C</span><span>Confi<strong>sena</strong></span></a>
+  <a class="marca" href="gerente.php"><img class="marca-logo" src="confisena_logos/logo_confisena_gestor.png" alt="CONFISENA - Gerencia General"></a>
   <p class="etiqueta-menu">SUPERVISIÓN</p>
   <nav class="navegacion">
     <a class="activo" href="gerente.php"><span>⌂</span> Inicio</a>
