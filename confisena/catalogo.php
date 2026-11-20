@@ -71,7 +71,7 @@ try {
 .producto-card[hidden]{display:none!important}
 </style></head><body>
 <header class="header"><div class="contenedor header-contenido">
-<a href="index.html" class="logo"><img src="<?= in_array(($_SESSION["rol_usuario"] ?? ""), ["Gestor", "Gerente General"], true) ? "confisena_logos/logo_confisena_gestor.png" : "confisena_logos/logo_confisena_usuario.png" ?>" alt="CONFISENA" style="display:block;width:190px;max-width:42vw;max-height:64px;object-fit:contain;"></a>
+<a href="index.html" class="logo" style="display:flex;flex-direction:row;align-items:center;gap:12px;text-decoration:none;"><img src="<?= in_array(($_SESSION["rol_usuario"] ?? ""), ["Gestor", "Gerente General"], true) ? "confisena_logos/logo_confisena_gestor.png" : "confisena_logos/logo_confisena_usuario.png" ?>" alt="Logo CONFISENA" style="display:block;width:64px;height:58px;object-fit:contain;"><span style="font-size:27px;font-weight:800;letter-spacing:1px;color:#4D5148;">CONFI<span style="color:#829D79;">SENA</span></span></a>
 <nav class="menu"><a href="index.html">Inicio</a><a href="catalogo.php" class="activo">Catálogo</a><a href="#productos">Productos</a><a href="#contacto">Contacto</a><a href="cerrar_sesion.php">Cerrar sesión</a></nav>
 </div></header>
 <main>
